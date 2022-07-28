@@ -1,0 +1,25 @@
+<div
+  *ngIf="!loggedIn()"
+  class="login-container"
+  fxLayout="column"
+  fxLayoutAlign="center center">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>
+      {{'login.cardTitle' | translate}}
+    </mat-card-title>
+
+    <mat-card-content fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5px">
+      <span class="text">
+        <img alt="Google G" src="../../../../../assets/google-g.png" style="vertical-align: middle">
+        {{'login.promptText' | translate }}
+      </span>
+
+      <button
+        (click)="login()"
+        color="primary"
+        mat-raised-button>
+        {{'login.btnText' | translate}}
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>

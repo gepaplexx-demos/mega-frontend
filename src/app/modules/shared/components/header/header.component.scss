@@ -1,0 +1,19 @@
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 70px;
+}
+
+.router-outlet {
+  height: calc(100% - 77px);
+  margin-top: 7px;
+}
+
+img {
+  height: 20px;
+}
+
+.logo-mega {
+  height: inherit;
+}
