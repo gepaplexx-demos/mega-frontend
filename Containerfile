@@ -15,11 +15,11 @@ FROM bitnami/nginx:latest
 
 ENV WORKDIR=/work
 ENV APPNAME=frontend
-ENV NGINX_HTML_DIR=/usr/share/nginx/html
+ENV NGINX_DIR=/opt/bitnami/nginx
 ENV APP_DEST_DIR=${WORKDIR}/dist/${APPNAME}
 
-COPY nginx-config/nginx.conf /etc/nginx/nginx.conf
-COPY --from=build ${APP_DEST_DIR} ${NGINX_HTML_DIR}
+COPY nginx-config/nginx.conf ${NGINX_DIR}/conf/nginx.conf
+COPY --from=build ${APP_DEST_DIR} ${NGINX_DIR}/html/
 
 CMD ["/bin/bash", "-c", \
 "nginx -g 'daemon off;'"]
