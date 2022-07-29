@@ -11,7 +11,7 @@ RUN npm install \
    && node ./node_modules/@angular/cli/bin/ng build --configuration=production
 
 ### STAGE 2: Run ###
-FROM nginx:latest
+FROM bitnami/nginx:latest
 
 ENV WORKDIR=/work
 ENV APPNAME=frontend
