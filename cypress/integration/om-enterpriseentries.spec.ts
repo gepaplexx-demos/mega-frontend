@@ -143,7 +143,7 @@ describe('Office Management (Unternehmen)', () => {
     assertSelect('payroll-accounting-sent', 'Fertig');
   });
 
-  function assertSelect(attribute: 'zep-times-released' | 'chargeability-external-employees' | 'payroll-accounting-sent' | 'zep-monthly-report', text: string) {
+  function assertSelect(attribute: 'zep-times-released' | 'chargeability-external-employees' | 'payroll-accounting-sent', text: string) {
     return cy.get('[data-cy="' + attribute + '"]')
       .should('be.visible')
       .should('have.text', text);
