@@ -53,37 +53,9 @@ describe('Office Management (Mitarbeiter)', () => {
 
   it('should display all employee checks "open"', () => {
     visitAndWaitForRequests('/officeManagement');
-    assertSelect('customer-check', 'Offen');
     assertSelect('internal-check', 'Offen');
     assertCheck('employee-check', 'cancel');
     assertCheck('project-check', 'cancel');
-  });
-
-  it('should change the status of "Kundenzeiten" when "Fertig" gets selected', () => {
-    visitAndWaitForRequests('/officeManagement');
-    assertSelect('customer-check', 'Offen');
-
-    cy.intercept('PUT', 'http://localhost:*/stepentry/closeforoffice', {
-      body: true
-    }).as('closeforoffice');
-
-    cy.get('[data-cy="customer-check"]').click().get('[data-cy="option-done"]').click();
-
-    cy.get('@closeforoffice').its('request.body').should('deep.include', {
-      stepId: 3,
-      employee: {
-        ...employee[0].employee
-      }
-    });
-
-    cy.fixture('officemanagement/officemanagemententries.json').then(jsonData => {
-      jsonData[0].customerCheckState = 'DONE';
-      cy.intercept('http://localhost:*/management/officemanagemententries/*/*', jsonData).as('getOfficeManagementEntries');
-    });
-
-    visitAndWaitForRequests('/officeManagement');
-
-    assertSelect('customer-check', 'Fertig');
   });
 
   it('should change the status of "Interne Zeiten" when "Fertig" gets selected', () => {
@@ -135,7 +107,6 @@ describe('Office Management (Mitarbeiter)', () => {
 
   it('should display all employee checks done when checks in response are set to "done"', () => {
     cy.fixture('officemanagement/officemanagemententries.json').then(jsonData => {
-      jsonData[0].customerCheckState = 'DONE';
       jsonData[0].internalCheckState = 'DONE';
       jsonData[0].employeeCheckState = 'DONE';
       jsonData[0].projectCheckState = 'DONE';
@@ -143,7 +114,6 @@ describe('Office Management (Mitarbeiter)', () => {
     });
 
     visitAndWaitForRequests('/officeManagement');
-    assertSelect('customer-check', 'Fertig');
     assertSelect('internal-check', 'Fertig');
     assertCheck('employee-check', 'check_circle');
     assertCheck('project-check', 'check_circle');
