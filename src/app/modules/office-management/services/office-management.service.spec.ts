@@ -93,7 +93,6 @@ describe('OfficeManagementService', () => {
         internalCheckState: State.DONE,
         employeeCheckState: State.DONE,
         projectCheckState: State.DONE,
-        customerCheckState: State.DONE,
         billableTime: '14',
         employeeProgresses: OfficeManagementMock.employeeProgresses,
         entryDate: '2021-10-01',

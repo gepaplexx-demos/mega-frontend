@@ -13,7 +13,6 @@
       "active": true
     },
     "employeeCheckState": "OPEN",
-    "customerCheckState": "OPEN",
     "internalCheckState": "OPEN",
     "projectCheckState": "OPEN",
     "employeeProgresses": [

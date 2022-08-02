@@ -84,17 +84,6 @@
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="customerCheckState">
-            <mat-header-cell
-              *matHeaderCellDef>{{'office-management.table.customerCheckState' | translate}}</mat-header-cell>
-            <mat-cell *matCellDef="let omEntry">
-              <span class="mobile-label">{{'office-management.table.customerCheckState' | translate}}</span>
-              <app-state-select (selectionChange)="closeCustomerCheck(omEntry)"
-                                [value]="omEntry.customerCheckState"
-                                data-cy="customer-check"></app-state-select>
-            </mat-cell>
-          </ng-container>
-
           <ng-container matColumnDef="internalCheckState">
             <mat-header-cell
               *matHeaderCellDef>{{'office-management.table.internalCheckState' | translate}}</mat-header-cell>

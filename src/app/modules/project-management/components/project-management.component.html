@@ -180,16 +180,6 @@
                 <mat-footer-cell *matFooterCellDef></mat-footer-cell>
               </ng-container>
 
-              <ng-container matColumnDef="customerCheckState">
-                <mat-header-cell *matHeaderCellDef class="text-center"
-                >{{'project-management.table.customerCheckState' | translate}}</mat-header-cell>
-                <mat-cell *matCellDef="let row" class="text-center">
-                  <span class="mobile-label">{{'project-management.table.customerCheckState' | translate}}</span>
-                  <app-state-indicator data-cy="customer-check" [state]="row.customerCheckState"></app-state-indicator>
-                </mat-cell>
-                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-              </ng-container>
-
               <ng-container matColumnDef="doneCommentsIndicator">
                 <mat-header-cell *matHeaderCellDef
                                  class="text-center">{{'project-management.table.comments' | translate}}</mat-header-cell>

@@ -44,7 +44,6 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
     'projectCheckState',
     'employeeCheckState',
     'internalCheckState',
-    'customerCheckState',
     'doneCommentsIndicator',
     'projectHours'
   ];
@@ -113,7 +112,7 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
       this.pmEntries.forEach(pmEntry => {
           this.pmSelectionModels.set(pmEntry.projectName, new SelectionModel<ManagementEntry>(true, []));
 
-          const allDone = this.getFilteredAndSortedPmEntries(pmEntry, State.DONE, State.DONE, State.DONE, State.DONE);
+          const allDone = this.getFilteredAndSortedPmEntries(pmEntry, State.DONE, State.DONE, State.DONE);
           const notAllDone = pmEntry.entries.filter(entry => !allDone.find(done => done.employee.email === entry.employee.email))
             .sort((a, b) => a.employee.lastname.concat(a.employee.firstname)
               .localeCompare(b.employee.lastname.concat(b.employee.firstname)));
@@ -201,9 +200,9 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
       .subscribe(() => row.projectCheckState = State.DONE);
   }
 
-  getFilteredAndSortedPmEntries(pmEntry: ProjectManagementEntry, customerCheckState: State, projectCheckState: State, employeeCheckState: State, internalCheckState: State): Array<ManagementEntry> {
+  getFilteredAndSortedPmEntries(pmEntry: ProjectManagementEntry, projectCheckState: State, employeeCheckState: State, internalCheckState: State): Array<ManagementEntry> {
     return pmEntry.entries
-      .filter(val => val.customerCheckState === customerCheckState && val.projectCheckState === projectCheckState &&
+      .filter(val => val.projectCheckState === projectCheckState &&
         val.employeeCheckState === employeeCheckState && val.internalCheckState === internalCheckState)
       .sort((a, b) => a.employee.lastname.concat(a.employee.firstname)
         .localeCompare(b.employee.lastname.concat(b.employee.firstname)));
