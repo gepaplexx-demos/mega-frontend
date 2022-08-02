@@ -50,7 +50,6 @@ describe('Office Management (Unternehmen)', () => {
     assertSelect('zep-times-released', 'Offen');
     assertSelect('chargeability-external-employees', 'Offen');
     assertSelect('payroll-accounting-sent', 'Offen');
-    assertSelect('zep-monthly-report', 'Offen');
   });
 
   it('should display zep times release date done when state "done" gets selected', () => {
@@ -130,39 +129,11 @@ describe('Office Management (Unternehmen)', () => {
     assertSelect('payroll-accounting-sent', 'Nicht relevant');
   });
 
-  it('should display zep monthly report done', () => {
-    visitAndWaitForRequests('/officeManagement');
-    assertSelect('zep-monthly-report', 'Offen');
-
-    cy.intercept('PUT', 'http://localhost:*/enterprise/entry/*/*', {
-      body: true
-    }).as('updateEnterpriseEntry');
-
-    cy.get('[data-cy="zep-monthly-report"]').click().get('[data-cy="option-done"]').click();
-
-    cy.get('@updateEnterpriseEntry').its('request.body').should('deep.equal', {
-      ...enterprise,
-      zepMonthlyReportDone: 'DONE'
-    });
-
-    cy.fixture('officemanagement/enterpriseentries.json').then(jsonData => {
-      jsonData.zepMonthlyReportDone = 'DONE';
-      cy.intercept('http://localhost:*/enterprise/entriesformonthyear/*/*', jsonData).as('getEnterpriseEntries');
-    });
-
-    visitAndWaitForRequests('/officeManagement');
-
-    assertSelect('zep-monthly-report', 'Fertig')
-      .get('.mat-select')
-      .should('have.class', 'mat-select-disabled');
-  });
-
   it('should display all enterprise entries done when checks in response are set to "done"', () => {
     cy.fixture('officemanagement/enterpriseentries.json').then(jsonData => {
       jsonData.zepTimesReleased = 'DONE';
       jsonData.chargeabilityExternalEmployeesRecorded = 'DONE';
       jsonData.payrollAccountingSent = 'DONE';
-      jsonData.zepMonthlyReportDone = 'DONE';
       cy.intercept('http://localhost:*/enterprise/entriesformonthyear/*/*', jsonData).as('getEnterpriseEntries');
     });
 
@@ -170,7 +141,6 @@ describe('Office Management (Unternehmen)', () => {
     assertSelect('zep-times-released', 'Fertig');
     assertSelect('chargeability-external-employees', 'Fertig');
     assertSelect('payroll-accounting-sent', 'Fertig');
-    assertSelect('zep-monthly-report', 'Fertig');
   });
 
   function assertSelect(attribute: 'zep-times-released' | 'chargeability-external-employees' | 'payroll-accounting-sent' | 'zep-monthly-report', text: string) {

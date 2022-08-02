@@ -64,7 +64,6 @@ describe('EnterpriseEntriesService', () => {
       currentMonthYear: `${EnterpriseEntryMock.year}-${EnterpriseEntryMock.month}`,
       chargeabilityExternalEmployeesRecorded: ProjectState.DONE,
       payrollAccountingSent: ProjectState.DONE,
-      zepMonthlyReportDone: ProjectState.DONE,
       zepTimesReleased: ProjectState.DONE
     }
 
