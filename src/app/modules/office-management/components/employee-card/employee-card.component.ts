@@ -9,7 +9,9 @@ import {OfficeManagementService} from '../../services/office-management.service'
 import {NotificationService} from '../../../shared/services/notification/notification.service';
 import {TranslateService} from '@ngx-translate/core';
 import {CommentService} from '../../../shared/services/comment/comment.service';
-import {CommentsForEmployeeComponent} from '../../../shared/components/comments-for-employee/comments-for-employee.component';
+import {
+  CommentsForEmployeeComponent
+} from '../../../shared/components/comments-for-employee/comments-for-employee.component';
 import {StepentriesService} from '../../../shared/services/stepentries/stepentries.service';
 import {Step} from '../../../shared/models/Step';
 
@@ -85,7 +87,7 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
         switchMap(() => this.getOmEntries())
       ).subscribe(omEntries => {
         this.omEntries = omEntries;
-        this.filteredOmEntries = omEntries;
+        this.filteredOmEntries = this.getFilteredAndSortedOmEntries();
       });
   }
 
@@ -212,5 +214,13 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
     months -= d1.getMonth();
     months += d2.getMonth();
     return Math.abs(months);
+  }
+
+  getFilteredAndSortedOmEntries() {
+    return this.omEntries
+      .filter(val =>  val.internalCheckState === State.OPEN)
+      .concat(this.omEntries.filter(val => val.internalCheckState === State.DONE))
+      .sort((a, b) => a.employee.lastname.concat(a.employee.firstname)
+        .localeCompare(b.employee.lastname.concat(b.employee.firstname)));
   }
 }
