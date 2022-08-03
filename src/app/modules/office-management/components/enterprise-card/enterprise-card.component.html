@@ -44,16 +44,6 @@
                                       [value]="enterpriseEntry?.payrollAccountingSent"
                                       data-cy="payroll-accounting-sent"></app-project-state-select>
           </div>
-          <div>
-            <strong [matTooltipPosition]="tooltipPosition"
-                    [matTooltipShowDelay]="tooltipShowDelay"
-                    matTooltip="{{'office-management.global-check.tooltips.zepMonthlyReportDone' | translate}}"
-                    matTooltipClass="om-tooltip">{{ 'office-management.global-check.labels.zepMonthlyReportDone' | translate }}</strong>
-            <app-project-state-select #zepMonthlyReportDoneSelect
-                                      (selectionChange)="onChangeEnterpriseState($event, EnterpriseStep.ZEP_MONTHLY_REPORT_DONE, zepMonthlyReportDoneSelect)"
-                                      [value]="enterpriseEntry?.zepMonthlyReportDone"
-                                      data-cy="zep-monthly-report"></app-project-state-select>
-          </div>
         </div>
       </div>
     </ng-template>

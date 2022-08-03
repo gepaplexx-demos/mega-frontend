@@ -127,7 +127,6 @@ describe('EnterpriseCardComponent', () => {
 
     static enterpriseEntry: EnterpriseEntry = {
       zepTimesReleased: ProjectState.DONE,
-      zepMonthlyReportDone: ProjectState.DONE,
       payrollAccountingSent: ProjectState.DONE,
       chargeabilityExternalEmployeesRecorded: ProjectState.DONE,
       currentMonthYear: moment().format(configuration.dateFormat)
