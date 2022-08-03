@@ -91,7 +91,8 @@ describe('MonthlyReportService', () => {
       otherChecksDone: true,
       timeWarnings: null,
       totalWorkingTime: '10:15',
-      vacationDays: 3
+      vacationDays: 3,
+      paidSickLeave: 2
     };
   }
 });

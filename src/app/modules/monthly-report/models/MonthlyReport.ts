@@ -18,4 +18,5 @@ export class MonthlyReport {
   compensatoryDays: number;
   billableTime: string;
   totalWorkingTime: string;
+  paidSickLeave: number;
 }

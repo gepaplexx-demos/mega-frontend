@@ -123,6 +123,7 @@ describe('MonthlyReportComponent', () => {
 
     static monthlyReport: MonthlyReport = {
       vacationDays: 1,
+      paidSickLeave: 1,
       totalWorkingTime: '08:00',
       timeWarnings: [],
       otherChecksDone: true,
@@ -135,7 +136,7 @@ describe('MonthlyReportComponent', () => {
       compensatoryDays: 5,
       comments: [],
       assigned: true
-    }
+    };
   }
 
   class TimeMock {
