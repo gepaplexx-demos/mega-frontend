@@ -229,7 +229,7 @@ describe('ProjectManagementComponent', () => {
   it('#getFilteredAndSortedPmEntries - should return filtered and sorted pmEntries', () => {
     fixture.detectChanges();
 
-    const entries = component.getFilteredAndSortedPmEntries(ProjectManagementMock.projectManagementEntries[0], State.DONE, State.DONE, State.DONE, State.DONE);
+    const entries = component.getFilteredAndSortedPmEntries(ProjectManagementMock.projectManagementEntries[0], State.DONE, State.DONE, State.DONE);
 
     expect(entries.length).toBeTruthy();
   });
