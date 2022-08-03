@@ -89,7 +89,7 @@
     "releaseBtnText": "Freigeben",
     "table": {
       "name": "Mitarbeiter",
-      "internalCheckState": "Zeiten",
+      "internalCheckState": "MA Zeiten",
       "comments": "Anmerkungen",
       "employeeCheckState": "MA Check",
       "projectCheckState": "PM Check",
@@ -120,7 +120,7 @@
       "employeeName": "Mitarbeiter",
       "projectCheckState": "Überprüfung",
       "employeeCheckState": "MA Check",
-      "internalCheckState": "Zeiten",
+      "internalCheckState": "MA Zeiten",
       "comments": "Anmerkungen",
       "releaseDate": "Freigabedatum",
       "projectHours": "Projektstunden fakt. / nicht fakt."
