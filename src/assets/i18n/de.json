@@ -78,7 +78,8 @@
       "chargeability": "Chargeability",
       "vacation": "Urlaub",
       "timeCompensation": "Zeitausgleich",
-      "homeoffice": "Homeoffice"
+      "homeoffice": "Homeoffice",
+      "paidSickLeave": "Krankenstand"
     }
   },
   "office-management": {

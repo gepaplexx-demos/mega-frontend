@@ -60,6 +60,12 @@
       <td *ngIf="monthlyReport.homeofficeDays === 1" class="identifier">Tag</td>
       <td *ngIf="monthlyReport.homeofficeDays > 1 || monthlyReport.homeofficeDays === 0" class="identifier">Tage</td>
     </tr>
+    <tr class="info-line">
+      <td class="headers">{{'monthly-report.generalInfo.paidSickLeave' | translate}}</td>
+      <td class="infovalue">{{monthlyReport.paidSickLeave}}</td>
+      <td *ngIf="monthlyReport.paidSickLeave == 1" class="identifier">Tag</td>
+      <td *ngIf="monthlyReport.paidSickLeave > 1 || monthlyReport.paidSickLeave == 0" class="identifier">Tage</td>
+    </tr>
   </table>
 </mat-card>
 

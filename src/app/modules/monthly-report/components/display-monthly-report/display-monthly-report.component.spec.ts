@@ -71,6 +71,7 @@ describe('DisplayMonthlyReportComponent', () => {
       compensatoryDays: 5,
       homeofficeDays: 3,
       vacationDays: 2,
+      paidSickLeave: 2,
       totalWorkingTime: '20:00'
     };
   });

@@ -55,7 +55,6 @@ export class DisplayMonthlyReportComponent implements OnInit {
           this.selectedMonth = value[1] + 1;
         })
       ).subscribe();
-
   }
 
   isValidDate(dateStr: string): boolean {
