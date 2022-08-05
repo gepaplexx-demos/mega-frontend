@@ -24,7 +24,6 @@ describe('Projekt Management', () => {
   it('should display that the employee has not confirmed his bookings', () => {
     cy.fixture('project-management/projectmanagemententries.json').then(jsonData => {
       jsonData[0].entries[0].employeeCheckState = 'OPEN';
-      jsonData[0].entries[0].customerCheckState = 'OPEN';
       jsonData[0].entries[0].internalCheckState = 'OPEN';
       cy.intercept('http://localhost:*/management/projectmanagemententries/**/**?all=false', jsonData).as('getProjectmanagemententries');
     });
@@ -33,13 +32,11 @@ describe('Projekt Management', () => {
 
     assertCheck('employee-check', 'cancel');
     assertCheck('internal-check', 'cancel');
-    assertCheck('customer-check', 'cancel');
   });
 
   it('should display that the employee has confirmed his bookings', () => {
     cy.fixture('project-management/projectmanagemententries.json').then(jsonData => {
       jsonData[0].entries[0].employeeCheckState = 'DONE';
-      jsonData[0].entries[0].customerCheckState = 'DONE';
       jsonData[0].entries[0].internalCheckState = 'DONE';
       cy.intercept('http://localhost:*/management/projectmanagemententries/**/**?all=false', jsonData).as('getProjectmanagemententries');
     });
@@ -48,7 +45,6 @@ describe('Projekt Management', () => {
 
     assertCheck('employee-check', 'check_circle');
     assertCheck('internal-check', 'check_circle');
-    assertCheck('customer-check', 'check_circle');
   });
 
   it('should display all other checks as open', () => {

@@ -229,7 +229,7 @@ describe('ProjectManagementComponent', () => {
   it('#getFilteredAndSortedPmEntries - should return filtered and sorted pmEntries', () => {
     fixture.detectChanges();
 
-    const entries = component.getFilteredAndSortedPmEntries(ProjectManagementMock.projectManagementEntries[0], State.DONE, State.DONE, State.DONE, State.DONE);
+    const entries = component.getFilteredAndSortedPmEntries(ProjectManagementMock.projectManagementEntries[0], State.DONE, State.DONE, State.DONE);
 
     expect(entries.length).toBeTruthy();
   });
@@ -412,7 +412,7 @@ describe('ProjectManagementComponent', () => {
           comment: 'this is a comment',
           date: moment().format(DATE_FORMAT)
         }
-      ]
+      ];
     }
   }
 
@@ -449,7 +449,7 @@ describe('ProjectManagementComponent', () => {
           state: State.OPEN,
           updateDate: moment.now().toString()
         }
-      ]
+      ];
     }
   }
 
@@ -505,7 +505,6 @@ describe('ProjectManagementComponent', () => {
         internalCheckState: State.DONE,
         employeeCheckState: State.DONE,
         projectCheckState: State.DONE,
-        customerCheckState: State.DONE,
         billableTime: '15',
         employeeProgresses: ProjectManagementMock.employeeProgresses,
         entryDate: '2021-10-2',
@@ -518,7 +517,6 @@ describe('ProjectManagementComponent', () => {
         internalCheckState: State.DONE,
         employeeCheckState: State.DONE,
         projectCheckState: State.DONE,
-        customerCheckState: State.DONE,
         billableTime: '14',
         employeeProgresses: ProjectManagementMock.employeeProgresses,
         entryDate: '2021-10-01',
@@ -531,7 +529,6 @@ describe('ProjectManagementComponent', () => {
         internalCheckState: State.DONE,
         employeeCheckState: State.DONE,
         projectCheckState: State.DONE,
-        customerCheckState: State.DONE,
         billableTime: '14',
         employeeProgresses: ProjectManagementMock.employeeProgresses,
         entryDate: '2021-10-01',
@@ -553,7 +550,7 @@ describe('ProjectManagementComponent', () => {
         presetControlProjectState: false,
         presetControlBillingState: true
       }
-    ]
+    ];
   }
 
   class EmployeeMock {

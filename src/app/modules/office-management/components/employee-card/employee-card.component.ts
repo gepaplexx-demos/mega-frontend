@@ -9,7 +9,9 @@ import {OfficeManagementService} from '../../services/office-management.service'
 import {NotificationService} from '../../../shared/services/notification/notification.service';
 import {TranslateService} from '@ngx-translate/core';
 import {CommentService} from '../../../shared/services/comment/comment.service';
-import {CommentsForEmployeeComponent} from '../../../shared/components/comments-for-employee/comments-for-employee.component';
+import {
+  CommentsForEmployeeComponent
+} from '../../../shared/components/comments-for-employee/comments-for-employee.component';
 import {StepentriesService} from '../../../shared/services/stepentries/stepentries.service';
 import {Step} from '../../../shared/models/Step';
 
@@ -37,7 +39,6 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
   displayedColumns = [
     'select',
     'name',
-    'customerCheckState',
     'internalCheckState',
     'employeeCheckState',
     'projectCheckState',
@@ -86,7 +87,7 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
         switchMap(() => this.getOmEntries())
       ).subscribe(omEntries => {
         this.omEntries = omEntries;
-        this.sortOmEntries();
+        this.filteredOmEntries = this.getFilteredAndSortedOmEntries();
       });
   }
 
@@ -133,7 +134,7 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
       })
     ).subscribe(omEntries => {
       this.omEntries = omEntries;
-      this.sortOmEntries();
+      this.filteredOmEntries = this.getFilteredAndSortedOmEntries();
     });
   }
 
@@ -151,28 +152,6 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
       return omEntry.employee.firstname.toLowerCase().includes(filterString) ||
         omEntry.employee.lastname.toLowerCase().includes(filterString);
     });
-  }
-
-  getFilteredAndSortedOmEntries(customerCheckState: State, internalCheckState: State) {
-    return this.omEntries
-      .filter(val => val.customerCheckState === customerCheckState && val.internalCheckState === internalCheckState)
-      .sort((a, b) => a.employee.lastname.concat(a.employee.firstname)
-        .localeCompare(b.employee.lastname.concat(b.employee.firstname)));
-  }
-
-  getCurrentReleaseDate(): Date {
-    const entries = this.omEntries.filter(entry => {
-      return entry.projectCheckState === State.OPEN ||
-        entry.customerCheckState === State.OPEN ||
-        entry.employeeCheckState === State.OPEN ||
-        entry.internalCheckState === State.OPEN;
-    });
-
-    if (entries.length > 0) {
-      return new Date(entries[0].entryDate);
-    }
-
-    return new Date();
   }
 
   getReleaseDateCssClass(date: string): string {
@@ -200,14 +179,6 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
     this.getOmEntries();
     const successMessage = await firstValueFrom(this.translateService.get('notifications.employeesUpdatedSuccess'));
     this.notificationService.showSuccess(successMessage);
-  }
-
-  closeCustomerCheck(omEntry: ManagementEntry) {
-    this.stepEntryService
-      .closeOfficeCheck(omEntry.employee, Step.CONTROL_EXTERNAL_TIMES, this.getFormattedDate())
-      .subscribe(() => {
-        omEntry.customerCheckState = State.DONE;
-      });
   }
 
   closeInternalCheck(omEntry: ManagementEntry) {
@@ -238,22 +209,18 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
     return this.omService.getEntries(this.selectedYear, this.selectedMonth);
   }
 
-  private sortOmEntries(): void {
-    const allDoneEntries = this.getFilteredAndSortedOmEntries(State.DONE, State.DONE);
-    const projectEntriesDone = this.getFilteredAndSortedOmEntries(State.DONE, State.OPEN);
-    const internalEntriesDone = this.getFilteredAndSortedOmEntries(State.OPEN, State.DONE);
-    const allOpenEntries = this.getFilteredAndSortedOmEntries(State.OPEN, State.OPEN);
-
-    this.filteredOmEntries = allOpenEntries
-      .concat(projectEntriesDone)
-      .concat(internalEntriesDone)
-      .concat(allDoneEntries);
-  }
-
   private monthDiff(d1: Date, d2: Date) {
     let months = (d2.getFullYear() - d1.getFullYear()) * 12;
     months -= d1.getMonth();
     months += d2.getMonth();
     return Math.abs(months);
+  }
+
+  getFilteredAndSortedOmEntries() {
+    return this.omEntries
+      .filter(val =>  val.internalCheckState === State.OPEN)
+      .concat(this.omEntries.filter(val => val.internalCheckState === State.DONE))
+      .sort((a, b) => a.employee.lastname.concat(a.employee.firstname)
+        .localeCompare(b.employee.lastname.concat(b.employee.firstname)));
   }
 }
