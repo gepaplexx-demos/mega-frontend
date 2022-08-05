@@ -134,7 +134,7 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
       })
     ).subscribe(omEntries => {
       this.omEntries = omEntries;
-      this.filteredOmEntries = omEntries;
+      this.filteredOmEntries = this.getFilteredAndSortedOmEntries();
     });
   }
 
