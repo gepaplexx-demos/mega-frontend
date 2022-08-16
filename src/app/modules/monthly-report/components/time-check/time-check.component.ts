@@ -14,7 +14,7 @@ export class TimeCheckComponent {
 
   @Input() monthlyReport: MonthlyReport;
 
-  displayedColumns = ['date', 'description'];
+  displayedColumns = ['warningIcon', 'date', 'description'];
 
    emptyTimeWarnings: TimeWarning = {
     date: '',
