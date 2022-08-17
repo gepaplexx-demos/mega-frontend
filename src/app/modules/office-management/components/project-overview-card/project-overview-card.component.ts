@@ -83,6 +83,7 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
         }),
         switchMap(() => this.getPmEntries())
       ).subscribe(pmEntries => {
+        console.warn(pmEntries);
         this.pmEntries = pmEntries;
         this.pmEntries.forEach(pmEntry => {
           this.projectCommentService.get(this.getFormattedDate(), pmEntry.projectName)
@@ -97,14 +98,22 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
     this.dateSelectionSub?.unsubscribe();
   }
 
-  isAtLeastOneEmployeeCheckDone(pmEntry: ProjectManagementEntry): ProjectState {
-    for (let mgmtEntry of pmEntry.entries) {
-      if (mgmtEntry.projectCheckState === State.DONE) {
-        return ProjectState.DONE;
-      }
+  areAllEmployeeChecksDone(pmEntry: ProjectManagementEntry): ProjectState{
+    if (pmEntry.entries.every(value => value.employeeCheckState === State.DONE)){
+      return ProjectState.DONE;
     }
     return ProjectState.OPEN;
   }
+
+  //
+  // isAtLeastOneEmployeeCheckDone(pmEntry: ProjectManagementEntry): ProjectState {
+  //   for (let mgmtEntry of pmEntry.entries) {
+  //     if (mgmtEntry.projectCheckState === State.DONE) {
+  //       return ProjectState.DONE;
+  //     }
+  //   }
+  //   return ProjectState.OPEN;
+  // }
 
   onStartEditing(projectName: string) {
     this.forProjectName = projectName;

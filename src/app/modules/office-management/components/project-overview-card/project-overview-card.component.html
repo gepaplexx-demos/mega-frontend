@@ -29,7 +29,7 @@
               {{'project-management.employeeDone' | translate}}</mat-header-cell>
             <mat-cell *matCellDef="let pmEntry" class="text-center">
               <span class="mobile-label">{{'project-management.employeeDone' | translate}}</span>
-              <app-state-indicator [state]="isAtLeastOneEmployeeCheckDone(pmEntry)"
+              <app-state-indicator [state]="areAllEmployeeChecksDone(pmEntry)"
                                    data-cy="employees-checked"></app-state-indicator>
             </mat-cell>
           </ng-container>
