@@ -85,10 +85,10 @@ describe('ProjectOverviewCardComponent', () => {
     expect(component.dateSelectionSub.unsubscribe).toHaveBeenCalled();
   }));
 
-  it('#isAtLeastOneEmployeeCheckDone - should check if at least one employee is checked', () => {
+  it('#areAllEmployeeChecksDone - should check if all employees are checked', () => {
     fixture.detectChanges();
 
-    const checkDone: ProjectState = component.isAtLeastOneEmployeeCheckDone(ProjectManagementEntryMock.projectManagementEntries[0]);
+    const checkDone: ProjectState = component.areAllEmployeeChecksDone(ProjectManagementEntryMock.projectManagementEntries[0]);
 
     expect(checkDone).toEqual(ProjectState.DONE);
   });
@@ -250,6 +250,6 @@ describe('ProjectOverviewCardComponent', () => {
         presetControlProjectState: false,
         presetControlBillingState: true
       }
-    ]
+    ];
   }
 });
