@@ -49,7 +49,7 @@ describe('DisplayMonthlyReportComponent', () => {
       otherChecksDone: true,
       comments: [],
       timeWarnings: [
-        {date: new Date().toString(), excessWorkTime: 12, missingBreakTime: 12, missingRestTime: 14, warnings: []},
+        {date: new Date().toString(), description: []},
       ],
       journeyWarnings: [
         {date: new Date().toString(), warnings: ['Bitte', 'hoer', 'auf']}

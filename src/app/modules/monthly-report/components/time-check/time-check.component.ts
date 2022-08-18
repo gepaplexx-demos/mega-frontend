@@ -14,13 +14,18 @@ export class TimeCheckComponent {
 
   @Input() monthlyReport: MonthlyReport;
 
-  displayedColumns = ['warning', 'dateTime', 'restTime', 'breakTime', 'workingTime'];
+  displayedColumns = ['warningIcon', 'date', 'description'];
 
-  displayWarningsTooltip(timeWarning: TimeWarning): string {
-    if (timeWarning.warnings == null || timeWarning.warnings.length == 0) {
-      return null;
-    } else {
-      return timeWarning.warnings.join('<br>');
+   emptyTimeWarnings: TimeWarning = {
+    date: '',
+    description: ['Keine Einträge']
+  };
+
+  getSortedTimeWarnings() {
+    if (this.monthlyReport.timeWarnings.length === 0) {
+      return [this.emptyTimeWarnings];
     }
+
+    return this.monthlyReport.timeWarnings.sort((a, b) => Date.parse(a.date).valueOf() - Date.parse(b.date).valueOf());
   }
 }

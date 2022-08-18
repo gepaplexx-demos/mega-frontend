@@ -1,4 +1,7 @@
-mat-cell {
-  display: flex !important;
-  justify-content: flex-start !important;
+.mat-column-date {
+  flex: 0 0 20%;
+}
+
+.mat-column-warningIcon {
+  flex: 0 0 10%;
 }

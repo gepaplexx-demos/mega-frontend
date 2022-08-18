@@ -38,39 +38,15 @@ describe('TimeCheckComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('#displayWarningsTooltip - should return null', () => {
-    fixture.detectChanges();
-
-    const warnings = component.displayWarningsTooltip(TimeWarningMock.timewarning);
-
-    expect(warnings).toBeNull();
-  });
-
-  it('#displayWarningsTooltip - should return null', () => {
-    fixture.detectChanges();
-
-    const warnings = component.displayWarningsTooltip(TimeWarningMock.timewarningWithWarnings);
-
-    TimeWarningMock.timewarningWithWarnings.warnings.forEach(warning => {
-      expect(warnings).toContain(warning);
-    });
-  });
-
   class TimeWarningMock {
     static timewarning: TimeWarning = {
       date: moment().format(configuration.dateFormat),
-      excessWorkTime: 12,
-      missingBreakTime: 1,
-      warnings: [],
-      missingRestTime: 2
+      description: []
     }
 
     static timewarningWithWarnings: TimeWarning = {
       date: moment().format(configuration.dateFormat),
-      excessWorkTime: 12,
-      missingBreakTime: 1,
-      warnings: ['hey', 'you', 'do', 'something'],
-      missingRestTime: 2
+      description: ['hey', 'you', 'do', 'something'],
     }
   }
 });
