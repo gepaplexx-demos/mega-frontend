@@ -33,13 +33,7 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
 
   employeeProgressRef: MatBottomSheetRef;
 
-  displayedColumns = [
-    'name',
-    'controlEmployeesState',
-    'controlProjectState',
-    'controlBillingState',
-    'comment'
-  ];
+  displayedColumns = ['name', 'controlEmployeesState', 'controlProjectState', 'controlBillingState', 'comment'];
 
   officeManagementUrl: string;
   pmEntries: Array<ProjectManagementEntry>;
@@ -53,18 +47,7 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
   tooltipShowDelay = 500;
   tooltipPosition = 'above';
 
-  constructor(
-    private dialog: MatDialog,
-    private omService: OfficeManagementService,
-    private pmService: ProjectManagementService,
-    private notificationService: NotificationService,
-    private translate: TranslateService,
-    private commentService: CommentService,
-    private stepEntryService: StepentriesService,
-    private _bottomSheet: MatBottomSheet,
-    private configService: ConfigService,
-    private projectCommentService: ProjectCommentService,
-    private snackbarService: SnackbarService) {
+  constructor(private dialog: MatDialog, private omService: OfficeManagementService, private pmService: ProjectManagementService, private notificationService: NotificationService, private translate: TranslateService, private commentService: CommentService, private stepEntryService: StepentriesService, private _bottomSheet: MatBottomSheet, private configService: ConfigService, private projectCommentService: ProjectCommentService, private snackbarService: SnackbarService) {
   }
 
   ngOnInit(): void {
@@ -73,16 +56,13 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
     });
 
     this.dateSelectionSub = zip(this.omService.selectedYear, this.omService.selectedMonth)
-      .pipe(
-        tap(value => {
-          this.selectedYear = value[0];
-          this.selectedMonth = value[1];
-        }),
-        tap(() => {
-          this.pmEntries = null;
-        }),
-        switchMap(() => this.getPmEntries())
-      ).subscribe(pmEntries => {
+      .pipe(tap(value => {
+        this.selectedYear = value[0];
+        this.selectedMonth = value[1];
+      }), tap(() => {
+        this.pmEntries = null;
+      }), switchMap(() => this.getPmEntries())).subscribe(pmEntries => {
+        console.warn(pmEntries);
         this.pmEntries = pmEntries;
         this.pmEntries.forEach(pmEntry => {
           this.projectCommentService.get(this.getFormattedDate(), pmEntry.projectName)
@@ -97,11 +77,9 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
     this.dateSelectionSub?.unsubscribe();
   }
 
-  isAtLeastOneEmployeeCheckDone(pmEntry: ProjectManagementEntry): ProjectState {
-    for (let mgmtEntry of pmEntry.entries) {
-      if (mgmtEntry.projectCheckState === State.DONE) {
-        return ProjectState.DONE;
-      }
+  areAllEmployeeChecksDone(pmEntry: ProjectManagementEntry): ProjectState {
+    if (pmEntry.entries.every(value => value.employeeCheckState === State.DONE)) {
+      return ProjectState.DONE;
     }
     return ProjectState.OPEN;
   }
