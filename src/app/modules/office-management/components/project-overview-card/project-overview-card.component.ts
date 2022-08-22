@@ -78,7 +78,7 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
   }
 
   areAllEmployeeChecksDone(pmEntry: ProjectManagementEntry): ProjectState {
-    if (pmEntry.entries.every(value => value.employeeCheckState === State.DONE)) {
+    if (pmEntry.entries.every(value => value.projectCheckState === State.DONE)) {
       return ProjectState.DONE;
     }
     return ProjectState.OPEN;

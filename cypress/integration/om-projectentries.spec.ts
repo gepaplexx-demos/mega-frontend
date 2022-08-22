@@ -53,7 +53,7 @@ describe('Office Management (Projekte)', () => {
 
   it('should display all project checks "open"', () => {
     visitAndWaitForRequests('/officeManagement');
-    assertCheck('employees-checked', 'check_circle');
+    assertCheck('employees-checked', 'cancel');
     assertCheck('control-project', 'cancel');
     assertCheck('project-billing', 'cancel');
   });
