@@ -8,6 +8,7 @@ import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {TranslateTestingModule} from 'ngx-translate-testing';
 import {MatCardModule} from '@angular/material/card';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import {AngularMaterialModule} from "../../../material/material-module";
 
 describe('GeneralInfoComponent', () => {
 
@@ -22,6 +23,7 @@ describe('GeneralInfoComponent', () => {
       imports: [
         TranslateTestingModule.withTranslations({de: require('src/assets/i18n/de.json')}),
         HttpClientTestingModule,
+        AngularMaterialModule,
         MatCardModule,
         NgxSkeletonLoaderModule
       ]
@@ -48,9 +50,9 @@ describe('GeneralInfoComponent', () => {
 
     fixture.detectChanges();
 
-    assertMonthlyReportRow(5, 'Urlaub', '3', 'Tage');
-    assertMonthlyReportRow(6, 'Zeitausgleich', '2', 'Tage');
-    assertMonthlyReportRow(7, 'Homeoffice', '10', 'Tage');
+    assertMonthlyReportRow(4, 'Urlaub', '3', 'Tage');
+    assertMonthlyReportRow(5, 'Zeitausgleich', '2', 'Tage');
+    assertMonthlyReportRow(6, 'Homeoffice', '10', 'Tage');
 
   });
 
@@ -67,9 +69,9 @@ describe('GeneralInfoComponent', () => {
 
     fixture.detectChanges();
 
-    assertMonthlyReportRow(5, 'Urlaub', '1', 'Tag');
-    assertMonthlyReportRow(6, 'Zeitausgleich', '1', 'Tag');
-    assertMonthlyReportRow(7, 'Homeoffice', '1', 'Tag');
+    assertMonthlyReportRow(4, 'Urlaub', '1', 'Tag');
+    assertMonthlyReportRow(5, 'Zeitausgleich', '1', 'Tag');
+    assertMonthlyReportRow(6, 'Homeoffice', '1', 'Tag');
   });
 
   it('#afterInit - should display working times and chargeability ', () => {
@@ -100,13 +102,13 @@ describe('GeneralInfoComponent', () => {
   });
 
   function assertMonthlyReportRow(rowNumber: number, expectedHeader: string, expectedDays: string, expectedIdentifier: string) {
-    const tr = fixture.debugElement.query(By.css(`tr:nth-of-type(${rowNumber})`));
+    const tr = fixture.debugElement.query(By.css(`.mat-row:nth-child(${rowNumber})`));
 
-    const header = tr.query(By.css('.headers')).nativeElement.innerHTML.trim();
+    const header = tr.query(By.css('.mat-column-description')).nativeElement.innerText.trim();
     expect(header).toEqual(expectedHeader.trim());
-    const days = tr.query(By.css('.infovalue')).nativeElement.innerHTML.trim();
+    const days = tr.query(By.css('.mat-column-value')).nativeElement.innerText.trim();
     expect(days).toEqual(expectedDays.trim());
-    const identifier = tr.query(By.css('.identifier')).nativeElement.innerHTML.trim();
+    const identifier = tr.query(By.css('.mat-column-unit')).nativeElement.innerText.trim();
     expect(identifier).toEqual(expectedIdentifier.trim());
   }
 });
