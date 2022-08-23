@@ -3,6 +3,7 @@ import {MonthlyReport} from '../../models/MonthlyReport';
 import {MonthlyReportService} from '../../services/monthly-report.service';
 import * as _moment from 'moment';
 import {GeneralInfoData} from '../../models/GeneralInfoData';
+
 const moment = _moment;
 
 @Component({
@@ -59,14 +60,41 @@ export class GeneralInfoComponent implements OnChanges {
 
   toGeneralInfoData(): GeneralInfoData[] {
     return [
-      {description: 'monthly-report.generalInfo.workingTime', unit: 'monthly-report.generalInfo.hour', value: this.monthlyReportService.totalWorkingTimeHours},
-      {description: 'monthly-report.generalInfo.chargeableHours', unit: 'monthly-report.generalInfo.hour', value: this.monthlyReportService.billableTimeHours},
-      {description: 'monthly-report.generalInfo.chargeability', unit: 'monthly-report.generalInfo.percentage', value: this.monthlyReportService.billablePercentage},
-      // {description: '', unit: '', value: null},
-      {description: 'monthly-report.generalInfo.vacation', unit: 'monthly-report.generalInfo.day', value: this.monthlyReport.vacationDays},
-      {description: 'monthly-report.generalInfo.timeCompensation', unit: 'monthly-report.generalInfo.day', value: this.monthlyReport.compensatoryDays},
-      {description: 'monthly-report.generalInfo.homeoffice', unit: 'monthly-report.generalInfo.day', value: this.monthlyReport.homeofficeDays},
-      {description: 'monthly-report.generalInfo.paidSickLeave', unit: 'monthly-report.generalInfo.day', value: this.monthlyReport.paidSickLeave}
+      {
+        description: 'monthly-report.generalInfo.workingTime',
+        unit: 'monthly-report.generalInfo.hour',
+        value: this.monthlyReportService.totalWorkingTimeHours
+      },
+      {
+        description: 'monthly-report.generalInfo.chargeableHours',
+        unit: 'monthly-report.generalInfo.hour',
+        value: this.monthlyReportService.billableTimeHours
+      },
+      {
+        description: 'monthly-report.generalInfo.chargeability',
+        unit: 'monthly-report.generalInfo.percentage',
+        value: this.monthlyReportService.billablePercentage
+      },
+      {
+        description: 'monthly-report.generalInfo.vacation',
+        unit: 'monthly-report.generalInfo.day',
+        value: this.monthlyReport.vacationDays
+      },
+      {
+        description: 'monthly-report.generalInfo.timeCompensation',
+        unit: 'monthly-report.generalInfo.day',
+        value: this.monthlyReport.compensatoryDays
+      },
+      {
+        description: 'monthly-report.generalInfo.homeoffice',
+        unit: 'monthly-report.generalInfo.day',
+        value: this.monthlyReport.homeofficeDays
+      },
+      {
+        description: 'monthly-report.generalInfo.paidSickLeave',
+        unit: 'monthly-report.generalInfo.day',
+        value: this.monthlyReport.paidSickLeave
+      }
     ];
   }
 }

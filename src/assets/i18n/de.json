@@ -79,11 +79,11 @@
       "homeoffice": "Homeoffice",
       "paidSickLeave": "Krankenstand",
       "hours": "Stunden",
-      "hour" : "Stunde",
+      "hour": "Stunde",
       "day": "Tag",
       "days": "Tage",
-      "percentage" : "%",
-      "percentages" : "%"
+      "percentage": "%",
+      "percentages": "%"
     }
   },
   "office-management": {
