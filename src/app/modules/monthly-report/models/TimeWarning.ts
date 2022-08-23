@@ -1,4 +1,4 @@
 export interface TimeWarning {
-    date: string;
-    description: Array<string>;
+  date: string;
+  description: Array<string>;
 }

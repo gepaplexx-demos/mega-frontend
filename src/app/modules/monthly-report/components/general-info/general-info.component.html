@@ -10,62 +10,36 @@
   </mat-card-title>
 
   <ngx-skeleton-loader *ngIf="!monthlyReport"
-                       count="6"
-                       appearance="line"></ngx-skeleton-loader>
+                       appearance="line"
+                       count="6"></ngx-skeleton-loader>
 
-  <table *ngIf="monthlyReport">
-    <tr>
-      <td class="headers">{{'monthly-report.generalInfo.workingTime' | translate}}</td>
-      <td class="infovalue">{{monthlyReportService.totalWorkingTimeHours | number: '1.2-2': 'de-AT'}}</td>
-      <td *ngIf="monthlyReportService.totalWorkingTimeHours === 1" class="identifier">Stunde</td>
-      <td *ngIf="monthlyReportService.totalWorkingTimeHours > 1 || monthlyReportService.totalWorkingTimeHours === 0"
-          class="identifier">Stunden
-      </td>
-    </tr>
-    <tr class="info-line">
-      <td class="headers">{{'monthly-report.generalInfo.chargeableHours' | translate}}</td>
-      <td class="infovalue">{{monthlyReportService.billableTimeHours | number: '1.2-2': 'de-AT'}}</td>
-      <td *ngIf="monthlyReportService.billableTimeHours === 1" class="identifier">Stunde</td>
-      <td *ngIf="monthlyReportService.billableTimeHours > 1 || monthlyReportService.billableTimeHours === 0"
-          class="identifier">Stunden
-      </td>
-    </tr>
-    <tr class="info-line">
-      <td class="headers">{{'monthly-report.generalInfo.chargeability' | translate}}</td>
-      <td class="infovalue">{{monthlyReportService.billablePercentage | number: '1.2-2': 'de-AT'}}</td>
-      <td class="identifier">%</td>
-    </tr>
 
-    <tr>
-      <td colspan="3">
-        <hr>
-      </td>
-    </tr>
-    <tr class="info-line">
-      <td class="headers">{{'monthly-report.generalInfo.vacation' | translate}}</td>
-      <td class="infovalue">{{monthlyReport.vacationDays}}</td>
-      <td *ngIf="monthlyReport.vacationDays === 1" class="identifier">Tag</td>
-      <td *ngIf="monthlyReport.vacationDays > 1 || monthlyReport.vacationDays === 0" class="identifier">Tage</td>
-    </tr>
-    <tr class="info-line">
-      <td class="headers">{{'monthly-report.generalInfo.timeCompensation' | translate}}</td>
-      <td class="infovalue">{{monthlyReport.compensatoryDays}}</td>
-      <td *ngIf="monthlyReport.compensatoryDays === 1" class="identifier">Tag</td>
-      <td *ngIf="monthlyReport.compensatoryDays > 1 || monthlyReport.compensatoryDays === 0" class="identifier">Tage
-      </td>
-    </tr>
-    <tr class="info-line">
-      <td class="headers">{{'monthly-report.generalInfo.homeoffice' | translate}}</td>
-      <td class="infovalue">{{monthlyReport.homeofficeDays}}</td>
-      <td *ngIf="monthlyReport.homeofficeDays === 1" class="identifier">Tag</td>
-      <td *ngIf="monthlyReport.homeofficeDays > 1 || monthlyReport.homeofficeDays === 0" class="identifier">Tage</td>
-    </tr>
-    <tr class="info-line">
-      <td class="headers">{{'monthly-report.generalInfo.paidSickLeave' | translate}}</td>
-      <td class="infovalue">{{monthlyReport.paidSickLeave}}</td>
-      <td *ngIf="monthlyReport.paidSickLeave == 1" class="identifier">Tag</td>
-      <td *ngIf="monthlyReport.paidSickLeave > 1 || monthlyReport.paidSickLeave == 0" class="identifier">Tage</td>
-    </tr>
-  </table>
+  <mat-card-content *ngIf="monthlyReport">
+    <mat-table [dataSource]="toGeneralInfoData()" class="mat-elevation-z1 table-container">
+
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description | translate}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="value">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <p *ngIf="element.unit === 'monthly-report.generalInfo.day'; else elseBlock">{{element.value}}</p>
+          <ng-template #elseBlock>{{element.value | number: '1.2-2' : 'de-AT'}}</ng-template>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="unit">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <p *ngIf="element.value == 1; else elseBlock"> {{(element.unit) | translate}}</p>
+          <ng-template #elseBlock> {{element.unit + 's' | translate}}</ng-template>
+        </mat-cell>
+      </ng-container>
+
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
 </mat-card>
 

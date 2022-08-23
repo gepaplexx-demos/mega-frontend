@@ -16,7 +16,7 @@ export class TimeCheckComponent {
 
   displayedColumns = ['warningIcon', 'date', 'description'];
 
-   emptyTimeWarnings: TimeWarning = {
+  emptyTimeWarnings: TimeWarning = {
     date: '',
     description: ['Keine Einträge']
   };
