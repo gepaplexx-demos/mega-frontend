@@ -1,17 +1,18 @@
-<table [dataSource]="displayedEmployees" class="mat-elevation-z8" mat-table style="width: 100%">
-  <ng-container matColumnDef="email">
-    <th *matHeaderCellDef mat-header-cell scope="col">Projektleiter</th>
-    <td *matCellDef="let element" mat-cell style="padding-right: 20px;"> {{element.name}} </td>
+<mat-table [dataSource]="displayedEmployees" class="mat-elevation-z1 table-container">
+  <ng-container matColumnDef="in-charge">
+    <mat-header-cell *matHeaderCellDef>{{'monthly-report.pm-progress-bottom-sheet.in-charge' | translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="checked">
-    <th *matHeaderCellDef mat-header-cell scope="col">Fertig</th>
-    <td *matCellDef="let element" mat-cell>
+    <mat-header-cell *matHeaderCellDef>{{'monthly-report.pm-progress-bottom-sheet.finished' | translate}}</mat-header-cell>
+    <mat-cell *matCellDef="let element">
       <app-state-indicator [state]="element.state" size="small"></app-state-indicator>
-    </td>
+    </mat-cell>
   </ng-container>
 
-  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
-</table>
+  <mat-header-row *matHeaderRowDef="displayedColumns;"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
 

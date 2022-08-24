@@ -5,6 +5,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {MonthlyReport} from '../models/MonthlyReport';
 import {Employee} from '../../shared/models/Employee';
 import {ConfigService} from '../../shared/services/config/config.service';
+import {State} from "../../shared/models/State";
 
 describe('MonthlyReportService', () => {
 
@@ -79,6 +80,7 @@ describe('MonthlyReportService', () => {
     };
 
     static monthlyReport: MonthlyReport = {
+      internalCheckState: State.OPEN,
       assigned: true,
       billableTime: '10:15',
       comments: null,

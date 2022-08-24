@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {PmProgress} from '../../../monthly-report/models/PmProgress';
 import {State} from '../../models/State';
 import {MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
+import {TranslateService} from '@ngx-translate/core';
 
 class DisplayedEmployees {
   name: string;
@@ -21,26 +22,38 @@ class DisplayedEmployees {
 export class PmProgressComponent implements OnInit {
 
   pmProgresses: Array<PmProgress>;
+  internalCheckState: State;
   displayedEmployees: Array<DisplayedEmployees>;
-  displayedColumns = ['email', 'checked']
+  displayedColumns = ['in-charge', 'checked'];
 
-  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any, public translateService: TranslateService) {
     this.pmProgresses = data.employeeProgresses;
+    this.internalCheckState = data.internalCheckState;
   }
 
   ngOnInit(): void {
-    let map: Map<string, Array<State>> = new Map<string, Array<State>>();
+    this.buildDisplayedEmployees();
+  }
+
+  private buildDisplayedEmployees(){
+    this.displayedEmployees = new Array<DisplayedEmployees>();
+
+    this.translateService.get('monthly-report.pm-progress-bottom-sheet.office-management').subscribe(translation => {
+      this.displayedEmployees.push(new DisplayedEmployees(translation, this.internalCheckState));
+    });
+
+    const map: Map<string, Array<State>> = new Map<string, Array<State>>();
     this.pmProgresses.forEach(pmProgress => {
-      let name = pmProgress.firstname + ' ' + pmProgress.lastname;
+      const name = pmProgress.firstname + ' ' + pmProgress.lastname;
       if (map.has(name)) {
         map.get(name).push(pmProgress.state);
       } else {
-        map.set(name, new Array<State>(pmProgress.state))
+        map.set(name, new Array<State>(pmProgress.state));
       }
     });
-    this.displayedEmployees = new Array<DisplayedEmployees>();
+
     map.forEach(((value, key) => {
-      let allDone: boolean = value.every(state => state === State.DONE);
+      const allDone: boolean = value.every(state => state === State.DONE);
       this.displayedEmployees.push(new DisplayedEmployees(
         key,
         allDone ? State.DONE : State.OPEN

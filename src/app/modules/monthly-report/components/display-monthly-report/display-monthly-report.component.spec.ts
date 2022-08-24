@@ -46,6 +46,7 @@ describe('DisplayMonthlyReportComponent', () => {
   beforeEach(() => {
     component.monthlyReport = {
       employeeCheckState: State.OPEN,
+      internalCheckState: State.OPEN,
       otherChecksDone: true,
       comments: [],
       timeWarnings: [
