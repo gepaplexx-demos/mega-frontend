@@ -1,7 +1,7 @@
 .mega-dash-grid {
   --padding-mega-grid: 8px;
 
-//Calc-Info: ViewPort - (Information-Bar-Component + padding around grid + gap)
+  //Calc-Info: ViewPort - (Information-Bar-Component + padding around grid + gap)
   height: calc(100% - 130px - (4 * var(--padding-mega-grid)) - 16px);
   padding: var(--padding-mega-grid) var(--padding-mega-grid) calc(3 * var(--padding-mega-grid));
 
@@ -81,8 +81,8 @@
   }
 }
 
-@media (max-width: 1264px) and (max-height: 864px){
-  .mega-dash-grid{
+@media (max-width: 1264px) and (max-height: 864px) {
+  .mega-dash-grid {
     grid-auto-rows: 75%;
   }
 

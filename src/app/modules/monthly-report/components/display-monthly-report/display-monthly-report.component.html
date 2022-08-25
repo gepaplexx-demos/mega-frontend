@@ -2,10 +2,8 @@
   [monthlyReport]="monthlyReport"
   (refreshMonthlyReport)="emitRefreshMonthlyReport()"></app-information-top-bar>
 
-
 <div *ngIf="isValidDate(monthlyReport?.employee.releaseDate); else invalidReleaseDate"
      [ngClass]="'mega-dash-grid'">
-
   <app-time-check
     [monthlyReport]="monthlyReport"
     [ngClass]="'time-check-grid'"></app-time-check>
@@ -22,7 +20,6 @@
   <app-journey-check
     [monthlyReport]="monthlyReport"
     [ngClass]="'journey-check-grid'"></app-journey-check>
-
 </div>
 
 <ng-template #invalidReleaseDate>
@@ -35,75 +32,3 @@
     </mat-card-content>
   </mat-card>
 </ng-template>
-
-
-<!--<div id="time-warnings"-->
-<!--     fxFlexAlign="center"-->
-<!--     fxFlexFill-->
-<!--     fxLayout="column"-->
-<!--     fxLayoutGap="10px">-->
-
-<!--  <mat-card class="mat-elevation-z10">-->
-<!--    <mat-card-subtitle id="idname">-->
-<!--      <ngx-skeleton-loader *ngIf="!monthlyReport else workDescription"-->
-<!--                           [theme]="{ width: '200px' }"-->
-<!--                           appearance="line"></ngx-skeleton-loader>-->
-<!--      <ng-template #workDescription>-->
-<!--        {{employeeFunctions[monthlyReport?.employee?.workDescription]}}-->
-<!--      </ng-template>-->
-<!--    </mat-card-subtitle>-->
-<!--    <mat-card-content>-->
-
-<!--      <div fxLayout="row" fxLayoutAlign="space-between center">-->
-<!--        <span fxFlex="30">-->
-<!--          <ngx-skeleton-loader *ngIf="!monthlyReport else employeeName"-->
-<!--                               [theme]="{ height: '25px', width: '250px' }"-->
-<!--                               appearance="line"></ngx-skeleton-loader>-->
-<!--          <ng-template #employeeName>-->
-<!--            {{monthlyReport?.employee?.firstname}} {{monthlyReport?.employee?.lastname}}-->
-<!--          </ng-template>-->
-<!--        </span>-->
-
-<!--        <div id="datediv">-->
-<!--          <ngx-skeleton-loader *ngIf="!monthlyReport else datepicker"-->
-<!--                               [theme]="{ height: '60px', width: '500px'}"></ngx-skeleton-loader>-->
-<!--          <ng-template #datepicker>-->
-<!--            <strong><span>{{'global.selectPayrollMonth' | translate}}</span></strong>-->
-
-<!--            <span id="datepicker">-->
-<!--                  <app-datepicker-month-year (dateChanged)="dateChanged($event)" [date]="date"-->
-<!--                                             [maxMonth]="maxMonthDate"></app-datepicker-month-year>-->
-<!--            </span>-->
-<!--          </ng-template>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </mat-card-content>-->
-<!--  </mat-card>-->
-
-
-<!--  <div *ngIf="isValidDate(monthlyReport?.employee.releaseDate); else invalidReleaseDate"-->
-<!--       class="twoColumnBlock" fxLayout="row" fxLayout.lt-lg="column"-->
-<!--       fxLayoutGap="10px">-->
-<!--    <div fxFlex="27.5" fxLayout="column" fxLayoutGap="10px">-->
-<!--      <app-time-check [monthlyReport]="monthlyReport" fxFlex="46.6%"></app-time-check>-->
-<!--      <app-general-info [monthlyReport]="monthlyReport"-->
-<!--                        fxFlex="46.6%"></app-general-info>-->
-<!--    </div>-->
-<!--    <div fxFlex="45">-->
-<!--      <app-employee-check (refreshMonthlyReport)="emitRefreshMonthlyReport()"-->
-<!--                          [monthlyReport]="monthlyReport"></app-employee-check>-->
-<!--    </div>-->
-<!--    <div fxFlex="27.5">-->
-<!--      <app-journey-check [monthlyReport]="monthlyReport"></app-journey-check>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <ng-template #invalidReleaseDate>-->
-<!--    <mat-card class="mat-elevation-z10">-->
-<!--      <mat-card-title>{{'monthly-report.timeCheckNotPossible' | translate}}</mat-card-title>-->
-<!--      <mat-card-content>-->
-<!--        <p>{{'monthly-report.timeCheckNotPossiblePrompt' | translate }}</p>-->
-<!--      </mat-card-content>-->
-<!--    </mat-card>-->
-<!--  </ng-template>-->
-<!--</div>-->

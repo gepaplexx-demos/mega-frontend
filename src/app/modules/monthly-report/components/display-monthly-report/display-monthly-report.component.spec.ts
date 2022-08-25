@@ -81,7 +81,6 @@ describe('DisplayMonthlyReportComponent', () => {
   });
 
 
-
   it('#isValidDate - should check if valid date', () => {
     fixture.detectChanges();
 

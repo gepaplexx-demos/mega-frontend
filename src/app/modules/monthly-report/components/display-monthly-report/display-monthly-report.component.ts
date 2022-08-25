@@ -18,9 +18,11 @@ export class DisplayMonthlyReportComponent implements OnInit {
   @Input() monthlyReport: MonthlyReport;
   @Output() refreshMonthlyReport: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   isValidDate(dateStr: string): boolean {
     const date = new Date(dateStr);

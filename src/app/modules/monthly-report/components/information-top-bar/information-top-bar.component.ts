@@ -27,7 +27,8 @@ export class InformationTopBarComponent implements OnInit {
   dateSelectionSub: Subscription;
 
   constructor(private translateService: TranslateService,
-              private monthlyReportService: MonthlyReportService) {}
+              private monthlyReportService: MonthlyReportService) {
+  }
 
   ngOnInit(): void {
     this.translateService.get('EMPLOYEE_FUNCTIONS').subscribe(funcs => this.employeeFunctions = funcs);
