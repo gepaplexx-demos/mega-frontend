@@ -13,7 +13,9 @@ import {EnterpriseEntry} from '../../models/EnterpriseEntry';
 import {EnterpriseStep} from '../../models/EnterpriseStep';
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 import {TranslateService} from '@ngx-translate/core';
-import {ProjectStateSelectComponent} from '../../../shared/components/project-state-select/project-state-select.component';
+import {
+  ProjectStateSelectComponent
+} from '../../../shared/components/project-state-select/project-state-select.component';
 
 const moment = _moment;
 
