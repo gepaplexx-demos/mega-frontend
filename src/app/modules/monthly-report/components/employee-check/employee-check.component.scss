@@ -14,3 +14,8 @@ mat-list-option {
   margin-top: 5px;
   border-bottom: 1px solid #d8d8d8
 }
+
+.fill-parent{
+  height: calc(100% - 32px);
+  width: calc(100% - 32px);
+}

@@ -12,6 +12,7 @@ import {EmployeeCheckComponent} from './components/employee-check/employee-check
 import {PmProgressComponent} from '../shared/components/pm-progress/pm-progress.component';
 import {GeneralInfoComponent} from './components/general-info/general-info.component';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import {InformationTopBarComponent} from './components/information-top-bar/information-top-bar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
     JourneyCheckComponent,
     EmployeeCheckComponent,
     PmProgressComponent,
-    GeneralInfoComponent
+    GeneralInfoComponent,
+    InformationTopBarComponent
   ],
   imports: [
     CommonModule,
