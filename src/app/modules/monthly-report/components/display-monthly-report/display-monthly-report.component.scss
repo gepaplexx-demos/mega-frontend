@@ -1,16 +1,17 @@
 .mega-dash-grid {
   --padding-mega-grid: 8px;
+  --mega-grid-gap: 16px;
 
   //Calc-Info: ViewPort - (Information-Bar-Component + padding around grid + gap)
-  height: calc(100% - 130px - (4 * var(--padding-mega-grid)) - 16px);
-  padding: var(--padding-mega-grid) var(--padding-mega-grid) calc(3 * var(--padding-mega-grid));
+  height: calc(100% - (130px + (3 * var(--padding-mega-grid)) + var(--mega-grid-gap)));
+  padding: var(--padding-mega-grid) var(--padding-mega-grid) calc(2 * var(--padding-mega-grid));
 
   --grid-column-count: 4;
   --grid-item-min-width: 400px;
   --grid-item-infinite-width: calc((100vw - 16px - 48px) / var(--grid-column-count));
 
   display: grid;
-  gap: 16px;
+  grid-gap: var(--mega-grid-gap);
 
   grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-min-width), var(--grid-item-infinite-width)));
   grid-auto-rows: 50%;
