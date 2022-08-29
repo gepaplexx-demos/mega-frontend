@@ -3,12 +3,14 @@ import {JourneyWarning} from './JourneyWarning';
 import {Comment} from '../../shared/models/Comment';
 import {Employee} from '../../shared/models/Employee';
 import {PmProgress} from './PmProgress';
+import {State} from '../../shared/models/State';
 
 export class MonthlyReport {
   comments: Array<Comment>;
   timeWarnings: Array<TimeWarning>;
   journeyWarnings: Array<JourneyWarning>;
   employeeCheckState: string;
+  internalCheckState: State;
   otherChecksDone: boolean;
   assigned: boolean;
   employee: Employee;

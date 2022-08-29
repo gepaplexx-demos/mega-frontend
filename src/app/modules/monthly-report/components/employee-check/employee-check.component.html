@@ -11,6 +11,7 @@
       <ngx-skeleton-loader [theme]="{ height: '40px', width: '200px', 'margin-top': '15px' }"
                            appearance="line"></ngx-skeleton-loader>
     </ng-container>
+
     <ng-template #employeeCheck>
       <ng-container [ngSwitch]="monthlyReport.employeeCheckState">
         <ng-container *ngSwitchCase="State.OPEN">
@@ -18,7 +19,7 @@
             <app-state-indicator (mouseenter)="openEmployeeProgress()" (mouseleave)="closeEmployeeProgress()"
                                  [state]="State.OPEN" size="large"></app-state-indicator>
             <p>{{'monthly-report.pleaseCheckPrompt' | translate}}</p>
-            <button (click)="setOpenAndUnassignedStepEntriesDone()"
+            <button (click)="setOpenAndUnassignedStepEntriesDone()" (mouseleave)="closeEmployeeProgress()"
                     mat-raised-button>{{'monthly-report.confirmBtnText' | translate}}</button>
           </ng-container>
 

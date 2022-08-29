@@ -58,7 +58,7 @@ export class EmployeeCheckComponent {
 
   openEmployeeProgress(): void {
     this.employeeProgressRef = this._bottomSheet.open(PmProgressComponent, {
-      data: {employeeProgresses: this.monthlyReport.employeeProgresses},
+      data: {employeeProgresses: this.monthlyReport.employeeProgresses, internalCheckState: this.monthlyReport.internalCheckState},
       autoFocus: false,
       hasBackdrop: false
     });

@@ -21,6 +21,7 @@ import {
 } from '../../shared/components/datepicker-month-year/datepicker-month-year.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import {State} from "../../shared/models/State";
 
 describe('MonthlyReportComponent', () => {
 
@@ -124,6 +125,7 @@ describe('MonthlyReportComponent', () => {
   class MonthlyReportServiceMock {
 
     static monthlyReport: MonthlyReport = {
+      internalCheckState : State.OPEN,
       vacationDays: 1,
       paidSickLeave: 1,
       totalWorkingTime: '08:00',

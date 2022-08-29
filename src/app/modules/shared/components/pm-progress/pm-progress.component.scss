@@ -1,5 +1,16 @@
-table {
-  overflow: auto;
-  padding: 15px;
-  text-align: left;
+.mat-table {
+  width: 100%;
+}
+
+// ng-deep because bottom-sheet isn't part of the components HTML, it only gets attached
+::ng-deep .mat-bottom-sheet-container{
+  padding: 16px;
+}
+
+.mat-row:nth-child(2) {
+  border-bottom: solid 1px grey;
+}
+
+.mat-column-checked{
+  justify-content: end;
 }

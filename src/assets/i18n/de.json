@@ -84,6 +84,11 @@
       "days": "Tage",
       "percentage": "%",
       "percentages": "%"
+    },
+    "pm-progress-bottom-sheet": {
+      "finished": "Fertig",
+      "in-charge": "Verantwortlich",
+      "office-management" : "Office-Management"
     }
   },
   "office-management": {

@@ -48,11 +48,14 @@ describe('PmProgressComponent', () => {
 
   it('#afterInit - should set displayedEmployees with correct state', () => {
     component.pmProgresses = PmProgressMock.pmProgresses;
+    component.internalCheckState = State.OPEN;
 
     component.ngOnInit();
 
-    expect(component.displayedEmployees.every(employee =>
-      employee.state === State.OPEN
+    expect(component.displayedEmployees.every(employee => {
+        console.warn(employee);
+        return employee.state === State.OPEN;
+      }
     )).toBeTrue();
   });
 
