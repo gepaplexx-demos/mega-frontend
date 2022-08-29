@@ -1,4 +1,4 @@
-import {ComponentFixture, fakeAsync, flush, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {DisplayMonthlyReportComponent} from './display-monthly-report.component';
 import {State} from '../../../shared/models/State';
@@ -81,14 +81,6 @@ describe('DisplayMonthlyReportComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('#getDate - should selected date with day of month 1', () => {
-    fixture.detectChanges();
-
-    component.selectedMonth = DateMock.month;
-    component.selectedYear = DateMock.year;
-
-    expect(component.date).toEqual(moment().year(DateMock.year).month(DateMock.month).date(1).startOf('day'));
-  });
 
   it('#isValidDate - should check if valid date', () => {
     fixture.detectChanges();
@@ -108,19 +100,6 @@ describe('DisplayMonthlyReportComponent', () => {
 
     expect(component.refreshMonthlyReport.emit).toHaveBeenCalled();
   });
-
-  it('#dateChanged - should call monthlyReportService.selectedYear.next and monthlyReportService.selectedMonth.next', fakeAsync(() => {
-    fixture.detectChanges();
-
-    spyOn(monthlyReportService.selectedYear, 'next').and.stub();
-    spyOn(monthlyReportService.selectedMonth, 'next').and.stub();
-
-    component.dateChanged(moment());
-    flush();
-
-    expect(monthlyReportService.selectedYear.next).toHaveBeenCalled();
-    expect(monthlyReportService.selectedMonth.next).toHaveBeenCalled();
-  }));
 
   class DateMock {
     static month = 1;

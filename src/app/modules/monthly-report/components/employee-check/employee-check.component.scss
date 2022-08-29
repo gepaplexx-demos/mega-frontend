@@ -18,3 +18,8 @@ mat-list-option {
 .my-mat-bottom-sheet{
   padding: 16px;
 }
+
+.fill-parent {
+  height: calc(100% - 32px);
+  width: calc(100% - 32px);
+}

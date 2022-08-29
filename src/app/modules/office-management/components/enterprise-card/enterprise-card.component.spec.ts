@@ -18,7 +18,9 @@ import {ProjectState} from '../../../shared/models/ProjectState';
 import {configuration} from '../../../shared/constants/configuration';
 import {MatSelectChange} from '@angular/material/select';
 import {EnterpriseStep} from '../../models/EnterpriseStep';
-import {ProjectStateSelectComponent} from '../../../shared/components/project-state-select/project-state-select.component';
+import {
+  ProjectStateSelectComponent
+} from '../../../shared/components/project-state-select/project-state-select.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
