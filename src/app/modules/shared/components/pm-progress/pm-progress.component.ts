@@ -26,7 +26,7 @@ export class PmProgressComponent implements OnInit {
   displayedEmployees: Array<DisplayedEmployees>;
   displayedColumns = ['in-charge', 'checked'];
 
-  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any, public translateService: TranslateService) {
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any, private translateService: TranslateService) {
     this.pmProgresses = data.employeeProgresses;
     this.internalCheckState = data.internalCheckState;
   }
