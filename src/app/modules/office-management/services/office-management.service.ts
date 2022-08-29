@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ConfigService} from '../../shared/services/config/config.service';
 import {Employee} from '../../shared/models/Employee';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {ManagementEntry} from '../../shared/models/ManagementEntry';
 import * as _moment from 'moment';
@@ -20,12 +20,20 @@ export class OfficeManagementService {
               private httpClient: HttpClient) {
   }
 
-  getEntries(year: number, month: number): Observable<Array<ManagementEntry>> {
+  getEntries(year: number, month: number, projectStateLogicSingle: boolean): Observable<Array<ManagementEntry>> {
+    let params: HttpParams;
+    if (projectStateLogicSingle){
+      params = new HttpParams().append('projectStateLogicSingle', `${projectStateLogicSingle}`);
+    }
+
+
     return this.httpClient.get<Array<ManagementEntry>>(
-      this.configService.getBackendUrlWithContext('/management/officemanagemententries/' + year + '/' + month));
+      this.configService.getBackendUrlWithContext('/management/officemanagemententries/' + year + '/' + month),
+      {params}
+    );
   }
 
-  updateEmployees(employees: Array<Employee>): Observable<Response> {
+  updateEmployees(employees: Array<Employee>): Observable < Response > {
     return this.httpClient.put<Response>(this.configService.getBackendUrlWithContext('/employees'), employees);
   }
 }

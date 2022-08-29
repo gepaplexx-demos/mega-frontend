@@ -206,7 +206,7 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
   }
 
   private getOmEntries() {
-    return this.omService.getEntries(this.selectedYear, this.selectedMonth);
+    return this.omService.getEntries(this.selectedYear, this.selectedMonth, true);
   }
 
   private monthDiff(d1: Date, d2: Date) {

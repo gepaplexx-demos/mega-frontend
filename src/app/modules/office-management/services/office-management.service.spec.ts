@@ -23,6 +23,7 @@ describe('OfficeManagementService', () => {
     officeManagementService = TestBed.inject(OfficeManagementService);
     httpTestingController = TestBed.inject(HttpTestingController);
     configService = TestBed.inject(ConfigService);
+    const projectStateLogicSingle = false;
   });
 
   it('#should be created', () => {
@@ -30,7 +31,7 @@ describe('OfficeManagementService', () => {
   });
 
   it('#getEntries - should return entries', (done) => {
-    officeManagementService.getEntries(OfficeManagementMock.year, OfficeManagementMock.month)
+    officeManagementService.getEntries(OfficeManagementMock.year, OfficeManagementMock.month, false)
       .subscribe(managementEntries => {
         expect(managementEntries).toEqual(OfficeManagementMock.managementEntries);
         done();
