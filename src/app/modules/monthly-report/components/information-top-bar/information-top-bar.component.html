@@ -1,0 +1,36 @@
+<mat-card class="mat-elevation-z1 fill-parent">
+  <mat-card-subtitle id="idname">
+    <ngx-skeleton-loader *ngIf="!monthlyReport else workDescription"
+                         [theme]="{ width: '200px' }"
+                         appearance="line"></ngx-skeleton-loader>
+    <ng-template #workDescription>
+      {{employeeFunctions[monthlyReport?.employee?.workDescription]}}
+    </ng-template>
+  </mat-card-subtitle>
+  <mat-card-content>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <span fxFlex="30">
+          <ngx-skeleton-loader *ngIf="!monthlyReport else employeeName"
+                               [theme]="{ height: '25px', width: '250px' }"
+                               appearance="line"></ngx-skeleton-loader>
+          <ng-template #employeeName>
+            {{monthlyReport?.employee?.firstname}} {{monthlyReport?.employee?.lastname}}
+          </ng-template>
+        </span>
+
+      <div id="datediv">
+        <ngx-skeleton-loader *ngIf="!monthlyReport else datepicker"
+                             [theme]="{ height: '60px', width: '500px'}"></ngx-skeleton-loader>
+        <ng-template #datepicker>
+          <strong><span>{{'global.selectPayrollMonth' | translate}}</span></strong>
+
+          <span id="datepicker">
+                  <app-datepicker-month-year (dateChanged)="dateChanged($event)" [date]="date"
+                                             [maxMonth]="maxMonthDate"></app-datepicker-month-year>
+          </span>
+        </ng-template>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

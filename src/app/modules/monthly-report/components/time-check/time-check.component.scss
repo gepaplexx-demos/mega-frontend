@@ -5,3 +5,8 @@
 .mat-column-warningIcon {
   flex: 0 0 10%;
 }
+
+.fill-parent {
+  height: calc(100% - 32px);
+  width: calc(100% - 32px);
+}
