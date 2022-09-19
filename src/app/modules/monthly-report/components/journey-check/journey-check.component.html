@@ -3,20 +3,18 @@
     {{'monthly-report.title.journey' | translate}}
   </mat-card-title>
 
-  <mat-card-content *ngIf="!monthlyReport"
-                    fxLayout="column" fxLayoutAlign="center center">
-    <ngx-skeleton-loader [theme]="{ height: '80px', width: '80px' }" appearance="circle"></ngx-skeleton-loader>
-    <ngx-skeleton-loader [theme]="{ width: '250px', 'margin-top': '20px' }" appearance="line"></ngx-skeleton-loader>
-  </mat-card-content>
+  <mat-card-content [class.no-warnings]="!monthlyReport || monthlyReport?.journeyWarnings?.length === 0">
+    <ng-container *ngIf="!monthlyReport">
+      <ngx-skeleton-loader [theme]="{ height: '80px', width: '80px' }" appearance="circle"></ngx-skeleton-loader>
+      <ngx-skeleton-loader [theme]="{ width: '250px', 'margin-top': '20px' }" appearance="line"></ngx-skeleton-loader>
+    </ng-container>
 
-  <mat-card-content *ngIf="monthlyReport?.journeyWarnings.length === 0; else journeyContent"
-                    fxLayout="column" fxLayoutAlign="center center">
-    <app-state-indicator [state]="State.DONE" size="large"></app-state-indicator>
-    <p>{{'monthly-report.ok' | translate}}</p>
-  </mat-card-content>
+    <ng-container *ngIf="monthlyReport?.journeyWarnings?.length === 0">
+      <app-state-indicator [state]="State.DONE" size="large"></app-state-indicator>
+      <p>{{'monthly-report.ok' | translate}}</p>
+    </ng-container>
 
-  <ng-template #journeyContent>
-    <mat-card-content *ngIf="monthlyReport">
+    <ng-container *ngIf="monthlyReport?.journeyWarnings?.length > 0">
       <mat-table [dataSource]="monthlyReport.journeyWarnings">
         <ng-container matColumnDef="dateJourney">
           <mat-header-cell *matHeaderCellDef>
@@ -47,6 +45,6 @@
           mat-header-row>
         </mat-header-row>
       </mat-table>
-    </mat-card-content>
-  </ng-template>
+    </ng-container>
+  </mat-card-content>
 </mat-card>
