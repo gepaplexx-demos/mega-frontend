@@ -8,7 +8,7 @@ WORKDIR ${WORKDIR}
 
 # TODO tests (and lint)
 RUN npm ci \
-   && node ./node_modules/@angular/cli/bin/ng build --configuration=production
+   && node ./node_modules/@angular/cli/bin/ng build --configuration=production --source-map=true
 
 ### STAGE 2: Run ###
 FROM bitnami/nginx:latest
