@@ -18,29 +18,6 @@ describe('LocalStorageService', () => {
     expect(localStorageService).toBeTruthy();
   });
 
-  it('#saveConfig - should save config', () => {
-    localStorageService.saveConfig(ConfigMock.config);
-
-    const config = localStorageService.getConfig();
-
-    expect(config).toBeTruthy();
-    expect(config.clientId).toEqual(ConfigMock.config.clientId);
-  });
-
-  it('#removeConfig - should remove config', () => {
-    localStorageService.saveConfig(ConfigMock.config);
-
-    let config = localStorageService.getConfig();
-
-    expect(config).toBeTruthy();
-    expect(config.clientId).toEqual(ConfigMock.config.clientId);
-
-    localStorageService.removeConfig();
-
-    config = localStorageService.getConfig();
-    expect(config).toBeFalsy();
-  });
-
   it('#userStartPage - should save userStartPage', () => {
     localStorageService.saveUserStartPage(ConfigMock.userStartPage);
 

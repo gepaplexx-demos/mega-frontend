@@ -22,48 +22,22 @@ describe('ConfigService', () => {
     configService = TestBed.inject(ConfigService);
     httpTestingController = TestBed.inject(HttpTestingController);
     localStorageService = TestBed.inject(LocalStorageService);
-
-    localStorageService.removeConfig();
   });
 
   it('#should be created', () => {
     expect(configService).toBeTruthy();
   });
 
-  it('#getConfig - should do http call and return config and set in localStorage', (done) => {
+  it('#getConfig - should do http call and return config', (done) => {
     configService.getConfig()
       .subscribe(config => {
         expect(config).toEqual(ConfigMock.config);
-        expect(localStorageService.getConfig()).toEqual(config);
 
         done();
       });
 
     const testRequest = httpTestingController.expectOne(configService.getBackendUrlWithContext('/config'));
     testRequest.flush(ConfigMock.config);
-  });
-
-  it('#getConfig - should return config without http call', (done) => {
-    localStorageService.saveConfig(ConfigMock.config);
-
-    configService.getConfig()
-      .subscribe(config => {
-        expect(config).toEqual(ConfigMock.config);
-        expect(localStorageService.getConfig()).toEqual(config);
-
-        done();
-      });
-
-    httpTestingController.expectNone(configService.getBackendUrlWithContext('/config'));
-  });
-
-  it('#logOut - should remove localStorage item', () => {
-    localStorageService.saveConfig(ConfigMock.config);
-
-    expect(localStorageService.getConfig()).toBeTruthy();
-
-    configService.logOut();
-    expect(localStorageService.getConfig()).not.toBeTruthy();
   });
 
   it('#getBackendUrl - should return backend url', () => {

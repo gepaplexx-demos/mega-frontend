@@ -4,30 +4,24 @@ import {Config} from '../../models/Config';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
-import {LocalStorageService} from '../local-storage/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConfigService {
 
-  constructor(private httpClient: HttpClient,
-              private localStorageService: LocalStorageService) {
+  private config: Config;
+
+  constructor(private httpClient: HttpClient) {
   }
 
   getConfig(): Observable<Config> {
-    const config = this.localStorageService.getConfig();
-
-    if (config) {
-      return new BehaviorSubject(config);
+    if (this.config) {
+      return new BehaviorSubject(this.config);
     } else {
       return this.httpClient.get<Config>(this.getBackendUrlWithContext('/config'))
-        .pipe(tap(resultConfig => this.localStorageService.saveConfig(resultConfig)));
+        .pipe(tap(resultConfig => this.config = resultConfig));
     }
-  }
-
-  logOut(): void {
-    this.localStorageService.removeConfig();
   }
 
   getBackendUrl(): string {

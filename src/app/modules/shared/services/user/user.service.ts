@@ -41,7 +41,6 @@ export class UserService {
 
   invalidateUser() {
     this.oAuthService.logOut();
-    this.configService.logOut();
     this.user.next(undefined);
   }
 
