@@ -51,8 +51,7 @@ registerLocaleData(localeDeAt, 'de-AT');
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},
     {provide: ErrorHandler, useClass: ErrorHandlerService},
-    {provide: OAuthModuleConfig, useFactory: authConfigFactory, deps: [ConfigService]},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthorizationHeaderInterceptor, multi: true}
+    {provide: OAuthModuleConfig, useFactory: authConfigFactory, deps: [ConfigService]}
   ],
   bootstrap: [AppComponent]
 })
