@@ -22,6 +22,7 @@ export class EmployeeCheckComponent {
   @Output() refreshMonthlyReport: EventEmitter<void> = new EventEmitter<void>();
 
   employeeProgressRef: MatBottomSheetRef;
+  overlaysButton: boolean;
 
   constructor(
     public commentService: CommentService,
@@ -56,16 +57,29 @@ export class EmployeeCheckComponent {
     this.refreshMonthlyReport.emit();
   }
 
-  openEmployeeProgress(): void {
+  openEmployeeProgress($event: MouseEvent): void {
     this.employeeProgressRef = this._bottomSheet.open(PmProgressComponent, {
-      data: {employeeProgresses: this.monthlyReport.employeeProgresses, internalCheckState: this.monthlyReport.internalCheckState},
+      data: {
+        employeeProgresses: this.monthlyReport.employeeProgresses,
+        internalCheckState: this.monthlyReport.internalCheckState
+      },
       autoFocus: false,
       hasBackdrop: false
+    });
+    let bottomSheetContainer = document.querySelector('mat-bottom-sheet-container');
+    let bottomSheetY = window.innerHeight - bottomSheetContainer.getBoundingClientRect().height;
+    this.overlaysButton = bottomSheetY < ($event.y + 10); // Ungenauigkeitskorrektur
+
+    bottomSheetContainer.addEventListener('mouseleave', () => {
+      this.employeeProgressRef.dismiss();
+      this.overlaysButton = false;
     });
   }
 
   closeEmployeeProgress(): void {
-    this.employeeProgressRef.dismiss();
+    if (!this.overlaysButton) {
+      this.employeeProgressRef.dismiss();
+    }
   }
 
   parseBody(body: string): string {
