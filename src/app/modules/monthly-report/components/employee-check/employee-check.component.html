@@ -19,7 +19,7 @@
             <app-state-indicator (mouseenter)="openEmployeeProgress()" (mouseleave)="closeEmployeeProgress()"
                                  [state]="State.OPEN" size="large"></app-state-indicator>
             <p>{{'monthly-report.pleaseCheckPrompt' | translate}}</p>
-            <button (click)="setOpenAndUnassignedStepEntriesDone()" (mouseleave)="closeEmployeeProgress()"
+            <button (click)="setOpenAndUnassignedStepEntriesDone()"
                     mat-raised-button>{{'monthly-report.confirmBtnText' | translate}}</button>
           </ng-container>
 
