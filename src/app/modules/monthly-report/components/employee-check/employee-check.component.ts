@@ -68,7 +68,7 @@ export class EmployeeCheckComponent {
     });
     let bottomSheetContainer = document.querySelector('mat-bottom-sheet-container');
     let bottomSheetY = window.innerHeight - bottomSheetContainer.getBoundingClientRect().height;
-    this.overlaysButton = bottomSheetY < ($event.y + 10); // Ungenauigkeitskorrektur
+    this.overlaysButton = bottomSheetY < ($event.y + 10); // inaccuracy correction
 
     bottomSheetContainer.addEventListener('mouseleave', () => {
       this.employeeProgressRef.dismiss();
