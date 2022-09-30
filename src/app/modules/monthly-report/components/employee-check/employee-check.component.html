@@ -16,15 +16,15 @@
       <ng-container [ngSwitch]="monthlyReport.employeeCheckState">
         <ng-container *ngSwitchCase="State.OPEN">
           <ng-container *ngIf="monthlyReport.assigned; else noTimesThisMonth">
-            <app-state-indicator (mouseenter)="openEmployeeProgress()" (mouseleave)="closeEmployeeProgress()"
+            <app-state-indicator (mouseenter)="openEmployeeProgress($event)" (mouseleave)="closeEmployeeProgress()"
                                  [state]="State.OPEN" size="large"></app-state-indicator>
             <p>{{'monthly-report.pleaseCheckPrompt' | translate}}</p>
-            <button (click)="setOpenAndUnassignedStepEntriesDone()" (mouseleave)="closeEmployeeProgress()"
+            <button (click)="setOpenAndUnassignedStepEntriesDone()"
                     mat-raised-button>{{'monthly-report.confirmBtnText' | translate}}</button>
           </ng-container>
 
           <ng-template #noTimesThisMonth>
-            <app-state-indicator (mouseenter)="openEmployeeProgress()" (mouseleave)="closeEmployeeProgress()"
+            <app-state-indicator (mouseenter)="openEmployeeProgress($event)" (mouseleave)="closeEmployeeProgress()"
                                  size="large"></app-state-indicator>
             <p>{{'monthly-report.noTimesCurrentMonth' | translate}}</p>
           </ng-template>
@@ -32,12 +32,12 @@
 
         <ng-container *ngSwitchCase="State.DONE">
           <ng-container *ngIf="!monthlyReport.otherChecksDone">
-            <app-state-indicator (mouseenter)="openEmployeeProgress()" (mouseleave)="closeEmployeeProgress()"
+            <app-state-indicator (mouseenter)="openEmployeeProgress($event)" (mouseleave)="closeEmployeeProgress()"
                                  size="large"></app-state-indicator>
             <p>{{'monthly-report.checkWip' | translate}}</p>
           </ng-container>
           <ng-container *ngIf="monthlyReport.otherChecksDone">
-            <app-state-indicator (mouseenter)="openEmployeeProgress()" (mouseleave)="closeEmployeeProgress()"
+            <app-state-indicator (mouseenter)="openEmployeeProgress($event)" (mouseleave)="closeEmployeeProgress()"
                                  [state]="State.DONE" size="large"></app-state-indicator>
             <p>{{'monthly-report.checkSuccess' | translate}}</p>
           </ng-container>
