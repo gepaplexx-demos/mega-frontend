@@ -27,7 +27,7 @@
   },
   "login": {
     "cardTitle": "Login",
-    "promptText": "Über Google anmelden",
+    "promptText": "Über Gepardec SSO anmelden",
     "btnText": "Anmelden"
   },
   "user-actions": {
