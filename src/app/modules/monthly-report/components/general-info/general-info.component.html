@@ -33,7 +33,7 @@
       <ng-container matColumnDef="unit">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <p *ngIf="element.value == 1; else elseBlock"> {{(element.unit) | translate}}</p>
+          <p *ngIf="element.value === 1; else elseBlock"> {{(element.unit) | translate}}</p>
           <ng-template #elseBlock> {{element.unit + 's' | translate}}</ng-template>
         </mat-cell>
       </ng-container>

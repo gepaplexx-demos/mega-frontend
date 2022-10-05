@@ -11,7 +11,7 @@ const moment = _moment;
   styleUrls: ['./display-monthly-report.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DisplayMonthlyReportComponent implements OnInit {
+export class DisplayMonthlyReportComponent {
 
   readonly State = State;
 
@@ -19,9 +19,6 @@ export class DisplayMonthlyReportComponent implements OnInit {
   @Output() refreshMonthlyReport: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {
-  }
-
-  ngOnInit() {
   }
 
   isValidDate(dateStr: string): boolean {

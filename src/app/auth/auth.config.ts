@@ -4,7 +4,8 @@ export const authConfig: AuthConfig = {
   redirectUri: window.location.origin,
   strictDiscoveryDocumentValidation: false,
   showDebugInformation: false,
-  sessionChecksEnabled: false
+  sessionChecksEnabled: false,
+  responseType: 'code'
 };
 
 export const cypressAuthConfig: AuthConfig = {

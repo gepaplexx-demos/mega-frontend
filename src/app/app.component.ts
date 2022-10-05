@@ -5,7 +5,6 @@ import {Router} from '@angular/router';
 import {UserService} from './modules/shared/services/user/user.service';
 import {ConfigService} from './modules/shared/services/config/config.service';
 import {firstValueFrom, Subscription} from 'rxjs';
-import {JwksValidationHandler} from 'angular-oauth2-oidc-jwks';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -37,9 +36,9 @@ export class AppComponent implements OnInit, OnDestroy {
       // @ts-ignore
       ...(window.Cypress ? cypressAuthConfig : authConfig)
     });
-    this.oAuthService.tokenValidationHandler = new JwksValidationHandler();
 
     await this.oAuthService.loadDiscoveryDocumentAndTryLogin();
+    this.oAuthService.setupAutomaticSilentRefresh();
 
     if (this.userService.loggedInWithGoogle()) {
       this.userService.loginUser();

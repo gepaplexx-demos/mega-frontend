@@ -167,7 +167,6 @@ describe('ProjectOverviewCardComponent', () => {
 
   class ConfigMock {
 
-    static sessionStorageKey: string = 'MEGA_CONFIG';
     static frontendOriginSegment: number = 9876;
     static context: string = '/context/employee'
 

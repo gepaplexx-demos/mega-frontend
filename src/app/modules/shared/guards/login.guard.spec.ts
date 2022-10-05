@@ -41,7 +41,13 @@ describe('LoginGuard', () => {
 
   it('#canActivate - should be logged in', () => {
     spyOn(userService, 'loggedInWithGoogle').and.returnValue(true);
-    spyOnProperty(userService.user, 'value').and.returnValue(true);
+    userService.user.next({
+      userId: 'test-id',
+      email: 'test@gepardec.com',
+      firstname: 'test',
+      lastname: 'test',
+      roles: []
+    });
 
     const canActivate = guard.canActivate(null, null);
 

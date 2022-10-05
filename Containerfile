@@ -7,7 +7,7 @@ COPY . ${WORKDIR}
 WORKDIR ${WORKDIR}
 
 # TODO tests (and lint)
-RUN npm install \
+RUN npm ci \
    && node ./node_modules/@angular/cli/bin/ng build --configuration=production
 
 ### STAGE 2: Run ###
