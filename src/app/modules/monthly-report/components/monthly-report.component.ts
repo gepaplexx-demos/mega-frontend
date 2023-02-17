@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MonthlyReport} from '../models/MonthlyReport';
 import {Subscription} from 'rxjs';
 import {MonthlyReportService} from '../services/monthly-report.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-monthly-report',
@@ -30,9 +31,11 @@ export class MonthlyReportComponent implements OnInit {
     this.monthlyReportSubscription = this.monthlyReportService.getAll().subscribe((monthlyReport: MonthlyReport) => {
       if (monthlyReport) {
         this.monthlyReport = monthlyReport;
-        const splitReleaseDate = this.monthlyReport.employee.releaseDate.split('-');
-        this.monthlyReportService.selectedYear.next(+splitReleaseDate[0]);
-        this.monthlyReportService.selectedMonth.next(+splitReleaseDate[1]);
+
+        // moment().add berücksichtigt jahreswechsel (z.B. Dec 2022 + 1 Monat = Jan 2023)
+        const dateOfNextMonth = moment(this.monthlyReport.employee.releaseDate).add(1, 'month');
+        this.monthlyReportService.selectedYear.next(dateOfNextMonth.year());
+        this.monthlyReportService.selectedMonth.next(dateOfNextMonth.month());
       }
     });
   }
