@@ -62,7 +62,7 @@ describe('ProjectStateSelectComponent', () => {
     });
   }));
 
-  it('#selectStateDone - should disable the select when state is DONE', fakeAsync(() => {
+  it('#selectStateDone - should NOT disable the select when state is DONE', fakeAsync(() => {
     fixture.detectChanges();
 
     component.select.open();
@@ -80,7 +80,7 @@ describe('ProjectStateSelectComponent', () => {
     flush();
 
     expect(component.isDoneSelected).toBeTrue();
-    expect(component.select.disabled).toBeTrue();
+    expect(component.select.disabled).toBeFalsy();
   }));
 
   it('#selectStateWorkInProgress - should disable option OPEN when WIP is selected', fakeAsync(() => {

@@ -1,5 +1,6 @@
 // @ts-ignore
 import employee from '../fixtures/officemanagement/officemanagemententries.json';
+import {State} from '../../src/app/modules/shared/models/State';
 
 describe('Office Management (Mitarbeiter)', () => {
 
@@ -62,17 +63,22 @@ describe('Office Management (Mitarbeiter)', () => {
     visitAndWaitForRequests('/officeManagement');
     assertSelect('internal-check', 'Offen');
 
-    cy.intercept('PUT', 'http://localhost:*/stepentry/closeforoffice', {
+    cy.intercept('PUT', 'http://localhost:*/stepentry/updateEmployeeStateForOffice', {
       body: true
-    }).as('closeforoffice');
+    }).as('updateEmployeeStateForOffice');
 
-    cy.get('[data-cy="internal-check"]').click().get('[data-cy="option-done"]').click();
+    cy.get('app-state-select').click().get('[data-cy="option-done"]').click();
 
-    cy.get('@closeforoffice').its('request.body').should('deep.include', {
+    cy.wait('@updateEmployeeStateForOffice').then((interception) => {
+      cy.wrap(interception.request.body).as('requestData');
+    });
+
+    cy.get('@requestData').should('deep.include', {
       stepId: 2,
       employee: {
         ...employee[0].employee
-      }
+      },
+      newState: State.DONE
     });
 
     cy.fixture('officemanagement/officemanagemententries.json').then(jsonData => {

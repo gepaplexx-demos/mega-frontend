@@ -89,7 +89,7 @@
               *matHeaderCellDef>{{'office-management.table.internalCheckState' | translate}}</mat-header-cell>
             <mat-cell *matCellDef="let omEntry">
               <span class="mobile-label">{{'office-management.table.internalCheckState' | translate}}</span>
-              <app-state-select (selectionChange)="closeInternalCheck(omEntry)"
+              <app-state-select (selectionChange)="updateInternalCheck($event, omEntry)"
                                 [value]="omEntry.internalCheckState"
                                 data-cy="internal-check"></app-state-select>
             </mat-cell>

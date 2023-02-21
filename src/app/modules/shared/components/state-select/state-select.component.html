@@ -2,7 +2,6 @@
             (selectionChange)="onSelectionChange($event)"
             [class.select-green]="select.value === State.DONE"
             [class.select-red]="select.value === State.OPEN"
-            [disabled]="value === State.DONE"
             [value]="value">
   <mat-option [value]="State.OPEN" data-cy="option-open">{{'STATE.OPEN' | translate}}</mat-option>
   <mat-option [value]="State.DONE" data-cy="option-done">{{'STATE.DONE' | translate}}</mat-option>

@@ -23,6 +23,7 @@ import {ConfigService} from '../../../shared/services/config/config.service';
 import {Config} from '../../../shared/models/Config';
 import {firstValueFrom, mergeMap, Subscription, switchMap, zip} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import {MatSelectChange} from '@angular/material/select';
 
 const moment = _moment;
 
@@ -181,11 +182,12 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
     this.notificationService.showSuccess(successMessage);
   }
 
-  closeInternalCheck(omEntry: ManagementEntry) {
+  updateInternalCheck($event: MatSelectChange, omEntry: ManagementEntry) {
+    const newState: State = $event.value;
     this.stepEntryService
-      .closeOfficeCheck(omEntry.employee, Step.CONTROL_INTERNAL_TIMES, this.getFormattedDate())
+      .updateEmployeeStateForOffice(omEntry.employee, Step.CONTROL_INTERNAL_TIMES, this.getFormattedDate(), newState)
       .subscribe(() => {
-        omEntry.internalCheckState = State.DONE;
+        omEntry.internalCheckState = newState;
       });
   }
 
