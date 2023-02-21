@@ -28,7 +28,7 @@ export class EmployeeCheckComponent {
     public commentService: CommentService,
     public errorHandlerService: ErrorHandlerService,
     public stepentriesService: StepentriesService,
-    private _bottomSheet: MatBottomSheet) {
+    private bottomSheet: MatBottomSheet) {
   }
 
   selectionChange(change: MatSelectionListChange): void {
@@ -57,8 +57,8 @@ export class EmployeeCheckComponent {
     this.refreshMonthlyReport.emit();
   }
 
-  openEmployeeProgress($event: MouseEvent): void {
-    this.employeeProgressRef = this._bottomSheet.open(PmProgressComponent, {
+  openEmployeeProgress($event?: MouseEvent): void {
+    this.employeeProgressRef = this.bottomSheet.open(PmProgressComponent, {
       data: {
         employeeProgresses: this.monthlyReport.employeeProgresses,
         internalCheckState: this.monthlyReport.internalCheckState
@@ -66,11 +66,14 @@ export class EmployeeCheckComponent {
       autoFocus: false,
       hasBackdrop: false
     });
-    let bottomSheetContainer = document.querySelector('mat-bottom-sheet-container');
-    let bottomSheetY = window.innerHeight - bottomSheetContainer.getBoundingClientRect().height;
-    this.overlaysButton = bottomSheetY < ($event.y + 10); // inaccuracy correction
+    const bottomSheetContainer = document.querySelector('mat-bottom-sheet-container');
+    const bottomSheetY = window.innerHeight - bottomSheetContainer?.getBoundingClientRect()?.height || 0;
 
-    bottomSheetContainer.addEventListener('mouseleave', () => {
+    const eventY = $event?.y || 0;
+
+    this.overlaysButton = bottomSheetY < (eventY + 10); // inaccuracy correction
+
+    bottomSheetContainer?.addEventListener('mouseleave', () => {
       this.employeeProgressRef.dismiss();
       this.overlaysButton = false;
     });

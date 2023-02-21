@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {ErrorHandler, NgModule} from '@angular/core';
+import {ErrorHandler, LOCALE_ID, NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -50,7 +50,8 @@ registerLocaleData(localeDeAt, 'de-AT');
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},
     {provide: ErrorHandler, useClass: ErrorHandlerService},
-    {provide: OAuthModuleConfig, useFactory: authConfigFactory, deps: [ConfigService]}
+    {provide: OAuthModuleConfig, useFactory: authConfigFactory, deps: [ConfigService]},
+    {provide: LOCALE_ID, useValue: 'de-AT'}
   ],
   bootstrap: [AppComponent]
 })

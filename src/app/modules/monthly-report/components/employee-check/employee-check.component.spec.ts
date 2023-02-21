@@ -73,7 +73,7 @@ describe('EmployeeCheckComponent', () => {
           value: CommentsMock.setupComments()[0]
         }
       ]
-    }
+    };
 
     component.selectionChange(change as any);
     flush();
@@ -103,7 +103,7 @@ describe('EmployeeCheckComponent', () => {
 
     spyOn(bottomSheet, 'open').and.stub();
 
-    component.openEmployeeProgress();
+    component.openEmployeeProgress(undefined);
 
     expect(bottomSheet.open).toHaveBeenCalled();
   }));
@@ -138,7 +138,7 @@ describe('EmployeeCheckComponent', () => {
           isEditing: true,
           authorName: 'Max Mustermann'
         }
-      ]
+      ];
     }
   }
 

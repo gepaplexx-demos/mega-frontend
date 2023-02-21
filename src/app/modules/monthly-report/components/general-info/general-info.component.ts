@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Inject, Input, LOCALE_ID, OnChanges, SimpleChanges} from '@angular/core';
 import {MonthlyReport} from '../../models/MonthlyReport';
 import {MonthlyReportService} from '../../services/monthly-report.service';
 import * as _moment from 'moment';
@@ -17,7 +17,7 @@ export class GeneralInfoComponent implements OnChanges {
 
   displayedColumns = ['description', 'value', 'unit'];
 
-  constructor(public monthlyReportService: MonthlyReportService) {
+  constructor(public monthlyReportService: MonthlyReportService, @Inject(LOCALE_ID) private locale: string) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -47,8 +47,7 @@ export class GeneralInfoComponent implements OnChanges {
   }
 
   month(yearmonth: number): string {
-    moment.locale('de');
-    return moment().month(yearmonth).format('MMMM');
+    return moment().locale(this.locale).month(yearmonth).format('MMMM');
   }
 
   calculateDynamicValue() {
