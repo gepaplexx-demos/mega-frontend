@@ -34,7 +34,7 @@ import {configuration} from '../../shared/constants/configuration';
 import {DatepickerMonthYearComponent} from '../../shared/components/datepicker-month-year/datepicker-month-year.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
-import {ProjectManagementEntryExtension} from '../models/ProjectManagementEntryExtension';
+import {ProjectManagementEntryViewModel} from '../models/ProjectManagementEntryViewModel';
 
 const moment = _moment;
 const DATE_FORMAT: string = configuration.dateFormat;
@@ -546,7 +546,7 @@ describe('ProjectManagementComponent', () => {
       }
     ];
 
-    static projectManagementEntries: Array<ProjectManagementEntryExtension> = [
+    static projectManagementEntries: Array<ProjectManagementEntryViewModel> = [
       {
         entries: ProjectManagementMock.managementEntries,
         controlProjectState: ProjectState.DONE,

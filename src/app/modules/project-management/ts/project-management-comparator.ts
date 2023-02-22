@@ -1,5 +1,5 @@
 import {booleanCompare, stringCompare} from '../../shared/utils/compareUtils';
-import {ProjectManagementEntryExtension} from '../models/ProjectManagementEntryExtension';
+import {ProjectManagementEntryViewModel} from '../models/ProjectManagementEntryViewModel';
 import {ProjectState} from '../../shared/models/ProjectState';
 
 /**
@@ -14,7 +14,7 @@ import {ProjectState} from '../../shared/models/ProjectState';
  *
  * !!! AUFRUFER MUSS SORT().REVERSE aufrufen, weil javascript standardmäßig asc sortiert und hier die logik quasi invertiert ist !!!
  */
-export function comparePmEntriesFn(a: ProjectManagementEntryExtension, b: ProjectManagementEntryExtension) {
+export function comparePmEntriesFn(a: ProjectManagementEntryViewModel, b: ProjectManagementEntryViewModel) {
   const isTodoA = isTodoProject(a);
   const isTodoB = isTodoProject(b);
 
@@ -25,7 +25,7 @@ export function comparePmEntriesFn(a: ProjectManagementEntryExtension, b: Projec
 
 const todoProjectStates = [ProjectState.OPEN, ProjectState.WORK_IN_PROGRESS];
 
-function isTodoProject(project: ProjectManagementEntryExtension) {
+function isTodoProject(project: ProjectManagementEntryViewModel) {
   return !project.allProjectCheckStatesDone
     || todoProjectStates.includes(project.controlProjectState)
     || todoProjectStates.includes(project.controlBillingState);

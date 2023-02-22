@@ -1,12 +1,12 @@
-import {ProjectManagementEntryExtension} from '../models/ProjectManagementEntryExtension';
+import {ProjectManagementEntryViewModel} from '../models/ProjectManagementEntryViewModel';
 import {ProjectState} from '../../shared/models/ProjectState';
 import {comparePmEntriesFn} from './project-management-comparator';
 
-function createTestProjectManagementEntity(projectName: string): ProjectManagementEntryExtension;
-function createTestProjectManagementEntity(projectName: string, allProjectCheckStatesDone?: boolean): ProjectManagementEntryExtension;
-function createTestProjectManagementEntity(projectName: string, allProjectCheckStatesDone?: boolean, controlProjectState?: ProjectState): ProjectManagementEntryExtension;
-function createTestProjectManagementEntity(projectName: string, allProjectCheckStatesDone?: boolean, controlProjectState?: ProjectState, controlBillingState?: ProjectState): ProjectManagementEntryExtension;
-function createTestProjectManagementEntity(projectName: string, allProjectCheckStatesDone?: boolean, controlProjectState?: ProjectState, controlBillingState?: ProjectState): ProjectManagementEntryExtension {
+function createTestProjectManagementEntity(projectName: string): ProjectManagementEntryViewModel;
+function createTestProjectManagementEntity(projectName: string, allProjectCheckStatesDone?: boolean): ProjectManagementEntryViewModel;
+function createTestProjectManagementEntity(projectName: string, allProjectCheckStatesDone?: boolean, controlProjectState?: ProjectState): ProjectManagementEntryViewModel;
+function createTestProjectManagementEntity(projectName: string, allProjectCheckStatesDone?: boolean, controlProjectState?: ProjectState, controlBillingState?: ProjectState): ProjectManagementEntryViewModel;
+function createTestProjectManagementEntity(projectName: string, allProjectCheckStatesDone?: boolean, controlProjectState?: ProjectState, controlBillingState?: ProjectState): ProjectManagementEntryViewModel {
   return {
     projectName: projectName,
     allProjectCheckStatesDone: allProjectCheckStatesDone,
@@ -21,7 +21,7 @@ function createTestProjectManagementEntity(projectName: string, allProjectCheckS
   }
 }
 
-function getProjectNames(entities: ProjectManagementEntryExtension[]) {
+function getProjectNames(entities: ProjectManagementEntryViewModel[]) {
   return entities.map(e => e.projectName);
 }
 
@@ -30,7 +30,7 @@ describe('ProjectManagementComparator', () => {
   it('should order by projectName alphabetically asc', () => {
 
     // given
-    const input: ProjectManagementEntryExtension[] = [
+    const input: ProjectManagementEntryViewModel[] = [
       createTestProjectManagementEntity('B'),
       createTestProjectManagementEntity('AAC'),
       createTestProjectManagementEntity('GH'),
@@ -58,7 +58,7 @@ describe('ProjectManagementComparator', () => {
   it('should order by allProjectCheckStatesDone before alphabetical', () => {
 
     // given
-    const input: ProjectManagementEntryExtension[] = [
+    const input: ProjectManagementEntryViewModel[] = [
       createTestProjectManagementEntity('B', true),
       createTestProjectManagementEntity('AAC', true),
       createTestProjectManagementEntity('GH', false),
@@ -86,7 +86,7 @@ describe('ProjectManagementComparator', () => {
   it('should order by controlProjectState before alphabetical', () => {
 
     // given
-    const input: ProjectManagementEntryExtension[] = [
+    const input: ProjectManagementEntryViewModel[] = [
       createTestProjectManagementEntity('AAC', true),
       createTestProjectManagementEntity('GH', true),
       createTestProjectManagementEntity('FIRST', true, ProjectState.WORK_IN_PROGRESS),
@@ -120,7 +120,7 @@ describe('ProjectManagementComparator', () => {
   it('should order by controlBillingState before alphabetical', () => {
 
     // given
-    const input: ProjectManagementEntryExtension[] = [
+    const input: ProjectManagementEntryViewModel[] = [
       createTestProjectManagementEntity('AAC', true),
       createTestProjectManagementEntity('GH', true),
       createTestProjectManagementEntity('FIRST', true, undefined, ProjectState.WORK_IN_PROGRESS),
@@ -154,7 +154,7 @@ describe('ProjectManagementComparator', () => {
   it('should order correctly by all criteria', () => {
 
     // given
-    const input: ProjectManagementEntryExtension[] = [
+    const input: ProjectManagementEntryViewModel[] = [
       createTestProjectManagementEntity('XYZ', true),
       createTestProjectManagementEntity('GH', true),
       createTestProjectManagementEntity('AAC', true),

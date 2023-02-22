@@ -27,7 +27,7 @@ import {ProjectStateSelectComponent} from '../../shared/components/project-state
 import {ProjectCommentService} from '../../shared/services/project-comment/project-comment.service';
 import {SnackbarService} from '../../shared/services/snackbar/snackbar.service';
 import {forkJoin, mergeMap, Subscription, switchMap, tap, zip} from 'rxjs';
-import {ProjectManagementEntryExtension} from '../models/ProjectManagementEntryExtension';
+import {ProjectManagementEntryViewModel} from '../models/ProjectManagementEntryViewModel';
 import * as ProjectManagementComparator from '../ts/project-management-comparator';
 
 const moment = _moment;
@@ -39,7 +39,7 @@ const moment = _moment;
 })
 export class ProjectManagementComponent implements OnInit, OnDestroy {
 
-  pmEntries: Array<ProjectManagementEntryExtension>;
+  pmEntries: Array<ProjectManagementEntryViewModel>;
   displayedColumns = [
     'select',
     'employeeName',
@@ -185,7 +185,7 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
     }
   }
 
-  checkAllProjectCheckStatesDone(pmEntry: ProjectManagementEntryExtension) {
+  checkAllProjectCheckStatesDone(pmEntry: ProjectManagementEntryViewModel) {
     if (!pmEntry) {
       return;
     }
@@ -218,7 +218,7 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
     }
   }
 
-  updateProjectCheck($event: MatSelectChange, row: ManagementEntry, project: ProjectManagementEntryExtension) {
+  updateProjectCheck($event: MatSelectChange, row: ManagementEntry, project: ProjectManagementEntryViewModel) {
     const newState: State = $event.value;
     this.stepEntryService
       .updateEmployeeStateForProject(row.employee, project.projectName, this.getFormattedDate(), newState)
