@@ -28,6 +28,7 @@ export class CommentService {
   }
 
   setStatusDone(comment: Comment): Observable<number> {
+    this.deleteViewModelProps(comment);
     return this.httpClient.put<number>(this.config.getBackendUrlWithContext('/comments/setdone'), comment);
   }
 
@@ -50,6 +51,7 @@ export class CommentService {
   }
 
   updateComment(comment: Comment): Observable<any> {
+    this.deleteViewModelProps(comment);
     return this.httpClient.put(
       this.config.getBackendUrlWithContext('/comments'),
       comment
@@ -58,5 +60,13 @@ export class CommentService {
 
   deleteComment(comment: Comment): Observable<any> {
     return this.httpClient.delete(this.config.getBackendUrlWithContext('/comments/' + comment.id));
+  }
+
+  /**
+   * remove props which got added for ViewModel purposes, to avoid 'unrecognised field ...' exceptions from backend and to avoid unnecessary
+   * traffic
+   */
+  private deleteViewModelProps(comment: Comment) {
+    delete comment.isEditing;
   }
 }
