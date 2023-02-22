@@ -26,7 +26,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ProjectStateSelectComponent} from '../../shared/components/project-state-select/project-state-select.component';
 import {ProjectCommentService} from '../../shared/services/project-comment/project-comment.service';
 import {SnackbarService} from '../../shared/services/snackbar/snackbar.service';
-import {forkJoin, mergeMap, Subscription, switchMap, tap, zip} from 'rxjs';
+import {finalize, forkJoin, mergeMap, Subscription, switchMap, tap, zip} from 'rxjs';
 import {ProjectManagementEntryViewModel} from '../models/ProjectManagementEntryViewModel';
 import * as ProjectManagementComparator from '../ts/project-management-comparator';
 
@@ -198,12 +198,16 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
 
     for (const [projectName, selectionModel] of this.pmSelectionModels.entries()) {
       if (selectionModel.selected.length > 0) {
-        const requests = selectionModel.selected.map(entry => {
+        const $requests = selectionModel.selected.map(entry => {
           return this.stepEntryService.updateEmployeeStateForProject(entry.employee, projectName, this.getFormattedDate(), closeState)
         });
 
         // call checkAllProjectCheckStatesDone after all requests are done, because it depends on emplyoee's states
-        forkJoin(requests).subscribe(results => {
+        forkJoin($requests)
+          .pipe(
+            finalize(() => selectionModel.clear())
+          )
+          .subscribe(results => {
           results.forEach((success, index) => {
             if(success) {
               selectionModel.selected[index].projectCheckState = closeState;
