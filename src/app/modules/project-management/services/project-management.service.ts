@@ -27,4 +27,14 @@ export class ProjectManagementService {
         params: params
       });
   }
+
+  getPojectManagementEntryByProjectName(year: number, month: number, projectName: string) {
+    const params: HttpParams = new HttpParams().append('projectName', projectName);
+
+    return this.httpClient.get<ProjectManagementEntry>(
+      this.configService.getBackendUrlWithContext('/management/projectManagementEntryByProjectName/' + year + '/' + month),
+      {
+        params: params
+      });
+  }
 }

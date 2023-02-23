@@ -29,6 +29,7 @@ import {SnackbarService} from '../../shared/services/snackbar/snackbar.service';
 import {finalize, forkJoin, mergeMap, Subscription, switchMap, tap, zip} from 'rxjs';
 import {ProjectManagementEntryViewModel} from '../models/ProjectManagementEntryViewModel';
 import * as ProjectManagementComparator from '../ts/project-management-comparator';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 const moment = _moment;
 
@@ -58,7 +59,7 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
   showCommentEditor = false;
   forProjectName: string;
   tooltipShowDelay = 500;
-  tooltipPosition = 'above';
+  tooltipPosition: TooltipPosition = 'above';
   maxMonthDate = 1;
   dateSelectionSub: Subscription;
 
@@ -167,14 +168,18 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
         dialogRef.componentInstance.currentMonthYear = this.getFormattedDate();
 
         dialogRef.disableClose = true;
-        dialogRef.componentInstance.commentHasChanged.pipe(
-          tap(() => {
-            this.pmEntries = null;
-          }),
-          mergeMap(() => {
-            return this.getPmEntries();
-          })
-        ).subscribe(this.processPmEntries());
+
+        // dialogRef.componentInstance.commentHasChanged.pipe(
+        //   tap(() => {
+        //     this.pmEntries = null;
+        //   }),
+        //   mergeMap(() => {
+        //     return this.getPmEntries();
+        //   })
+        // ).subscribe(this.processPmEntries());
+
+        dialogRef.componentInstance.commentHasChanged
+          .subscribe(() => this.reloadPmEntry(project));
       });
   }
 
@@ -346,6 +351,20 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
 
   private getPmEntries() {
     return this.pmService.getEntries(this.selectedYear, this.selectedMonth, false);
+  }
+
+  private reloadPmEntry(projectName: string) {
+    return this.pmService.getPojectManagementEntryByProjectName(this.selectedYear, this.selectedMonth, projectName)
+      .subscribe(reloadedPmEntry => {
+        let newPmEntries = [...this.pmEntries];
+        const indexToUpdate = newPmEntries.findIndex(entry => entry.projectName === projectName);
+        if(indexToUpdate !== -1) {
+          newPmEntries[indexToUpdate] = reloadedPmEntry;
+
+          // ref change -> angular detects change
+          this.pmEntries = newPmEntries;
+        }
+      });
   }
 
   private findEntriesForProject(projectName: string) {
