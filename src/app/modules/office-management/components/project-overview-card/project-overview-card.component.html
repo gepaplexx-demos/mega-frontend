@@ -20,7 +20,10 @@
             <mat-header-cell *matHeaderCellDef>{{'project-management.projectName' | translate}}</mat-header-cell>
             <mat-cell *matCellDef="let pmEntry" class="font-weight-bold">
               <span class="mobile-label">{{'project-management.projectName' | translate}}</span>
-              <strong>{{pmEntry.projectName}}</strong>
+              <a [href]="projectManagementUrl + pmEntry.zepId"
+                 target="_blank">
+                <strong>{{pmEntry.projectName}}</strong>
+              </a>
             </mat-cell>
           </ng-container>
 

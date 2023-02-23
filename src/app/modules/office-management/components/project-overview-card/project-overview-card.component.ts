@@ -36,6 +36,7 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
   displayedColumns = ['name', 'controlEmployeesState', 'controlProjectState', 'controlBillingState', 'comment'];
 
   officeManagementUrl: string;
+  projectManagementUrl: string;
   pmEntries: Array<ProjectManagementEntry>;
   configuration = configuration;
   environment = environment;
@@ -53,6 +54,7 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.configService.getConfig().subscribe((config: Config) => {
       this.officeManagementUrl = config.zepOrigin + '/' + configuration.OFFICE_MANAGEMENT_SEGMENT;
+      this.projectManagementUrl = config.zepOrigin + '/' + configuration.PROJECT_MANAGEMENT_SEGMENT;
     });
 
     this.dateSelectionSub = zip(this.omService.selectedYear, this.omService.selectedMonth)
