@@ -23,6 +23,6 @@ export class StateSelectComponent implements AfterViewChecked {
 
   onSelectionChange(selectChange: MatSelectChange): void {
     this.selectionChange.emit(selectChange);
-    this.value = State.DONE;
+    this.value = selectChange.value;
   }
 }

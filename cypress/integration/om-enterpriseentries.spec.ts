@@ -76,7 +76,7 @@ describe('Office Management (Unternehmen)', () => {
 
     assertSelect('zep-times-released', 'Fertig')
       .get('.mat-select')
-      .should('have.class', 'mat-select-disabled');
+      .should('not.have.class', 'mat-select-disabled');
   });
 
   it('should display chargeability of external employees in progress when state "in progress" gets selected', () => {

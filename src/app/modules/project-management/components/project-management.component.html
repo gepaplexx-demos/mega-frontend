@@ -110,7 +110,7 @@
               </div>
             </div>
             <mat-panel-description>
-            <span [ngClass]="areAllProjectCheckStatesDone(pmEntry.projectName) ? 'green' : 'red'">
+            <span [ngClass]="pmEntry.allProjectCheckStatesDone ? 'green' : 'red'">
               {{'project-management.employeeDone' | translate}}
             </span>
             </mat-panel-description>
@@ -154,7 +154,7 @@
                 <mat-cell *matCellDef="let row" class="text-center">
                   <span class="mobile-label">{{'project-management.table.projectCheckState' | translate}}</span>
                   <app-state-select data-cy="project-state"
-                                    (selectionChange)="closeProjectCheck(pmEntry.projectName, row)"
+                                    (selectionChange)="updateProjectCheck($event, row, pmEntry)"
                                     [value]="row.projectCheckState"></app-state-select>
                 </mat-cell>
                 <mat-footer-cell *matFooterCellDef></mat-footer-cell>

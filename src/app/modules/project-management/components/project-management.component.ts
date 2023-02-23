@@ -26,7 +26,9 @@ import {TranslateService} from '@ngx-translate/core';
 import {ProjectStateSelectComponent} from '../../shared/components/project-state-select/project-state-select.component';
 import {ProjectCommentService} from '../../shared/services/project-comment/project-comment.service';
 import {SnackbarService} from '../../shared/services/snackbar/snackbar.service';
-import {mergeMap, Subscription, switchMap, tap, zip} from 'rxjs';
+import {finalize, forkJoin, mergeMap, Subscription, switchMap, tap, zip} from 'rxjs';
+import {ProjectManagementEntryViewModel} from '../models/ProjectManagementEntryViewModel';
+import * as ProjectManagementComparator from '../ts/project-management-comparator';
 
 const moment = _moment;
 
@@ -37,7 +39,7 @@ const moment = _moment;
 })
 export class ProjectManagementComponent implements OnInit, OnDestroy {
 
-  pmEntries: Array<ProjectManagementEntry>;
+  pmEntries: Array<ProjectManagementEntryViewModel>;
   displayedColumns = [
     'select',
     'employeeName',
@@ -57,7 +59,7 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
   forProjectName: string;
   tooltipShowDelay = 500;
   tooltipPosition = 'above';
-  maxMonthDate: number = 1;
+  maxMonthDate = 1;
   dateSelectionSub: Subscription;
 
   constructor(private dialog: MatDialog,
@@ -91,7 +93,7 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
           this.selectedMonth = value[1];
         }),
         tap(() => {
-          this.pmEntries = null
+          this.pmEntries = null;
         }),
         switchMap(() => this.getPmEntries())
       ).subscribe(this.processPmEntries());
@@ -108,7 +110,6 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
     return pmEntries => {
       this.pmEntries = pmEntries;
       this.pmSelectionModels = new Map<string, SelectionModel<ManagementEntry>>();
-      this.pmEntries.sort((a, b) => a.projectName.localeCompare(b.projectName));
       this.pmEntries.forEach(pmEntry => {
           this.pmSelectionModels.set(pmEntry.projectName, new SelectionModel<ManagementEntry>(true, []));
 
@@ -119,12 +120,18 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
 
           pmEntry.entries = notAllDone.concat(allDone);
 
+          // call this method AFTER pmEntry.entries modifcations are done
+          this.checkAllProjectCheckStatesDone(pmEntry);
+
           this.projectCommentService.get(this.getFormattedDate(), pmEntry.projectName)
             .subscribe(projectComment => {
               pmEntry.projectComment = projectComment;
             });
         }
       );
+
+      // reason for reverse: see comparePmEntriesFn doc
+      this.pmEntries.sort(ProjectManagementComparator.comparePmEntriesFn).reverse();
     };
   }
 
@@ -178,29 +185,55 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
     }
   }
 
-  areAllProjectCheckStatesDone(projectName: string): boolean {
-    return this.findEntriesForProject(projectName).every(entry => entry.projectCheckState === State.DONE);
+  checkAllProjectCheckStatesDone(pmEntry: ProjectManagementEntryViewModel) {
+    if (!pmEntry) {
+      return;
+    }
+
+    pmEntry.allProjectCheckStatesDone = pmEntry.entries.every(entry => entry.projectCheckState === State.DONE);
   }
 
   closeProjectCheckForSelected(): void {
+    const closeState = State.DONE;
+
     for (const [projectName, selectionModel] of this.pmSelectionModels.entries()) {
       if (selectionModel.selected.length > 0) {
-        for (const entry of selectionModel.selected) {
-          this.stepEntryService
-            .closeProjectCheck(entry.employee, projectName, this.getFormattedDate())
-            .subscribe(() => entry.projectCheckState = State.DONE);
-        }
+        const $requests = selectionModel.selected.map(entry => {
+          return this.stepEntryService.updateEmployeeStateForProject(entry.employee, projectName, this.getFormattedDate(), closeState)
+        });
+
+        // call checkAllProjectCheckStatesDone after all requests are done, because it depends on emplyoee's states
+        forkJoin($requests)
+          .pipe(
+            finalize(() => selectionModel.clear())
+          )
+          .subscribe(results => {
+          results.forEach((success, index) => {
+            if(success) {
+              selectionModel.selected[index].projectCheckState = closeState;
+            }
+
+          });
+
+          this.checkAllProjectCheckStatesDone(this.pmEntries.find(entry => entry.projectName === projectName));
+        });
+
       }
     }
   }
 
-  closeProjectCheck(projectName: string, row: ManagementEntry) {
+  updateProjectCheck($event: MatSelectChange, row: ManagementEntry, project: ProjectManagementEntryViewModel) {
+    const newState: State = $event.value;
     this.stepEntryService
-      .closeProjectCheck(row.employee, projectName, this.getFormattedDate())
-      .subscribe(() => row.projectCheckState = State.DONE);
+      .updateEmployeeStateForProject(row.employee, project.projectName, this.getFormattedDate(), newState)
+      .subscribe(() => {
+        row.projectCheckState = newState;
+        this.checkAllProjectCheckStatesDone(project);
+      });
   }
 
-  getFilteredAndSortedPmEntries(pmEntry: ProjectManagementEntry, projectCheckState: State, employeeCheckState: State, internalCheckState: State): Array<ManagementEntry> {
+  getFilteredAndSortedPmEntries(pmEntry: ProjectManagementEntry, projectCheckState: State, employeeCheckState: State,
+                                internalCheckState: State): Array<ManagementEntry> {
     return pmEntry.entries
       .filter(val => val.projectCheckState === projectCheckState &&
         val.employeeCheckState === employeeCheckState && val.internalCheckState === internalCheckState)
@@ -208,7 +241,8 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
         .localeCompare(b.employee.lastname.concat(b.employee.firstname)));
   }
 
-  onChangeControlProjectState($event: MatSelectChange, pmEntry: ProjectManagementEntry, controlProjectStateSelect: ProjectStateSelectComponent): void {
+  onChangeControlProjectState($event: MatSelectChange, pmEntry: ProjectManagementEntry,
+                              controlProjectStateSelect: ProjectStateSelectComponent): void {
     const newValue = $event.value as ProjectState;
     const preset = newValue !== 'NOT_RELEVANT' ? false : pmEntry.presetControlProjectState;
 
@@ -257,7 +291,7 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
           this.snackbarService.showSnackbarWithMessage(this.translate.instant('project-management.updateStatusError'));
           pmEntry.presetControlBillingState = !$event.checked;
         }
-      })
+      });
   }
 
   isProjectStateNotRelevant(projectState: ProjectState): boolean {
@@ -278,7 +312,7 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
     // Avoid reloading of page when the return button was clicked
     if (pmEntry.projectComment) {
       if (pmEntry.projectComment.comment !== comment) {
-        let oldComment = pmEntry.projectComment.comment;
+        const oldComment = pmEntry.projectComment.comment;
         pmEntry.projectComment.comment = comment;
         this.projectCommentService.update(pmEntry.projectComment)
           .subscribe((success) => {

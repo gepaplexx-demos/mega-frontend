@@ -34,6 +34,7 @@ import {configuration} from '../../shared/constants/configuration';
 import {DatepickerMonthYearComponent} from '../../shared/components/datepicker-month-year/datepicker-month-year.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import {ProjectManagementEntryViewModel} from '../models/ProjectManagementEntryViewModel';
 
 const moment = _moment;
 const DATE_FORMAT: string = configuration.dateFormat;
@@ -186,15 +187,17 @@ describe('ProjectManagementComponent', () => {
     selectionModel.select(ProjectManagementMock.projectManagementEntries[0].entries[0]);
     component.pmSelectionModels.set(ProjectManagementMock.project, selectionModel);
 
-    const areAllProjectCheckStatesDone = component.areAllProjectCheckStatesDone(ProjectManagementMock.project);
+    const projectToCheck = component.pmEntries.find(entry => entry.projectName === ProjectManagementMock.project);
+    component.checkAllProjectCheckStatesDone(projectToCheck);
 
-    expect(areAllProjectCheckStatesDone).toBeTrue();
+    expect(projectToCheck.allProjectCheckStatesDone).toBeTrue();
   });
 
-  it('#closeProjectCheckForSelected - should call stepEntryService.closeProjectCheck and set all entry.projectCheckState done', fakeAsync(() => {
+  it('#closeProjectCheckForSelected - should call stepEntryService.updateProjectCheck and set all entry.projectCheckState done', fakeAsync(() => {
     fixture.detectChanges();
 
-    spyOn(stepentryService, 'closeProjectCheck').and.returnValue(of(true));
+    spyOn(stepentryService, 'updateEmployeeStateForProject').and.returnValue(of(true));
+    const checkAllProjectCheckStatesDoneSpy = spyOn(component, 'checkAllProjectCheckStatesDone');
 
     component.pmEntries = ProjectManagementMock.projectManagementEntries;
 
@@ -206,23 +209,28 @@ describe('ProjectManagementComponent', () => {
     component.closeProjectCheckForSelected();
     flush();
 
-    expect(stepentryService.closeProjectCheck).toHaveBeenCalled();
+    expect(stepentryService.updateEmployeeStateForProject).toHaveBeenCalled();
     selectionModel.selected.forEach(entry => {
       expect(entry.projectCheckState).toEqual(State.DONE);
     });
+
+    expect(checkAllProjectCheckStatesDoneSpy).toHaveBeenCalledOnceWith(ProjectManagementMock.projectManagementEntries[0]);
   }));
 
-  it('#closeProjectCheck - should call stepEntryService.closeProjectCheck and set all entry.projectCheckState done', fakeAsync(() => {
+  it('#updateProjectCheck - should call stepEntryService.closeProjectCheck and set all entry.projectCheckState done', fakeAsync(() => {
     fixture.detectChanges();
 
-    spyOn(stepentryService, 'closeProjectCheck').and.returnValue(of(true));
+    spyOn(stepentryService, 'updateEmployeeStateForProject').and.returnValue(of(true));
+    const checkAllProjectCheckStatesDoneSpy = spyOn(component, 'checkAllProjectCheckStatesDone');
 
     const managementEntry: ManagementEntry = ProjectManagementMock.projectManagementEntries[0].entries[0];
 
-    component.closeProjectCheck(ProjectManagementMock.project, managementEntry);
+    component.updateProjectCheck({value: State.DONE, source: undefined}, managementEntry, ProjectManagementMock.projectManagementEntries[0]);
     flush();
 
-    expect(stepentryService.closeProjectCheck).toHaveBeenCalled();
+    expect(stepentryService.updateEmployeeStateForProject).toHaveBeenCalled();
+    expect(checkAllProjectCheckStatesDoneSpy).toHaveBeenCalled();
+
     expect(managementEntry.projectCheckState).toEqual(State.DONE);
   }));
 
@@ -538,7 +546,7 @@ describe('ProjectManagementComponent', () => {
       }
     ];
 
-    static projectManagementEntries: Array<ProjectManagementEntry> = [
+    static projectManagementEntries: Array<ProjectManagementEntryViewModel> = [
       {
         entries: ProjectManagementMock.managementEntries,
         controlProjectState: ProjectState.DONE,

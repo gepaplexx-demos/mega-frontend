@@ -6,6 +6,7 @@ import {ConfigService} from '../config/config.service';
 import {Employee} from '../../models/Employee';
 import {Step} from '../../models/Step';
 import {HttpResponse} from '@angular/common/http';
+import {State} from '../../models/State';
 
 describe('StepentriesService', () => {
 
@@ -38,25 +39,25 @@ describe('StepentriesService', () => {
     testRequest.event(new HttpResponse<boolean>({body: true}));
   });
 
-  it('#closeOfficeCheck - should return true', (done) => {
-    stepentriesService.closeOfficeCheck(StepentriesMock.employee, Step.ACCEPT_TIMES, StepentriesMock.monthYear)
+  it('#updateEmployeeStateForOffice - should return true', (done) => {
+    stepentriesService.updateEmployeeStateForOffice(StepentriesMock.employee, Step.ACCEPT_TIMES, StepentriesMock.monthYear, State.DONE)
       .subscribe(success => {
         expect(success).toEqual(true);
         done();
       });
 
-    const testRequest = httpTestingController.expectOne(configService.getBackendUrlWithContext('/stepentry/closeforoffice'));
+    const testRequest = httpTestingController.expectOne(configService.getBackendUrlWithContext('/stepentry/updateEmployeeStateForOffice'));
     testRequest.event(new HttpResponse<boolean>({body: true}));
   });
 
-  it('#closeProjectCheck - should return true', (done) => {
-    stepentriesService.closeProjectCheck(StepentriesMock.employee, StepentriesMock.projectName, StepentriesMock.monthYear)
+  it('#updateEmployeeStateForProject - should return true', (done) => {
+    stepentriesService.updateEmployeeStateForProject(StepentriesMock.employee, StepentriesMock.projectName, StepentriesMock.monthYear, State.DONE)
       .subscribe(success => {
         expect(success).toEqual(true);
         done();
       });
 
-    const testRequest = httpTestingController.expectOne(configService.getBackendUrlWithContext('/stepentry/closeforproject'));
+    const testRequest = httpTestingController.expectOne(configService.getBackendUrlWithContext('/stepentry/updateEmployeeStateForProject'));
     testRequest.event(new HttpResponse<boolean>({body: true}));
   });
 

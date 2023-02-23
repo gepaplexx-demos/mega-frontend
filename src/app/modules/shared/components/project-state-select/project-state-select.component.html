@@ -3,8 +3,7 @@
             [(value)]="value"
             [class.select-green]="select.value === ProjectState.DONE || select.value === ProjectState.NOT_RELEVANT"
             [class.select-red]="select.value === ProjectState.OPEN"
-            [class.select-yellow]="select.value === ProjectState.WORK_IN_PROGRESS"
-            [disabled]="isDoneSelected">
+            [class.select-yellow]="select.value === ProjectState.WORK_IN_PROGRESS">
   <mat-option [disabled]="isInProgressSelected"
               [value]="ProjectState.OPEN"
               data-cy="option-open">{{'STATE.OPEN' | translate}}</mat-option>
