@@ -63,7 +63,7 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
         this.pmEntries = null;
       }), switchMap(() => this.getPmEntries())).subscribe(pmEntries => {
         console.warn(pmEntries);
-        this.pmEntries = pmEntries;
+        this.pmEntries = this.sortPmEntries(pmEntries);
         this.pmEntries.forEach(pmEntry => {
           this.projectCommentService.get(this.getFormattedDate(), pmEntry.projectName)
             .subscribe(projectComment => {
@@ -136,5 +136,13 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
 
   private getPmEntries() {
     return this.pmService.getEntries(this.selectedYear, this.selectedMonth, true);
+  }
+
+  private sortPmEntries(pmEntries: Array<ProjectManagementEntry>) {
+    if(!pmEntries) {
+      return pmEntries;
+    }
+
+    return pmEntries.sort((a, b) => a.projectName.localeCompare(b.projectName));
   }
 }
