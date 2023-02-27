@@ -1,0 +1,45 @@
+<mat-card data-cy="project-card" class="mat-elevation-z6" style="margin-top: 10px" *ngIf="isLoading || projectsWithoutLeads?.length > 0">
+  <mat-card-header>
+    <mat-card-title class="projects-without-leads__card-title">
+      <app-state-indicator size="small"></app-state-indicator>{{'office-management.projectsWithoutLeads' | translate}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxFlexAlign="center" fxFlexFill fxLayout="column" fxLayoutGap="10px">
+    <ng-container *ngIf="isLoading; else datatable">
+      <ngx-skeleton-loader [theme]="{ height: '56px' }"
+                           appearance="line"></ngx-skeleton-loader>
+      <ngx-skeleton-loader [theme]="{ height: '75px' }"
+                           appearance="line"></ngx-skeleton-loader>
+    </ng-container>
+
+    <ng-template #datatable>
+      <div class="mat-elevation-z10 table-container">
+        <mat-table [dataSource]="projectsWithoutLeads"
+                   style="width: 100%;"
+                   data-cy="project-table">
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>{{'project-management.projectName' | translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let project" class="font-weight-bold">
+              <span class="mobile-label">{{'project-management.projectName' | translate}}</span>
+              <strong>{{project.projectName}}</strong>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="comment">
+            <mat-header-cell *matHeaderCellDef class="text-center">
+              {{'comments-for-employee.table.comment' | translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let project">
+              <span class="mobile-label">{{'comments-for-employee.table.comment' | translate}}</span>
+              <p class="action-label"
+                 style="max-width: 850px">{{ project.comment }}</p>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"
+                   style="min-height: 75px; height: fit-content;"></mat-row>
+        </mat-table>
+      </div>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

@@ -94,6 +94,7 @@
   "office-management": {
     "enterprise": "Unternehmen",
     "projects": "Projekte",
+    "projectsWithoutLeads": "Projekte ohne Projektleiter",
     "filterPlaceholder": "Suche nach Name",
     "selectedCount": "Person(en) ausgewählt",
     "releaseBtnText": "Freigeben",

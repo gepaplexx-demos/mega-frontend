@@ -11,9 +11,10 @@ import {ProjectOverviewCardComponent} from './components/project-overview-card/p
 import {EnterpriseCardComponent} from './components/enterprise-card/enterprise-card.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import { ProjectsWithoutLeadsCardComponent } from './components/projects-without-leads-card/projects-without-leads-card.component';
 
 @NgModule({
-  declarations: [EmployeeCardComponent, OfficeManagementComponent, ProjectOverviewCardComponent, EnterpriseCardComponent],
+  declarations: [EmployeeCardComponent, OfficeManagementComponent, ProjectOverviewCardComponent, EnterpriseCardComponent, ProjectsWithoutLeadsCardComponent],
   exports: [
     EmployeeCardComponent // TODO: check if export of the container (office-management) or only of the card component is necessary
   ],

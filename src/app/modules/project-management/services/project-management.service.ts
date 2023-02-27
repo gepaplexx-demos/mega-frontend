@@ -4,6 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {ProjectManagementEntry} from '../models/ProjectManagementEntry';
 import * as _moment from 'moment';
+import {CustomerProjectWithoutLeads} from '../../shared/models/CustomerProjectWithoutLeads';
 
 const moment = _moment;
 
@@ -26,5 +27,11 @@ export class ProjectManagementService {
       {
         params: params
       });
+  }
+
+  getProjectsWithoutLeads() {
+    return this.httpClient.get<CustomerProjectWithoutLeads[]>(
+      this.configService.getBackendUrlWithContext('/management/projectsWithoutLeads')
+    );
   }
 }
