@@ -1,20 +1,24 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, LOCALE_ID, OnDestroy, OnInit, Output} from '@angular/core';
 import {MonthlyReport} from '../../models/MonthlyReport';
 import {CommentService} from '../../../shared/services/comment/comment.service';
 import {State} from '../../../shared/models/State';
 import {MatSelectionListChange} from '@angular/material/list';
-import {ErrorHandlerService} from '../../../shared/services/error/error-handler.service';
 import {StepentriesService} from '../../../shared/services/stepentries/stepentries.service';
 import {Step} from '../../../shared/models/Step';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {PmProgressComponent} from '../../../shared/components/pm-progress/pm-progress.component';
+import {MonthlyReportService} from '../../services/monthly-report.service';
+import * as moment from 'moment';
+import {convertMomentToString, toMonthYearString} from '../../../shared/utils/dateUtils';
+import {Subscription, zip} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-employee-check',
   templateUrl: './employee-check.component.html',
   styleUrls: ['./employee-check.component.scss']
 })
-export class EmployeeCheckComponent {
+export class EmployeeCheckComponent implements OnInit, OnDestroy {
 
   State = State;
 
@@ -23,12 +27,28 @@ export class EmployeeCheckComponent {
 
   employeeProgressRef: MatBottomSheetRef;
   overlaysButton: boolean;
+  public selectedDateStr;
+  private dateSelectionSub: Subscription;
 
   constructor(
     public commentService: CommentService,
-    public errorHandlerService: ErrorHandlerService,
+    private monthlyReportService: MonthlyReportService,
     public stepentriesService: StepentriesService,
-    private bottomSheet: MatBottomSheet) {
+    private bottomSheet: MatBottomSheet,
+    @Inject(LOCALE_ID) private locale: string) {
+  }
+
+  ngOnInit(): void {
+    this.dateSelectionSub = zip(this.monthlyReportService.selectedYear, this.monthlyReportService.selectedMonth)
+      .pipe(
+        tap(value => {
+          this.selectedDateStr = toMonthYearString(value[0], value[1], this.locale);
+        })
+      ).subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.dateSelectionSub.unsubscribe();
   }
 
   selectionChange(change: MatSelectionListChange): void {
@@ -46,8 +66,14 @@ export class EmployeeCheckComponent {
   }
 
   setOpenAndUnassignedStepEntriesDone(): void {
+    const closeDate = moment()
+      .year(this.monthlyReportService.selectedYear.value)
+      .month(this.monthlyReportService.selectedMonth.value)
+      .date(1)
+      .startOf('day');
+
     this.stepentriesService
-      .close(this.monthlyReport.employee, Step.CONTROL_TIMES, this.monthlyReport.employee.releaseDate)
+      .close(this.monthlyReport.employee, Step.CONTROL_TIMES, convertMomentToString(closeDate))
       .subscribe(() => {
         this.emitRefreshMonthlyReport();
       });

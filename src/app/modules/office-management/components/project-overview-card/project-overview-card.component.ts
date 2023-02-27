@@ -17,6 +17,7 @@ import {tap} from 'rxjs/operators';
 import {ProjectState} from '../../../shared/models/ProjectState';
 import {ProjectCommentService} from '../../../shared/services/project-comment/project-comment.service';
 import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
+import {convertMomentToString} from '../../../shared/utils/dateUtils';
 
 const moment = _moment;
 

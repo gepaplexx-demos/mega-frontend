@@ -1,8 +1,11 @@
-import {Component, Inject, Input, LOCALE_ID, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Inject, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {MonthlyReport} from '../../models/MonthlyReport';
 import {MonthlyReportService} from '../../services/monthly-report.service';
 import * as _moment from 'moment';
 import {GeneralInfoData} from '../../models/GeneralInfoData';
+import {Subscription, zip} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {toMonthYearString} from '../../../shared/utils/dateUtils';
 
 const moment = _moment;
 
@@ -11,19 +14,34 @@ const moment = _moment;
   templateUrl: './general-info.component.html',
   styleUrls: ['./general-info.component.scss']
 })
-export class GeneralInfoComponent implements OnChanges {
+export class GeneralInfoComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() monthlyReport: MonthlyReport;
 
   displayedColumns = ['description', 'value', 'unit'];
+  public selectedDateStr;
+  private dateSelectionSub: Subscription;
 
   constructor(public monthlyReportService: MonthlyReportService, @Inject(LOCALE_ID) private locale: string) {
+  }
+
+  ngOnInit() {
+    this.dateSelectionSub = zip(this.monthlyReportService.selectedYear, this.monthlyReportService.selectedMonth)
+      .pipe(
+        tap(value => {
+          this.selectedDateStr = toMonthYearString(value[0], value[1], this.locale);
+        })
+      ).subscribe();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.monthlyReport) {
       this.calculateDynamicValue();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.dateSelectionSub.unsubscribe();
   }
 
   calculateBillingPercentage(totalWorkingTime: string, billableTime: string): number {
@@ -44,10 +62,6 @@ export class GeneralInfoComponent implements OnChanges {
     }
 
     return (this.monthlyReportService.billableTimeHours / this.monthlyReportService.totalWorkingTimeHours) * 100;
-  }
-
-  month(yearmonth: number): string {
-    return moment().locale(this.locale).month(yearmonth).format('MMMM');
   }
 
   calculateDynamicValue() {
