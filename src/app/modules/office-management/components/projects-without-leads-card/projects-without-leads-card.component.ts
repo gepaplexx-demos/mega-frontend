@@ -13,14 +13,13 @@ export class ProjectsWithoutLeadsCardComponent implements OnInit {
   constructor(private pmService: ProjectManagementService) { }
 
   public projectsWithoutLeads: CustomerProjectWithoutLeads[];
-  public isLoading = false;
+  public loaded = false;
   public displayedColumns = ['name', 'comment'];
 
   ngOnInit(): void {
     this.pmService.getProjectsWithoutLeads()
       .pipe(
-        tap(() => this.isLoading = true),
-        finalize(() => this.isLoading = false)
+        finalize(() => this.loaded = true)
       )
       .subscribe(projects => this.projectsWithoutLeads = projects);
   }

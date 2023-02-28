@@ -1,4 +1,4 @@
-<mat-card class="mat-elevation-z6 mt-10" *ngIf="isLoading || projectsWithoutLeads?.length > 0">
+<mat-card class="mat-elevation-z6 mt-10" *ngIf="!loaded || projectsWithoutLeads?.length > 0">
   <mat-card-header>
     <mat-card-title class="projects-without-leads__card-title"
                     matTooltipPosition="above"
@@ -11,8 +11,8 @@
 
     </mat-card-title>
   </mat-card-header>
-  <mat-card-content fxFlexAlign="center" fxFlexFill fxLayout="column" fxLayoutGap="10px">
-    <ng-container *ngIf="isLoading; else datatable">
+  <mat-card-content class="projects-without-leads__mat-card-content">
+    <ng-container *ngIf="!loaded; else datatable">
       <ngx-skeleton-loader [theme]="{ height: '56px' }"
                            appearance="line"></ngx-skeleton-loader>
       <ngx-skeleton-loader [theme]="{ height: '75px' }"
