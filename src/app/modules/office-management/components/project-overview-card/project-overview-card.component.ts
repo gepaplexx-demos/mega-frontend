@@ -9,8 +9,6 @@ import {NotificationService} from '../../../shared/services/notification/notific
 import {TranslateService} from '@ngx-translate/core';
 import {CommentService} from '../../../shared/services/comment/comment.service';
 import {StepentriesService} from '../../../shared/services/stepentries/stepentries.service';
-import {ConfigService} from '../../../shared/services/config/config.service';
-import {Config} from '../../../shared/models/Config';
 import {State} from '../../../shared/models/State';
 import {ProjectManagementEntry} from '../../../project-management/models/ProjectManagementEntry';
 import {ProjectManagementService} from '../../../project-management/services/project-management.service';
@@ -31,12 +29,8 @@ const moment = _moment;
 export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
   State = State;
 
-  employeeProgressRef: MatBottomSheetRef;
-
   displayedColumns = ['name', 'controlEmployeesState', 'controlProjectState', 'controlBillingState', 'comment'];
 
-  officeManagementUrl: string;
-  projectManagementUrl: string;
   pmEntries: Array<ProjectManagementEntry>;
   configuration = configuration;
   environment = environment;
@@ -48,15 +42,13 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
   tooltipShowDelay = 500;
   tooltipPosition = 'above';
 
-  constructor(private dialog: MatDialog, private omService: OfficeManagementService, private pmService: ProjectManagementService, private notificationService: NotificationService, private translate: TranslateService, private commentService: CommentService, private stepEntryService: StepentriesService, private _bottomSheet: MatBottomSheet, private configService: ConfigService, private projectCommentService: ProjectCommentService, private snackbarService: SnackbarService) {
+  constructor(private dialog: MatDialog, private omService: OfficeManagementService, private pmService: ProjectManagementService,
+              private notificationService: NotificationService, private translate: TranslateService, private commentService: CommentService,
+              private stepEntryService: StepentriesService, private _bottomSheet: MatBottomSheet, private projectCommentService: ProjectCommentService,
+              private snackbarService: SnackbarService) {
   }
 
   ngOnInit(): void {
-    this.configService.getConfig().subscribe((config: Config) => {
-      this.officeManagementUrl = config.zepOrigin + '/' + configuration.OFFICE_MANAGEMENT_SEGMENT;
-      this.projectManagementUrl = config.zepOrigin + '/' + configuration.PROJECT_MANAGEMENT_SEGMENT;
-    });
-
     this.dateSelectionSub = zip(this.omService.selectedYear, this.omService.selectedMonth)
       .pipe(tap(value => {
         this.selectedYear = value[0];

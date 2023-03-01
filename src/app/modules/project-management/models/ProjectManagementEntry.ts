@@ -4,7 +4,7 @@ import {ProjectComment} from '../../shared/models/ProjectComment';
 
 
 export class ProjectManagementEntry {
-  zepId: number;
+  zepId?: number;
   projectName: string;
   entries: Array<ManagementEntry>;
   controlProjectState: ProjectState;

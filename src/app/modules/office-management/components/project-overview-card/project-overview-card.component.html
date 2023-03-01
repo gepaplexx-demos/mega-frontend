@@ -20,20 +20,7 @@
             <mat-header-cell *matHeaderCellDef>{{'project-management.projectName' | translate}}</mat-header-cell>
             <mat-cell *matCellDef="let pmEntry" class="font-weight-bold">
               <span class="mobile-label">{{'project-management.projectName' | translate}}</span>
-
-              <ng-template #noZepId>
-                <strong
-                  [matTooltipPosition]="tooltipPosition"
-                  [matTooltipShowDelay]="tooltipShowDelay"
-                  matTooltip="{{'project-management.tooltips.noZepid' | translate}}"
-                  matTooltipClass="pm-tooltip"
-                >
-                  {{pmEntry.projectName}}</strong>
-              </ng-template>
-
-              <a *ngIf="pmEntry.zepId else noZepId" [href]="projectManagementUrl + pmEntry.zepId" target="_blank">
-                <strong>{{pmEntry.projectName}}</strong>
-              </a>
+              <app-projekt-name-with-zep-link [projectName]="pmEntry.projectName" [zepId]="pmEntry.zepId"></app-projekt-name-with-zep-link>
             </mat-cell>
           </ng-container>
 
