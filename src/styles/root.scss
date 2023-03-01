@@ -127,3 +127,12 @@ app-project-overview-card, app-project-management {
     background-color: transparentize($gepardec-yellow, 0.5);
   }
 }
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.office_management__table-row {
+  min-height: 75px;
+  height: fit-content;
+}

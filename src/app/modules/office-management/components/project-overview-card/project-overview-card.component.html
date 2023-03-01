@@ -1,4 +1,4 @@
-<mat-card data-cy="project-card" class="mat-elevation-z6" style="margin-top: 10px">
+<mat-card data-cy="project-card" class="mat-elevation-z6 mt-10">
   <mat-card-header>
     <mat-card-title>{{'office-management.projects' | translate}}</mat-card-title>
   </mat-card-header>
@@ -95,8 +95,7 @@
           </ng-container>
 
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"
-                   style="min-height: 75px; height: fit-content;"></mat-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" class="office_management__table-row"></mat-row>
         </mat-table>
       </div>
     </ng-template>

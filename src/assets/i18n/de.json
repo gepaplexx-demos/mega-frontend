@@ -94,6 +94,7 @@
   "office-management": {
     "enterprise": "Unternehmen",
     "projects": "Projekte",
+    "projectsWithoutLeads": "Projekte ohne Projektleiter",
     "filterPlaceholder": "Suche nach Name",
     "selectedCount": "Person(en) ausgewählt",
     "releaseBtnText": "Freigeben",
@@ -117,6 +118,9 @@
         "chargeabilityExternalEmployeesRecorded": "Bis zum 6. Arbeitstag:\nChargeability-Sheet mit monatsaktuellen Daten befüllen und Stunden der externen Mitarbeiter in Planrechnungen eintragen",
         "payrollAccountingSent": "Bis zum 15. Arbeitstag:\nÜbermittlung von Fehlzeiten (Urlaub, ZA, Krankenstand, ...), HO-Tagen und Spesen an die Lohnverrechnung."
       }
+    },
+    "tooltips": {
+      "projectsWithoutLeads": "Bitte beachten: Wird dem Projekt in ZEP ein Projektleiter zugeordnet, so wirkt sich das erst im nächsten Monat auf MEGA aus."
     }
   },
   "project-management": {
