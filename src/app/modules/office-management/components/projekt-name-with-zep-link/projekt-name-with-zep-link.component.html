@@ -2,10 +2,12 @@
   <strong
     matTooltipPosition="above"
     [matTooltipShowDelay]="500"
-    matTooltip="{{'project-management.tooltips.noZepid' | translate}}"
+    matTooltip="{{'project-management.tooltips.noZepId' | translate}}"
     matTooltipClass="pm-tooltip"
   >
-    {{projectName}}</strong>
+    {{projectName}}
+  </strong>
+
 </ng-template>
 
 <a *ngIf="zepId else noZepId" [href]="projectManagementUrl + zepId" target="_blank">

@@ -147,7 +147,7 @@
     "tooltips": {
       "projectTimeState": "Controllingarbeiten im Projekt (Ist-Datenerfassung, Projektüberwachung und -steuerung, Übermittlung/Abstimmung mit dem Kunden, ...)",
       "billingState": "Rechnung und ggf. Zeitnachweis dem Kunden übermitteln",
-      "noZepid": "Für dieses Projekt ist keine Zep-Id in der Datenbank gespeichert, daher ist kein Schnelleinstieg möglich. Bitte Projekte neu synchronisieren."
+      "noZepId": "Für dieses Projekt ist keine ZEP-ID in der Datenbank gespeichert, daher ist aktuell kein Schnelleinstieg möglich. Bitte in 30 Minuten erneut versuchen."
     }
   },
   "comments-for-employee": {
