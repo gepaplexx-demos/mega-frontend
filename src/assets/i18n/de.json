@@ -146,7 +146,8 @@
     "projectCommentNotUpdated": "Anmerkung wurde nicht gespeichert",
     "tooltips": {
       "projectTimeState": "Controllingarbeiten im Projekt (Ist-Datenerfassung, Projektüberwachung und -steuerung, Übermittlung/Abstimmung mit dem Kunden, ...)",
-      "billingState": "Rechnung und ggf. Zeitnachweis dem Kunden übermitteln"
+      "billingState": "Rechnung und ggf. Zeitnachweis dem Kunden übermitteln",
+      "noZepId": "Für dieses Projekt ist keine ZEP-ID in der Datenbank gespeichert, daher ist aktuell kein Schnelleinstieg möglich. Bitte in 30 Minuten erneut versuchen."
     }
   },
   "comments-for-employee": {
