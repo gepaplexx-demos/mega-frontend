@@ -5,7 +5,7 @@
                          appearance="line"></ngx-skeleton-loader>
 
     <ng-template #title>
-      {{'monthly-report.title.general-info' | translate}} {{month(monthlyReportService.selectedMonth.getValue())}} {{monthlyReportService.selectedYear.getValue()}}
+      {{'monthly-report.title.general-info' | translate}} {{selectedDateStr}}
     </ng-template>
   </mat-card-title>
 
