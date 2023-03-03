@@ -21,7 +21,7 @@ import {PmProgressComponent} from '../../../shared/components/pm-progress/pm-pro
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {ConfigService} from '../../../shared/services/config/config.service';
 import {Config} from '../../../shared/models/Config';
-import {firstValueFrom, mergeMap, Subscription, switchMap, zip} from 'rxjs';
+import {finalize, firstValueFrom, mergeMap, Subscription, switchMap, zip} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {MatSelectChange} from '@angular/material/select';
 
@@ -216,7 +216,11 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
   }
 
   private getOmEntries() {
-    return this.omService.getEntries(this.selectedYear, this.selectedMonth, true);
+    // Clear selection after reloading
+    return this.omService.getEntries(this.selectedYear, this.selectedMonth, true)
+      .pipe(
+        finalize(() => this.omSelectionModel.clear())
+      );
   }
 
   private monthDiff(d1: Date, d2: Date) {
