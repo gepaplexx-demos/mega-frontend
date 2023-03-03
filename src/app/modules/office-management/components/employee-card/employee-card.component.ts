@@ -21,7 +21,7 @@ import {PmProgressComponent} from '../../../shared/components/pm-progress/pm-pro
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {ConfigService} from '../../../shared/services/config/config.service';
 import {Config} from '../../../shared/models/Config';
-import {firstValueFrom, mergeMap, Subscription, switchMap, zip} from 'rxjs';
+import {finalize, firstValueFrom, mergeMap, Subscription, switchMap, zip} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {MatSelectChange} from '@angular/material/select';
 
@@ -87,8 +87,7 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
         }),
         switchMap(() => this.getOmEntries())
       ).subscribe(omEntries => {
-        this.omEntries = omEntries;
-        this.filteredOmEntries = this.getFilteredAndSortedOmEntries();
+        this.handleGetOmEntriesResult(omEntries);
       });
   }
 
@@ -177,9 +176,18 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
     await firstValueFrom(this.omService.updateEmployees(employees));
 
     this.filteredOmEntries = null;
-    this.getOmEntries();
+
+    this.getOmEntries().subscribe(omEntries => {
+      this.handleGetOmEntriesResult(omEntries);
+    });
+
     const successMessage = await firstValueFrom(this.translateService.get('notifications.employeesUpdatedSuccess'));
     this.notificationService.showSuccess(successMessage);
+  }
+
+  private handleGetOmEntriesResult(omEntries: Array<ManagementEntry>) {
+    this.omEntries = omEntries;
+    this.filteredOmEntries = this.getFilteredAndSortedOmEntries();
   }
 
   updateInternalCheck($event: MatSelectChange, omEntry: ManagementEntry) {
@@ -208,7 +216,11 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
   }
 
   private getOmEntries() {
-    return this.omService.getEntries(this.selectedYear, this.selectedMonth, true);
+    // Clear selection after reloading
+    return this.omService.getEntries(this.selectedYear, this.selectedMonth, true)
+      .pipe(
+        finalize(() => this.omSelectionModel.clear())
+      );
   }
 
   private monthDiff(d1: Date, d2: Date) {
