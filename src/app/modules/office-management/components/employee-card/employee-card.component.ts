@@ -87,8 +87,7 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
         }),
         switchMap(() => this.getOmEntries())
       ).subscribe(omEntries => {
-        this.omEntries = omEntries;
-        this.filteredOmEntries = this.getFilteredAndSortedOmEntries();
+        this.handleGetOmEntriesResult(omEntries);
       });
   }
 
@@ -177,9 +176,18 @@ export class EmployeeCardComponent implements OnInit, OnDestroy {
     await firstValueFrom(this.omService.updateEmployees(employees));
 
     this.filteredOmEntries = null;
-    this.getOmEntries();
+
+    this.getOmEntries().subscribe(omEntries => {
+      this.handleGetOmEntriesResult(omEntries);
+    });
+
     const successMessage = await firstValueFrom(this.translateService.get('notifications.employeesUpdatedSuccess'));
     this.notificationService.showSuccess(successMessage);
+  }
+
+  private handleGetOmEntriesResult(omEntries: Array<ManagementEntry>) {
+    this.omEntries = omEntries;
+    this.filteredOmEntries = this.getFilteredAndSortedOmEntries();
   }
 
   updateInternalCheck($event: MatSelectChange, omEntry: ManagementEntry) {
