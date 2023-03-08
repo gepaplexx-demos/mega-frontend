@@ -12,6 +12,14 @@ import * as moment from 'moment';
 import {convertMomentToString, toMonthYearString} from '../../../shared/utils/dateUtils';
 import {Subscription, zip} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import {MatDialog} from '@angular/material/dialog';
+import {
+  EmployeeCheckConfirmCommentDialogComponent
+} from '../employee-check-confirm-comment-dialog/employee-check-confirm-comment-dialog.component';
+import {
+  EmployeeCheckConfirmDialogAction,
+  EmployeeCheckConfirmDialogActionType
+} from '../employee-check-confirm-comment-dialog/ts/EmployeeCheckConfirmDialogAction';
 
 @Component({
   selector: 'app-employee-check',
@@ -35,7 +43,8 @@ export class EmployeeCheckComponent implements OnInit, OnDestroy {
     private monthlyReportService: MonthlyReportService,
     public stepentriesService: StepentriesService,
     private bottomSheet: MatBottomSheet,
-    @Inject(LOCALE_ID) private locale: string) {
+    @Inject(LOCALE_ID) private locale: string,
+    private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -66,17 +75,21 @@ export class EmployeeCheckComponent implements OnInit, OnDestroy {
   }
 
   setOpenAndUnassignedStepEntriesDone(): void {
-    const closeDate = moment()
-      .year(this.monthlyReportService.selectedYear.value)
-      .month(this.monthlyReportService.selectedMonth.value)
-      .date(1)
-      .startOf('day');
+    const closeDate = this.getSelectedDate();
 
     this.stepentriesService
       .close(this.monthlyReport.employee, Step.CONTROL_TIMES, convertMomentToString(closeDate))
       .subscribe(() => {
         this.emitRefreshMonthlyReport();
       });
+  }
+
+  private getSelectedDate() {
+    return moment()
+      .year(this.monthlyReportService.selectedYear.value)
+      .month(this.monthlyReportService.selectedMonth.value)
+      .date(1)
+      .startOf('day');
   }
 
   emitRefreshMonthlyReport(): void {
@@ -114,5 +127,41 @@ export class EmployeeCheckComponent implements OnInit, OnDestroy {
   parseBody(body: string): string {
     const urlPattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/igm;
     return body.replace(urlPattern, '<a href=\$& target="_blank"\>$&</a>');
+  }
+
+  public openStateInProgressReasonDialog() {
+    const dialogRef = this.dialog.open(EmployeeCheckConfirmCommentDialogComponent,
+      {
+        data: {
+          reason: this.monthlyReport?.employeeCheckStateReason
+        },
+        width: '100%',
+        autoFocus: false
+      }
+    );
+
+    dialogRef.afterClosed().subscribe((result: EmployeeCheckConfirmDialogAction) => {
+      if(result.type === EmployeeCheckConfirmDialogActionType.SAVE) {
+        const input = result.payload as string;
+
+        const date = this.getSelectedDate();
+
+        this.stepentriesService
+          .updateEmployeeStateForOffice(this.monthlyReport.employee, Step.CONTROL_TIMES, convertMomentToString(date), State.IN_PROGRESS, input)
+          .subscribe(() => {
+            this.emitRefreshMonthlyReport();
+          });
+      }
+    });
+  }
+
+  public resetState() {
+    const date = this.getSelectedDate();
+
+    this.stepentriesService
+      .updateEmployeeStateForOffice(this.monthlyReport.employee, Step.CONTROL_TIMES, convertMomentToString(date), State.OPEN, null)
+      .subscribe(() => {
+        this.emitRefreshMonthlyReport();
+      });
   }
 }

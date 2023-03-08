@@ -42,7 +42,11 @@
   "global": {
     "selectPayrollMonth": "Abrechnungsmonat auswählen:",
     "addComment": "Anmerkung hinzufügen",
-    "remainingChars": "Zeichen verbleibend..."
+    "remainingChars": "Zeichen verbleibend...",
+    "actions": {
+      "delete": "Löschen",
+      "edit": "Bearbeiten"
+    }
   },
   "monthly-report": {
     "ok": "Alle Eingaben sind korrekt.",
@@ -54,6 +58,9 @@
     "checkWip": "Die Kontrolle deiner Zeiten ist im Gange!",
     "noTimesCurrentMonth": "Dieses Monat ist nicht verfügbar!",
     "pleaseCheckPrompt": "Bitte überprüfe deine Eingaben (Zeiten, Reisen, Belege, ...) in ZEP und beim Kunden und bestätige diese anschließend.",
+    "inProgressDescription": "Du hast angegeben, die Zeiten noch nicht bestätigen zu können.",
+    "reason": "Grund:",
+    "setStateInProgressButtonText": "Bestätigen noch nicht möglich...",
     "confirmBtnText": "Buchungen bestätigen",
     "title": {
       "emc": "Status zum Monatsabschluss",
