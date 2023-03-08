@@ -7,11 +7,13 @@ export class UpdateEmployeeStep {
   employee: Employee;
   currentMonthYear: string;
   newState: State;
+  newStateReason: string;
 
-  constructor(stepId: number, employee: Employee, currentMonthYear: string, newState: State) {
+  constructor(stepId: number, employee: Employee, currentMonthYear: string, newState: State, newStateReason: string) {
     this.stepId = stepId;
     this.employee = employee;
     this.currentMonthYear = currentMonthYear;
     this.newState = newState;
+    this.newStateReason = newStateReason;
   }
 }
