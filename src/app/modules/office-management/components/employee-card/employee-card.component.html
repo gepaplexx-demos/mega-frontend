@@ -98,8 +98,16 @@
                              class="text-center">{{'office-management.table.employeeCheckState' | translate}}</mat-header-cell>
             <mat-cell *matCellDef="let omEntry" class="text-center">
               <span class="mobile-label">{{'office-management.table.employeeCheckState' | translate}}</span>
-              <app-state-indicator [state]="omEntry.employeeCheckState"
-                                   data-cy="employee-check"></app-state-indicator>
+
+              <div
+                matTooltipPosition="above"
+                [matTooltipShowDelay]="100"
+                [matTooltip]="omEntry.employeeCheckStateReason"
+                matTooltipClass="om-tooltip"
+                [matBadge]="(omEntry.employeeCheckState === State.IN_PROGRESS) ? 1 : null" matBadgeSize="small">
+                <app-state-indicator [state]="omEntry.employeeCheckState"
+                                     data-cy="employee-check"></app-state-indicator>
+              </div>
             </mat-cell>
           </ng-container>
 

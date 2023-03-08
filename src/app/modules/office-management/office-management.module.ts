@@ -13,22 +13,24 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import { ProjectsWithoutLeadsCardComponent } from './components/projects-without-leads-card/projects-without-leads-card.component';
 import { ProjektNameWithZepLinkComponent } from './components/projekt-name-with-zep-link/projekt-name-with-zep-link.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [EmployeeCardComponent, OfficeManagementComponent, ProjectOverviewCardComponent, EnterpriseCardComponent, ProjectsWithoutLeadsCardComponent, ProjektNameWithZepLinkComponent],
   exports: [
     EmployeeCardComponent // TODO: check if export of the container (office-management) or only of the card component is necessary
   ],
-  imports: [
-    CommonModule,
-    BrowserAnimationsModule,
-    AngularMaterialModule,
-    TranslateModule.forRoot(),
-    SharedModule,
-    FlexLayoutModule,
-    FormsModule,
-    NgxSkeletonLoaderModule
-  ]
+    imports: [
+        CommonModule,
+        BrowserAnimationsModule,
+        AngularMaterialModule,
+        TranslateModule.forRoot(),
+        SharedModule,
+        FlexLayoutModule,
+        FormsModule,
+        NgxSkeletonLoaderModule,
+        MatBadgeModule
+    ]
 })
 export class OfficeManagementModule {
 }
