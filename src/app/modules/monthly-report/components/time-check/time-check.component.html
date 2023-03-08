@@ -34,7 +34,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row class="fixed-columns" *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
     </ng-container>
   </mat-card-content>
