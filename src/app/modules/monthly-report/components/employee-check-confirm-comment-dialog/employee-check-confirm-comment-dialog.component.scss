@@ -1,0 +1,27 @@
+.dialog-content {
+  min-height: 320px;
+}
+
+.info-box {
+  font-size: 14px;
+  text-align: justify;
+}
+
+.text-area {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.input-container {
+  margin-top: 20px;
+}
+.input-container textarea {
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+}
