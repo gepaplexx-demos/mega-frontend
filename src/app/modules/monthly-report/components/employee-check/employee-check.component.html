@@ -1,6 +1,9 @@
 <mat-card class="mat-elevation-z1 fill-parent">
-  <mat-card-title>{{'monthly-report.title.emc' | translate}} {{selectedDateStr}}</mat-card-title>
-  <mat-card-content class="text-center" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card-subtitle>
+    {{selectedDateStr}}
+  </mat-card-subtitle>
+  <mat-card-title>{{'monthly-report.title.emc' | translate}}</mat-card-title>
+  <mat-card-content class="card_content">
     <ng-container *ngIf="!monthlyReport else employeeCheck">
       <ngx-skeleton-loader [theme]="{ height: '80px', width: '80px' }"
                            appearance="circle"></ngx-skeleton-loader>
