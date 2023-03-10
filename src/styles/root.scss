@@ -139,3 +139,19 @@ app-project-overview-card, app-project-management {
   min-height: 75px;
   height: fit-content;
 }
+
+.select-date-toolbar-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  /* Override Material's default height */
+  height: auto !important;
+}
+
+.select-date-toolbar-column {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 30px;
+}
