@@ -42,7 +42,7 @@
   "global": {
     "selectPayrollMonth": "Abrechnungsmonat auswählen:",
     "addComment": "Anmerkung hinzufügen",
-    "remainingChars": "Zeichen verbleibend...",
+    "remainingChars": "Zeichen verbleibend",
     "actions": {
       "delete": "Löschen",
       "edit": "Bearbeiten"
@@ -103,7 +103,7 @@
       "titleEdit": "Anmerkung bearbeiten",
       "description": "Der Status Deiner Zeitenkontrolle wird für die Zuständigen als \"In Arbeit\" mit dem angegebenen Grund sichtbar.",
       "subDescription": "Vergiss nicht, die Buchung wie gewohnt zu bestätigen, sobald alles erledigt wurde!",
-      "textareaPlaceholder": "Grund angeben...",
+      "textareaPlaceholder": "Grund angeben",
       "textareaRequiredError": "Bitte einen Grund angeben!"
     }
   },
