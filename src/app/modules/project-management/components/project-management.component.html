@@ -164,7 +164,16 @@
                 >{{'project-management.table.employeeCheckState' | translate}}</mat-header-cell>
                 <mat-cell *matCellDef="let row" class="text-center">
                   <span class="mobile-label">{{'project-management.table.employeeCheckState' | translate}}</span>
-                  <app-state-indicator data-cy="employee-check" [state]="row.employeeCheckState"></app-state-indicator>
+
+                  <div
+                    matTooltipPosition="above"
+                    [matTooltipShowDelay]="100"
+                    [matTooltip]="row.employeeCheckStateReason"
+                    matTooltipClass="om-tooltip"
+                    [matBadge]="(row.employeeCheckState === State.IN_PROGRESS) ? 1 : null" matBadgeSize="small">
+                    <app-state-indicator [state]="row.employeeCheckState" data-cy="employee-check"></app-state-indicator>
+                  </div>
+
                 </mat-cell>
                 <mat-footer-cell *matFooterCellDef></mat-footer-cell>
               </ng-container>

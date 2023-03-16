@@ -9,18 +9,20 @@ import {FormsModule} from '@angular/forms';
 import {BillableTimesComponent} from './components/billable-times/billable-times.component';
 import {BillableTimesFractionComponent} from './components/billable-times-fraction/billable-times-fraction.component';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [ProjectManagementComponent, BillableTimesComponent, BillableTimesFractionComponent],
-  imports: [
-    CommonModule,
-    AngularMaterialModule,
-    FlexLayoutModule,
-    SharedModule,
-    TranslateModule.forRoot(),
-    FormsModule,
-    NgxSkeletonLoaderModule
-  ]
+    imports: [
+        CommonModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        SharedModule,
+        TranslateModule.forRoot(),
+        FormsModule,
+        NgxSkeletonLoaderModule,
+        MatBadgeModule
+    ]
 })
 export class ProjectManagementModule {
 }
