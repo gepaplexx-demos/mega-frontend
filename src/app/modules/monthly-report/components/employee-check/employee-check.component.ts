@@ -189,7 +189,8 @@ export class EmployeeCheckComponent implements OnInit, OnChanges, OnDestroy {
           reason: this.monthlyReport?.employeeCheckStateReason
         },
         width: '100%',
-        autoFocus: false
+        autoFocus: false,
+        restoreFocus: false
       }
     );
 
