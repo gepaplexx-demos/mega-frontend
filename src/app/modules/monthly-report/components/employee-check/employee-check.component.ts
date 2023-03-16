@@ -35,10 +35,10 @@ export class EmployeeCheckComponent implements OnInit, OnChanges, OnDestroy {
 
   employeeProgressRef: MatBottomSheetRef;
   overlaysButton: boolean;
-  public selectedDateStr;
+  selectedDateStr;
   private dateSelectionSub: Subscription;
-  public employeeCheckIcon: string;
-  public employeeCheckText: string;
+  employeeCheckIcon: string;
+  employeeCheckText: string;
 
   constructor(
     public commentService: CommentService,
