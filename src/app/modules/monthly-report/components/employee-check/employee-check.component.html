@@ -16,79 +16,57 @@
     </ng-container>
 
     <ng-template #employeeCheck>
-      <!-- OPEN / IN_PROGRESS -->
-      <ng-container *ngIf="monthlyReport.employeeCheckState === State.OPEN || monthlyReport.employeeCheckState === State.IN_PROGRESS">
-        <ng-container *ngIf="monthlyReport.assigned; else noTimesThisMonth">
+      <div class="state_container">
 
-          <div class="tabContainer">
-            <div class="state-indicator_container mobile__font-size">
-              <app-state-indicator
-                (mouseenter)="openEmployeeProgress($event)" (mouseleave)="closeEmployeeProgress()"
-                class="app-state-indicator_mobile" [state]="monthlyReport.employeeCheckState" size="medium"></app-state-indicator>
+        <div class="state-indicator_container mobile__font-size">
+          <!-- Mobile - Medium Icon -->
+          <app-state-indicator
+            (mouseenter)="openEmployeeProgress($event)" (mouseleave)="closeEmployeeProgress()"
+            class="app-state-indicator_mobile" [state]="employeeCheckIcon" size="medium"></app-state-indicator>
 
-              <app-state-indicator
-                (mouseenter)="openEmployeeProgress($event)" (mouseleave)="closeEmployeeProgress()"
-                class="app-state-indicator_default" [state]="monthlyReport.employeeCheckState" size="large"></app-state-indicator>
+          <!-- Desktop - Large Icon -->
+          <app-state-indicator
+            (mouseenter)="openEmployeeProgress($event)" (mouseleave)="closeEmployeeProgress()"
+            class="app-state-indicator_default" [state]="employeeCheckIcon" size="large"></app-state-indicator>
 
-              <div class="text-center" *ngIf="monthlyReport.employeeCheckState === State.IN_PROGRESS">
-                <p>{{'monthly-report.inProgressDescription' | translate}}</p>
-              </div>
-              <div class="text-center" *ngIf="monthlyReport.employeeCheckState === State.OPEN">
-                {{'monthly-report.pleaseCheckPrompt' | translate}}
-              </div>
+          <!-- Text -->
+          <div class="employee-check-text">
+            <p>{{employeeCheckText | translate}}</p>
+          </div>
+        </div>
+
+        <div class="state-reason-container" *ngIf="monthlyReport.employeeCheckState === State.IN_PROGRESS">
+          <div class="mobile__font-size state-reason-header">
+            <strong>{{'monthly-report.reason' | translate}}</strong>
+          </div>
+
+          <div class="state-reason-text-and-actions-container">
+            <div class="mobile__font-size state-reason-text" >
+              {{monthlyReport.employeeCheckStateReason}}
             </div>
 
-            <div class="state-reason-container" *ngIf="monthlyReport.employeeCheckState === State.IN_PROGRESS">
-              <div class="mobile__font-size state-reason-header">
-                <strong>{{'monthly-report.reason' | translate}}</strong>
-              </div>
-
-              <div class="state-reason-text-and-actions-container">
-                <div class="mobile__font-size state-reason-text" >
-                  {{monthlyReport.employeeCheckStateReason}}
-                </div>
-
-                <div class="state-reason-actions">
-                  <button mat-button color="warn" (click)="resetState()">{{'global.actions.delete' | translate}}</button>
-                  <button mat-button (click)="openStateInProgressReasonDialog()">{{'global.actions.edit' | translate}}</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="employee-check__actionsContainer">
-              <button (click)="setOpenAndUnassignedStepEntriesDone()" class="employee-check__primary_button"
-                      mat-raised-button
-                      color="primary">{{'monthly-report.confirmBtnText' | translate}}</button>
-              <button *ngIf="monthlyReport.employeeCheckState !== State.IN_PROGRESS"
-                (click)="openStateInProgressReasonDialog()" class="setInProgressBtn"
-                mat-button color="secondary">
-                {{'monthly-report.setStateInProgressButtonText' | translate}}
-              </button>
+            <div class="state-reason-actions">
+              <button mat-button color="warn" (click)="resetState()">{{'global.actions.delete' | translate}}</button>
+              <button mat-button (click)="openStateInProgressReasonDialog()">{{'global.actions.edit' | translate}}</button>
             </div>
           </div>
-        </ng-container>
+        </div>
 
-        <ng-template #noTimesThisMonth>
-          <app-state-indicator (mouseenter)="openEmployeeProgress($event)" (mouseleave)="closeEmployeeProgress()"
-                               size="large"></app-state-indicator>
-          <p>{{'monthly-report.noTimesCurrentMonth' | translate}}</p>
-        </ng-template>
-      </ng-container>
+        <div class="employee-check__actionsContainer mb-10"
+             *ngIf="monthlyReport.employeeCheckState === State.OPEN || monthlyReport.employeeCheckState === State.IN_PROGRESS">
 
-      <!-- CLOSED -->
-      <ng-container *ngIf="monthlyReport.employeeCheckState === State.DONE">
-        <ng-container *ngIf="!monthlyReport.otherChecksDone">
-          <app-state-indicator (mouseenter)="openEmployeeProgress($event)" (mouseleave)="closeEmployeeProgress()"
-                               size="large"></app-state-indicator>
-          <p>{{'monthly-report.checkWip' | translate}}</p>
-        </ng-container>
-        <ng-container *ngIf="monthlyReport.otherChecksDone">
-          <app-state-indicator (mouseenter)="openEmployeeProgress($event)" (mouseleave)="closeEmployeeProgress()"
-                               [state]="State.DONE" size="large"></app-state-indicator>
-          <p>{{'monthly-report.checkSuccess' | translate}}</p>
-        </ng-container>
-      </ng-container>
+          <button (click)="setOpenAndUnassignedStepEntriesDone()" class="employee-check__primary_button mt-10"
+                  mat-raised-button
+                  color="primary">{{'monthly-report.confirmBtnText' | translate}}</button>
+          <button *ngIf="monthlyReport.employeeCheckState !== State.IN_PROGRESS"
+                  (click)="openStateInProgressReasonDialog()" class="setInProgressBtn"
+                  mat-button color="secondary">
+            {{'monthly-report.setStateInProgressButtonText' | translate}}
+          </button>
+        </div>
+      </div>
 
+      <!-- COMMENTS -->
       <div class="comments_container mt-10" *ngIf="monthlyReport?.comments?.length > 0">
         <p><strong>{{'monthly-report.commentsToDo' | translate}}</strong></p>
         <mat-selection-list (selectionChange)="selectionChange($event)">

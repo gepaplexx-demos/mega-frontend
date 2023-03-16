@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, Input, LOCALE_ID, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {MonthlyReport} from '../../models/MonthlyReport';
 import {CommentService} from '../../../shared/services/comment/comment.service';
 import {State} from '../../../shared/models/State';
@@ -26,7 +26,7 @@ import {
   templateUrl: './employee-check.component.html',
   styleUrls: ['./employee-check.component.scss']
 })
-export class EmployeeCheckComponent implements OnInit, OnDestroy {
+export class EmployeeCheckComponent implements OnInit, OnChanges, OnDestroy {
 
   State = State;
 
@@ -37,6 +37,8 @@ export class EmployeeCheckComponent implements OnInit, OnDestroy {
   overlaysButton: boolean;
   public selectedDateStr;
   private dateSelectionSub: Subscription;
+  public employeeCheckIcon: string;
+  public employeeCheckText: string;
 
   constructor(
     public commentService: CommentService,
@@ -56,8 +58,59 @@ export class EmployeeCheckComponent implements OnInit, OnDestroy {
       ).subscribe();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.monthlyReport) {
+      this.setGuiElements();
+    }
+  }
+
   ngOnDestroy(): void {
     this.dateSelectionSub.unsubscribe();
+    this.employeeProgressRef?.dismiss();
+  }
+
+  private setGuiElements() {
+    if(!this.monthlyReport) {
+      this.employeeCheckIcon = undefined;
+      this.employeeCheckText = '';
+
+      return;
+    }
+
+    let stateIndicatorState = this.monthlyReport.employeeCheckState;
+    let stateIndicatorText = '';
+
+    // In besonderen Fällen will man ein anderes Icon als das, was der employeeCheckState eigentlich ist, anzeigen:
+    if(this.monthlyReport.employeeCheckState === State.OPEN || this.monthlyReport.employeeCheckState === State.IN_PROGRESS) {
+
+      if(this.monthlyReport.assigned) {
+        // Texte
+        if(this.monthlyReport.employeeCheckState === State.OPEN) {
+          stateIndicatorText = 'monthly-report.pleaseCheckPrompt';
+        }
+        else if(this.monthlyReport.employeeCheckState === State.IN_PROGRESS) {
+          stateIndicatorText = 'monthly-report.inProgressDescription';
+        }
+      }
+      else {
+        // Show default State Indicator
+        stateIndicatorText = 'monthly-report.noTimesCurrentMonth';
+        stateIndicatorState = undefined;
+      }
+    }
+    else if(this.monthlyReport.employeeCheckState === State.DONE) {
+      if(this.monthlyReport.otherChecksDone) {
+        // Show default State Indicator
+        stateIndicatorText = 'monthly-report.checkSuccess';
+      }
+      else {
+        stateIndicatorState = undefined;
+        stateIndicatorText = 'monthly-report.checkWip';
+      }
+    }
+
+    this.employeeCheckIcon = stateIndicatorState;
+    this.employeeCheckText = stateIndicatorText;
   }
 
   selectionChange(change: MatSelectionListChange): void {
