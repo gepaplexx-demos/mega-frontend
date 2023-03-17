@@ -1,0 +1,12 @@
+{
+    "build": {
+      "language": {
+        "name": "angular"      
+      }
+    },
+    "image": {
+      "registry": "ghcr.io",
+      "repository": "gepaplexx",
+      "containerfile": "Containerfile"
+    }
+  }
