@@ -13,16 +13,16 @@ import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [ProjectManagementComponent, BillableTimesComponent, BillableTimesFractionComponent],
-    imports: [
-        CommonModule,
-        AngularMaterialModule,
-        FlexLayoutModule,
-        SharedModule,
-        TranslateModule.forRoot(),
-        FormsModule,
-        NgxSkeletonLoaderModule,
-        MatBadgeModule
-    ]
+  imports: [
+    CommonModule,
+    AngularMaterialModule,
+    FlexLayoutModule,
+    SharedModule,
+    TranslateModule.forRoot(),
+    FormsModule,
+    NgxSkeletonLoaderModule,
+    MatBadgeModule
+  ]
 })
 export class ProjectManagementModule {
 }

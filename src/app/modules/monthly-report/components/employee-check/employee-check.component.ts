@@ -19,7 +19,7 @@ import {
 import {
   EmployeeCheckConfirmDialogAction,
   EmployeeCheckConfirmDialogActionType
-} from '../employee-check-confirm-comment-dialog/ts/EmployeeCheckConfirmDialogAction';
+} from '../employee-check-confirm-comment-dialog/model/EmployeeCheckConfirmDialogAction';
 
 @Component({
   selector: 'app-employee-check',
@@ -182,7 +182,7 @@ export class EmployeeCheckComponent implements OnInit, OnChanges, OnDestroy {
     return body.replace(urlPattern, '<a href=\$& target="_blank"\>$&</a>');
   }
 
-  public openStateInProgressReasonDialog() {
+  openStateInProgressReasonDialog() {
     const dialogRef = this.dialog.open(EmployeeCheckConfirmCommentDialogComponent,
       {
         data: {
@@ -209,7 +209,7 @@ export class EmployeeCheckComponent implements OnInit, OnChanges, OnDestroy {
     });
   }
 
-  public resetState() {
+  resetState() {
     const date = this.getSelectedDate();
 
     this.stepentriesService

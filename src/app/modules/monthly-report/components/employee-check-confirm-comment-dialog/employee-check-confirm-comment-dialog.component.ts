@@ -1,7 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {EmployeeCheckConfirmDialogAction, EmployeeCheckConfirmDialogActionType} from './ts/EmployeeCheckConfirmDialogAction';
-import {EmployeeCheckConfirmDialogData} from './ts/EmployeeCheckConfirmDialogData';
+import {
+  EmployeeCheckConfirmDialogAction,
+  EmployeeCheckConfirmDialogActionType
+} from './model/EmployeeCheckConfirmDialogAction';
+import {EmployeeCheckConfirmDialogData} from './model/EmployeeCheckConfirmDialogData';
 
 @Component({
   selector: 'app-employee-check-confirm-comment-dialog',
@@ -9,23 +12,23 @@ import {EmployeeCheckConfirmDialogData} from './ts/EmployeeCheckConfirmDialogDat
   styleUrls: ['./employee-check-confirm-comment-dialog.component.scss']
 })
 export class EmployeeCheckConfirmCommentDialogComponent implements OnInit {
-  public textAreaInp;
+  textAreaInp;
 
-  public isEdit;
-  public MAX_LENGTH = 500;
+  isEdit;
+  MAX_LENGTH = 500;
 
   constructor(private dialogRef: MatDialogRef<EmployeeCheckConfirmCommentDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: EmployeeCheckConfirmDialogData) { }
+              @Inject(MAT_DIALOG_DATA) public data: EmployeeCheckConfirmDialogData) {
+  }
 
   ngOnInit(): void {
     this.textAreaInp = this.data?.reason || '';
 
     // if reason not empty -> isEdit true
     this.isEdit = !!this.data?.reason;
-
   }
 
-  public save() {
+  save() {
     const result: EmployeeCheckConfirmDialogAction = {
       type: EmployeeCheckConfirmDialogActionType.SAVE,
       payload: this.textAreaInp
@@ -34,7 +37,7 @@ export class EmployeeCheckConfirmCommentDialogComponent implements OnInit {
     this.dialogRef.close(result);
   }
 
-  public cancel() {
+  cancel() {
     const result: EmployeeCheckConfirmDialogAction = {
       type: EmployeeCheckConfirmDialogActionType.CANCEL,
       payload: null
@@ -42,5 +45,4 @@ export class EmployeeCheckConfirmCommentDialogComponent implements OnInit {
 
     this.dialogRef.close(result);
   }
-
 }

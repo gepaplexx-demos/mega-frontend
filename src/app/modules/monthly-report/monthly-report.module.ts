@@ -13,7 +13,9 @@ import {PmProgressComponent} from '../shared/components/pm-progress/pm-progress.
 import {GeneralInfoComponent} from './components/general-info/general-info.component';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import {InformationTopBarComponent} from './components/information-top-bar/information-top-bar.component';
-import { EmployeeCheckConfirmCommentDialogComponent } from './components/employee-check-confirm-comment-dialog/employee-check-confirm-comment-dialog.component';
+import {
+  EmployeeCheckConfirmCommentDialogComponent
+} from './components/employee-check-confirm-comment-dialog/employee-check-confirm-comment-dialog.component';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -28,15 +30,15 @@ import {FormsModule} from '@angular/forms';
     InformationTopBarComponent,
     EmployeeCheckConfirmCommentDialogComponent
   ],
-    imports: [
-        CommonModule,
-        AngularMaterialModule,
-        TranslateModule.forRoot(),
-        FlexLayoutModule,
-        SharedModule,
-        NgxSkeletonLoaderModule,
-        FormsModule
-    ],
+  imports: [
+    CommonModule,
+    AngularMaterialModule,
+    TranslateModule.forRoot(),
+    FlexLayoutModule,
+    SharedModule,
+    NgxSkeletonLoaderModule,
+    FormsModule
+  ],
   exports: [
     TranslateModule
   ]
