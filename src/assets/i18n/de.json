@@ -41,7 +41,12 @@
   },
   "global": {
     "selectPayrollMonth": "Abrechnungsmonat auswählen:",
-    "addComment": "Anmerkung hinzufügen"
+    "addComment": "Anmerkung hinzufügen",
+    "remainingChars": "Zeichen verbleibend",
+    "actions": {
+      "delete": "Löschen",
+      "edit": "Bearbeiten"
+    }
   },
   "monthly-report": {
     "ok": "Alle Eingaben sind korrekt.",
@@ -53,6 +58,9 @@
     "checkWip": "Die Kontrolle deiner Zeiten ist im Gange!",
     "noTimesCurrentMonth": "Dieses Monat ist nicht verfügbar!",
     "pleaseCheckPrompt": "Bitte überprüfe deine Eingaben (Zeiten, Reisen, Belege, ...) in ZEP und beim Kunden und bestätige diese anschließend.",
+    "inProgressDescription": "Du hast angegeben, die Zeiten noch nicht bestätigen zu können.",
+    "reason": "Grund:",
+    "setStateInProgressButtonText": "Bestätigen noch nicht möglich...",
     "confirmBtnText": "Buchungen bestätigen",
     "title": {
       "emc": "Status zum Monatsabschluss",
@@ -89,6 +97,14 @@
       "finished": "Fertig",
       "in-charge": "Verantwortlich",
       "office-management" : "Office-Management"
+    },
+    "employeeCheckConfirmCommentDialogComponent": {
+      "titleAdd": "Anmerkung hinzufügen",
+      "titleEdit": "Anmerkung bearbeiten",
+      "description": "Der Status Deiner Zeitenkontrolle wird für die Zuständigen als \"In Arbeit\" mit dem angegebenen Grund sichtbar.",
+      "subDescription": "Vergiss nicht, die Buchung wie gewohnt zu bestätigen, sobald alles erledigt wurde!",
+      "textareaPlaceholder": "Grund angeben",
+      "textareaRequiredError": "Bitte einen Grund angeben!"
     }
   },
   "office-management": {

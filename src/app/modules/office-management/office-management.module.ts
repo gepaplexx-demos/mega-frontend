@@ -11,8 +11,13 @@ import {ProjectOverviewCardComponent} from './components/project-overview-card/p
 import {EnterpriseCardComponent} from './components/enterprise-card/enterprise-card.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
-import { ProjectsWithoutLeadsCardComponent } from './components/projects-without-leads-card/projects-without-leads-card.component';
-import { ProjektNameWithZepLinkComponent } from './components/projekt-name-with-zep-link/projekt-name-with-zep-link.component';
+import {
+  ProjectsWithoutLeadsCardComponent
+} from './components/projects-without-leads-card/projects-without-leads-card.component';
+import {
+  ProjektNameWithZepLinkComponent
+} from './components/projekt-name-with-zep-link/projekt-name-with-zep-link.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [EmployeeCardComponent, OfficeManagementComponent, ProjectOverviewCardComponent, EnterpriseCardComponent, ProjectsWithoutLeadsCardComponent, ProjektNameWithZepLinkComponent],
@@ -27,7 +32,8 @@ import { ProjektNameWithZepLinkComponent } from './components/projekt-name-with-
     SharedModule,
     FlexLayoutModule,
     FormsModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    MatBadgeModule
   ]
 })
 export class OfficeManagementModule {

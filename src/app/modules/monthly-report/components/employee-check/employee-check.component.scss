@@ -2,24 +2,159 @@
   text-decoration: line-through;
 }
 
-mat-selection-list {
-  overflow: auto;
-  padding: 15px;
-  text-align: left;
+
+.comments_container > p {
+  padding-inline: 16px;
 }
 
-mat-list-option {
+.comments_container mat-list-option {
   height: auto !important;
   margin-bottom: 5px;
   margin-top: 5px;
   border-bottom: 1px solid #d8d8d8
 }
 
-.my-mat-bottom-sheet{
+.my-mat-bottom-sheet {
   padding: 16px;
 }
 
 .fill-parent {
   height: calc(100% - 32px);
   width: calc(100% - 32px);
+}
+
+.state_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.employee-check-text {
+  text-align: center;
+}
+
+.employee-check__actionsContainer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.employee-check__primary_button {
+  width: 250px;
+  height: 50px;
+}
+
+.setInProgressBtn {
+  color: #727272;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.card_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile__state-indicator {
+  display: none;
+}
+
+.state-reason-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 85%;
+  min-width: 85%;
+}
+
+.state-reason-text-and-actions-container {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+// Show dots after 3 lines, if text too long (overflow)
+.state-reason-text {
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-basis: 100%;
+}
+
+
+// Buttons center on desktop
+.state-reason-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+// für alignment mit Text darüber (sonst kleines offset nach innen)
+.state-reason-actions button {
+  padding: 0;
+  min-width: 0;
+}
+
+.state-reason-header {
+  margin-top: 15px;
+}
+
+.state-indicator_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// state indicator mit size=medium statt large
+.app-state-indicator_mobile {
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+
+  .state-reason-container {
+    max-width: unset;
+    min-width: unset;
+  }
+
+
+  .state-indicator_container {
+    margin-top: 10px;
+    flex-direction: row;
+
+    text-align: left;
+    gap: 20px;
+  }
+
+  .employee-check-text {
+    text-align: left;
+  }
+
+  // show Medium size icon
+  .app-state-indicator_mobile {
+    display: block;
+  }
+
+  // hide Large icon
+  .app-state-indicator_default {
+    display: none;
+  }
+
+  .mobile__font-size {
+    font-size: 16px;
+  }
+
+  // am desktop wo alles größer ist und viel platz da ist,
+  // sind die elemente mittig platziert
+  // mobile soll platz aber ausnutzen
+  .state_container {
+    align-items: stretch;
+  }
 }

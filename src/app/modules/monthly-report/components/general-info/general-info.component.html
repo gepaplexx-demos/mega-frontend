@@ -38,7 +38,7 @@
         </mat-cell>
       </ng-container>
 
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row class="fixed-columns" *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
   </mat-card-content>
 </mat-card>

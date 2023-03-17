@@ -4,13 +4,20 @@
                          [theme]="{ width: '200px' }"
                          appearance="line"></ngx-skeleton-loader>
     <ng-template #workDescription>
-      {{employeeFunctions[monthlyReport?.employee?.workDescription]}}
+      <span class="subtitle">
+        {{employeeFunctions[monthlyReport?.employee?.workDescription]}}
+      </span>
+      <span class="mobile__subtitle">
+        {{monthlyReport?.employee?.firstname}} {{monthlyReport?.employee?.lastname}} - {{employeeFunctions[monthlyReport?.employee?.workDescription]}}
+      </span>
     </ng-template>
   </mat-card-subtitle>
   <mat-card-content>
 
     <div fxLayout="row" fxLayoutAlign="space-between center">
-        <span fxFlex="30">
+
+        <!-- Hidden on mobile-->
+        <span fxFlex="30" class="employeeName_container">
           <ngx-skeleton-loader *ngIf="!monthlyReport else employeeName"
                                [theme]="{ height: '25px', width: '250px' }"
                                appearance="line"></ngx-skeleton-loader>
@@ -19,16 +26,18 @@
           </ng-template>
         </span>
 
-      <div id="datediv">
+      <div>
         <ngx-skeleton-loader *ngIf="!monthlyReport else datepicker"
                              [theme]="{ height: '60px', width: '500px'}"></ngx-skeleton-loader>
         <ng-template #datepicker>
-          <strong><span>{{'global.selectPayrollMonth' | translate}}</span></strong>
+          <div class="datepicker_container">
+            <strong class="mr-10 mt-10">
+              <span>{{'global.selectPayrollMonth' | translate}}</span>
+            </strong>
 
-          <span id="datepicker">
-                  <app-datepicker-month-year (dateChanged)="dateChanged($event)" [date]="date"
-                                             [maxMonth]="maxMonthDate"></app-datepicker-month-year>
-          </span>
+            <app-datepicker-month-year (dateChanged)="dateChanged($event)" [date]="date"
+                                       [maxMonth]="maxMonthDate"></app-datepicker-month-year>
+          </div>
         </ng-template>
       </div>
     </div>

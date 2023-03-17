@@ -1,5 +1,4 @@
 :host {
-  height: 130px;
   display: inline-block;
   width: calc(100% - 16px);
   padding: 8px 8px 0;
@@ -13,16 +12,35 @@
   margin-bottom: 0;
 }
 
-#datediv {
-  position: relative;
-  right: 0;
-  width: auto;
-}
-
-#datepicker {
-  padding-left: 10px;
-}
-
 .fill-parent {
   height: calc(100% - 32px);
+}
+
+.datepicker_container {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+::ng-deep .datepicker_container .mat-form-field-infix {
+  border-top: 0;
+}
+
+//Mobile Optimizations
+.mobile__subtitle {
+  display: none;
+}
+
+@media screen and (max-width: 765px) {
+  .mobile__subtitle {
+    display: inline;
+  }
+
+  .subtitle {
+    display: none;
+  }
+
+  .employeeName_container {
+    display: none;
+  }
 }

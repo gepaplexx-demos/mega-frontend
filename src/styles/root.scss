@@ -103,7 +103,7 @@ app-employee-card, app-project-management {
     display: none;
   }
 
-  .mat-row {
+  .mat-row:not(.fixed-columns) {
     flex-direction: column;
     align-items: start;
     padding: 18px 24px;
@@ -132,7 +132,31 @@ app-project-overview-card, app-project-management {
   margin-top: 10px;
 }
 
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
 .office_management__table-row {
   min-height: 75px;
   height: fit-content;
+}
+
+.select-date-toolbar-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  /* Override Material's default height */
+  height: auto !important;
+}
+
+.select-date-toolbar-column {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 30px;
 }

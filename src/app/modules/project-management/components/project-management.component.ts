@@ -39,6 +39,8 @@ const moment = _moment;
 })
 export class ProjectManagementComponent implements OnInit, OnDestroy {
 
+  public State = State;
+
   pmEntries: Array<ProjectManagementEntryViewModel>;
   displayedColumns = [
     'select',

@@ -1,14 +1,13 @@
 <div fxFlexAlign="center" fxFlexFill fxLayout="column" fxLayoutGap="10px">
   <div>
     <mat-toolbar class="mat-elevation-z6" color="accent">
-      <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
-        <span fxFlex fxFlexOffset="65">{{'global.selectPayrollMonth' | translate}}</span>
-        <span fxFlex="15">
-          <app-datepicker-month-year (dateChanged)="dateChanged($event)" [date]="date"
-                                     [maxMonth]="maxMonthDate"></app-datepicker-month-year>
-        </span>
-
+      <mat-toolbar-row class="select-date-toolbar-row">
+        <div class="select-date-toolbar-column">
+          <span>{{'global.selectPayrollMonth' | translate}}</span>
+          <app-datepicker-month-year (dateChanged)="dateChanged($event)" [date]="date" [maxMonth]="maxMonthDate"></app-datepicker-month-year>
+        </div>
       </mat-toolbar-row>
+
       <div fxLayoutGap="10px"></div>
       <mat-toolbar-row *ngIf="isAnySelected()" fxLayout="row" fxLayoutAlign="space-between center">
         <h2>{{'project-management.actions' | translate}}</h2>
@@ -165,7 +164,16 @@
                 >{{'project-management.table.employeeCheckState' | translate}}</mat-header-cell>
                 <mat-cell *matCellDef="let row" class="text-center">
                   <span class="mobile-label">{{'project-management.table.employeeCheckState' | translate}}</span>
-                  <app-state-indicator data-cy="employee-check" [state]="row.employeeCheckState"></app-state-indicator>
+
+                  <div
+                    matTooltipPosition="above"
+                    [matTooltipShowDelay]="100"
+                    [matTooltip]="row.employeeCheckStateReason"
+                    matTooltipClass="om-tooltip"
+                    [matBadge]="(row.employeeCheckState === State.IN_PROGRESS) ? 1 : null" matBadgeSize="small">
+                    <app-state-indicator [state]="row.employeeCheckState" data-cy="employee-check"></app-state-indicator>
+                  </div>
+
                 </mat-cell>
                 <mat-footer-cell *matFooterCellDef></mat-footer-cell>
               </ng-container>

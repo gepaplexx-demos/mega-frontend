@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>
+  <ng-container *ngIf="isEdit else newReason">
+    {{'monthly-report.employeeCheckConfirmCommentDialogComponent.titleEdit' | translate}}
+  </ng-container>
+  <ng-template #newReason>
+    {{'monthly-report.employeeCheckConfirmCommentDialogComponent.titleAdd' | translate}}
+  </ng-template>
+</h2>
+
+<div mat-dialog-content class="dialog-content">
+  <div class="info-box">
+    <span>
+      {{'monthly-report.employeeCheckConfirmCommentDialogComponent.description' | translate}}
+    </span>
+    <br />
+    <br />
+    <strong>
+      {{'monthly-report.employeeCheckConfirmCommentDialogComponent.subDescription' | translate}}
+    </strong>
+  </div>
+  <div class="input-container">
+    <textarea
+              #textareaCtrl="ngModel"
+              class="text-area"
+              matInput
+              [maxLength]="MAX_LENGTH"
+              required
+              [(ngModel)]="textAreaInp"
+              cdkTextareaAutosize
+              cdkAutosizeMaxRows="10"
+              cdkAutosizeMinRows="8"
+              placeholder="{{'monthly-report.employeeCheckConfirmCommentDialogComponent.textareaPlaceholder' | translate}}"
+              >
+    </textarea>
+    <small><i>{{(MAX_LENGTH - textAreaInp.length)}} {{'global.remainingChars' | translate}}</i></small>
+
+    <!-- MaxLength Error kann nicht auftreten, weil: Datenbank-Limit ist 500 Zeichen und falls da was schiefgegangen ist,
+     die Textarea schneidet den Rest ab -->
+    <mat-error *ngIf="textareaCtrl.errors?.required && (textareaCtrl.touched || textareaCtrl.dirty)">
+      {{'monthly-report.employeeCheckConfirmCommentDialogComponent.textareaRequiredError' | translate}}
+    </mat-error>
+  </div>
+</div>
+
+<mat-dialog-actions>
+  <button (click)="cancel()" mat-button>Abbrechen</button>
+  <button [disabled]="textareaCtrl.invalid" (click)="save()" mat-raised-button color="primary">Speichern</button>
+</mat-dialog-actions>

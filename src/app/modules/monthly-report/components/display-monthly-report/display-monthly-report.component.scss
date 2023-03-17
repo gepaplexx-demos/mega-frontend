@@ -82,9 +82,9 @@
   }
 }
 
-@media (max-width: 1264px) and (max-height: 864px) {
+@media (max-width: 1264px) and (max-height: 900px) {
   .mega-dash-grid {
-    grid-auto-rows: 75%;
+    grid-auto-rows: min-content;
   }
 
 }

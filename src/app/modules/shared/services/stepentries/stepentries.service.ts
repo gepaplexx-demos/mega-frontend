@@ -27,10 +27,14 @@ export class StepentriesService {
     );
   }
 
-  updateEmployeeStateForOffice(employee: Employee, step: Step, currentMonthYear: string, newState: State): Observable<boolean> {
+  /**
+   *
+   * @return true if the operation was successful
+   */
+  updateEmployeeStateForOffice(employee: Employee, step: Step, currentMonthYear: string, newState: State, newStateReason?: string): Observable<boolean> {
     return this.httpClient.put<boolean>(
       this.config.getBackendUrlWithContext('/stepentry/updateEmployeeStateForOffice'),
-      new UpdateEmployeeStep(step, employee, currentMonthYear, newState)
+      new UpdateEmployeeStep(step, employee, currentMonthYear, newState, newStateReason)
     );
   }
 

@@ -13,7 +13,7 @@ export class ProjektNameWithZepLinkComponent implements OnInit, OnDestroy {
   @Input() projectName: string;
   @Input() zepId: number;
 
-  public projectManagementUrl: string;
+  projectManagementUrl: string;
   private configServiceSubscription: Subscription;
 
   constructor(private configService: ConfigService) { }

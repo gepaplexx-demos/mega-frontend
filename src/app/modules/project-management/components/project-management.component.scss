@@ -77,3 +77,14 @@ tr.spacing > td {
     max-width: 600px;
   }
 }
+
+// standard ist 48. paar px mehr damit badge nicht abgeschnitten wird und man nicht
+// mit overflow, z-index... etc. arbeiten muss
+.mat-row, .mat-footer-row {
+  min-height: 55px;
+}
+
+.mat-badge-content {
+  background: darkorange;
+  color: white;
+}
