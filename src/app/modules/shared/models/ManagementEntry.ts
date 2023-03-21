@@ -6,7 +6,7 @@ export interface ManagementEntry {
 
   employee: Employee;
   employeeCheckState: State;
-  employeeCheckStateReason: string;
+  employeeCheckStateReason?: string;
   internalCheckState: State;
   projectCheckState: State;
   employeeProgresses: Array<PmProgress>;
