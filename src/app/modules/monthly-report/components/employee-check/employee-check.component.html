@@ -69,7 +69,14 @@
       </div>
 
       <!-- COMMENTS -->
-      <div class="comments_container mt-10" *ngIf="monthlyReport?.comments?.length > 0">
+
+      <!--
+      div auf min-height-0 damit vertical scroll richtig funktioniert.
+      sonst dann wird sibling div nach oben außerhalb gedrückt, sobald dieses div element riesig wird. Z.B. bei sehr vielen Kommentaren
+      Grund dafür ist irgendwie, dass sich der parent (display: flex) innerhalb einer grid row befindet, deren höhe
+      prozentual beschränkt ist und flexbox probleme hat, die elemente & scrolling richtig zu kalkulieren.
+      -->
+      <div class="comments_container mt-10 min-height-0" *ngIf="monthlyReport?.comments?.length > 0">
         <p><strong>{{'monthly-report.commentsToDo' | translate}}</strong></p>
         <mat-selection-list (selectionChange)="selectionChange($event)">
           <mat-list-option
