@@ -61,14 +61,12 @@ describe('ProjectOverviewCardComponent', () => {
   it('#afterInit - should call projectManagementService.getEntries and projectCommentService.get', fakeAsync(() => {
     fixture.detectChanges();
 
-    spyOn(configService, 'getConfig').and.returnValue(of(ConfigMock.config));
     spyOn(projectManagementService, 'getEntries').and.returnValue(of(ProjectManagementEntryMock.projectManagementEntries));
     spyOn(projectCommentService, 'get').and.returnValue(of(ProjectCommentMock.projectComment));
 
     component.ngOnInit();
     flush();
 
-    expect(configService.getConfig).toHaveBeenCalled();
     expect(projectManagementService.getEntries).toHaveBeenCalled();
     expect(projectCommentService.get).toHaveBeenCalled();
   }));
