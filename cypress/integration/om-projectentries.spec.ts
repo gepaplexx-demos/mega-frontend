@@ -9,6 +9,7 @@ describe('Office Management (Projekte)', () => {
     '@getEnterpriseEntries',
     '@getProjectManagementEntries',
     '@getOfficeManagementEntries',
+    '@getProjectsWithoutLeadsEntries',
     '@getProjectComments'
   ];
 
@@ -27,6 +28,10 @@ describe('Office Management (Projekte)', () => {
 
     cy.fixture('officemanagement/officemanagemententries.json').then(jsonData => {
       cy.intercept('http://localhost:*/management/officemanagemententries/*/*', jsonData).as('getOfficeManagementEntries');
+    });
+
+    cy.fixture('officemanagement/projectswithoutleads.json').then(jsonData => {
+      cy.intercept('http://localhost:*/management/projectsWithoutLeads', jsonData).as('getProjectsWithoutLeadsEntries');
     });
 
     cy.fixture('officemanagement/projectcomments.json').then(jsonData => {

@@ -58,9 +58,11 @@
           <div class="employee-check__actionsContainer mb-10"
                *ngIf="monthlyReport.employeeCheckState === State.OPEN || monthlyReport.employeeCheckState === State.IN_PROGRESS">
 
-            <button (click)="setOpenAndUnassignedStepEntriesDone()" class="employee-check__primary_button mt-10"
-                    mat-raised-button
-                    color="primary">{{'monthly-report.confirmBtnText' | translate}}</button>
+            <button
+              data-cy="buchungen_bestaetigen_btn"
+              (click)="setOpenAndUnassignedStepEntriesDone()" class="employee-check__primary_button mt-10"
+              mat-raised-button
+              color="primary">{{'monthly-report.confirmBtnText' | translate}}</button>
             <button *ngIf="monthlyReport.employeeCheckState !== State.IN_PROGRESS"
                     (click)="openStateInProgressReasonDialog()" class="setInProgressBtn"
                     mat-button color="secondary">
