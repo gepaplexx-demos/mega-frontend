@@ -16,7 +16,6 @@ import {Employee} from '../../../shared/models/Employee';
 import {ProjectManagementEntry} from '../../../project-management/models/ProjectManagementEntry';
 import {ProjectState} from '../../../shared/models/ProjectState';
 import {ProjectComment} from '../../../shared/models/ProjectComment';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 

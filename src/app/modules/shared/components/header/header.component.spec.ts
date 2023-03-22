@@ -8,7 +8,6 @@ import {UserService} from '../../services/user/user.service';
 import {TranslateService} from '@ngx-translate/core';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {ConfigService} from '../../services/config/config.service';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {of, Subscription} from 'rxjs';
 import {Config} from '../../models/Config';
 import {Link} from '../../models/Link';

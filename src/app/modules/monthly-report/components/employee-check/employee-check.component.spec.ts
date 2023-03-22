@@ -10,7 +10,6 @@ import {Comment} from '../../../shared/models/Comment';
 import {State} from '../../../shared/models/State';
 import * as _moment from 'moment';
 import {configuration} from '../../../shared/constants/configuration';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {CommentService} from '../../../shared/services/comment/comment.service';
 import {of} from 'rxjs';
 import {MonthlyReport} from '../../models/MonthlyReport';

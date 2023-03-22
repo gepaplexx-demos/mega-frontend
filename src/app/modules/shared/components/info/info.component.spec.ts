@@ -4,7 +4,6 @@ import {InfoComponent} from './info.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {AngularMaterialModule} from '../../../material/material-module';
 import {of} from 'rxjs';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {Info} from '../../models/Info';
 import {InfoService} from '../../services/info/info.service';
 

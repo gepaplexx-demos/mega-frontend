@@ -7,7 +7,6 @@ import {OfficeManagementModule} from '../../office-management.module';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {OfficeManagementService} from '../../services/office-management.service';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 
 import * as _moment from 'moment';
 

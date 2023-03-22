@@ -7,7 +7,6 @@ import {UserService} from './modules/shared/services/user/user.service';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Config} from './modules/shared/models/Config';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {NO_ERRORS_SCHEMA} from '@angular/core';

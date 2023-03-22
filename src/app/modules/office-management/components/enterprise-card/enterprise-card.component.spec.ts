@@ -3,7 +3,6 @@ import {ComponentFixture, fakeAsync, flush, TestBed, waitForAsync} from '@angula
 import {EnterpriseCardComponent} from './enterprise-card.component';
 import {OfficeManagementModule} from '../../office-management.module';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 
 import * as _moment from 'moment';
 import {of} from 'rxjs';

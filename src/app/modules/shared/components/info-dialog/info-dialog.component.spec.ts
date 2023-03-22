@@ -5,7 +5,6 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {AngularMaterialModule} from '../../../material/material-module';
 import {TranslateModule} from '@ngx-translate/core';
 import {InfoService} from '../../services/info/info.service';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {Info} from '../../models/Info';
 import {of} from 'rxjs';
 

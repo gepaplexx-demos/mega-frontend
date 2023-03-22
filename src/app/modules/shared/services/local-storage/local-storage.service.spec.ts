@@ -2,7 +2,6 @@ import {TestBed} from '@angular/core/testing';
 
 import {LocalStorageService} from './local-storage.service';
 import {Config} from '../../models/Config';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 
 describe('LocalStorageService', () => {
 

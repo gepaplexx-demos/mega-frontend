@@ -7,7 +7,6 @@ import {TimeWarning} from '../../models/TimeWarning';
 import {configuration} from '../../../shared/constants/configuration';
 
 import * as _moment from 'moment';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
 const moment = _moment;

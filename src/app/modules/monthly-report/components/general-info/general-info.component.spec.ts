@@ -4,7 +4,6 @@ import {GeneralInfoComponent} from './general-info.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {MonthlyReport} from '../../models/MonthlyReport';
 import {By} from '@angular/platform-browser';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {TranslateTestingModule} from 'ngx-translate-testing';
 import {MatCardModule} from '@angular/material/card';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';

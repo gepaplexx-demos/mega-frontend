@@ -4,7 +4,6 @@ import {EmployeeCardComponent} from './components/employee-card/employee-card.co
 import {AngularMaterialModule} from '../material/material-module';
 import {TranslateModule} from '@ngx-translate/core';
 import {SharedModule} from '../shared/shared.module';
-import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
 import {OfficeManagementComponent} from './components/office-management/office-management.component';
 import {ProjectOverviewCardComponent} from './components/project-overview-card/project-overview-card.component';
@@ -29,7 +28,6 @@ import {
     AngularMaterialModule,
     TranslateModule.forRoot(),
     SharedModule,
-    FlexLayoutModule,
     FormsModule,
     NgxSkeletonLoaderModule
   ]
