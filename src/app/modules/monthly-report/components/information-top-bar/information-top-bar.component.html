@@ -14,10 +14,10 @@
   </mat-card-subtitle>
   <mat-card-content>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="information-top-bar__content_container">
 
         <!-- Hidden on mobile-->
-        <span fxFlex="30" class="employeeName_container">
+        <span class="employeeName_container">
           <ngx-skeleton-loader *ngIf="!monthlyReport else employeeName"
                                [theme]="{ height: '25px', width: '250px' }"
                                appearance="line"></ngx-skeleton-loader>

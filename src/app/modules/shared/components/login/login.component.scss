@@ -5,4 +5,19 @@
 .login-container {
   height: 80%;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  place-content: center;
+  align-items: center;
+}
+
+.login__content_container {
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: stretch center;
+  align-items: stretch;
+  gap: 5px;
 }

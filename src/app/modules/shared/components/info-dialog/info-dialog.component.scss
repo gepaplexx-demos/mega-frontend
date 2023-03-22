@@ -1,3 +1,10 @@
+.info-dialog__content_container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+}
+
 td:first-child {
   text-align: right;
 }

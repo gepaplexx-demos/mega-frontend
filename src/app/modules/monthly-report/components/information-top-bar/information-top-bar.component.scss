@@ -4,6 +4,14 @@
   padding: 8px 8px 0;
 }
 
+.information-top-bar__content_container {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center space-between;
+  align-items: center;
+}
+
 .mat-card-date {
   float: right;
 }
@@ -24,6 +32,12 @@
 
 ::ng-deep .datepicker_container .mat-form-field-infix {
   border-top: 0;
+}
+
+.employeeName_container {
+  flex: 1 1 100%;
+  box-sizing: border-box;
+  max-width: 30%;
 }
 
 //Mobile Optimizations
