@@ -18,6 +18,7 @@ import {ProjectState} from '../../../shared/models/ProjectState';
 import {ProjectCommentService} from '../../../shared/services/project-comment/project-comment.service';
 import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
 import {convertMomentToString} from '../../../shared/utils/dateUtils';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 const moment = _moment;
 
@@ -41,7 +42,7 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
   showCommentEditor = false;
   forProjectName: string;
   tooltipShowDelay = 500;
-  tooltipPosition = 'above';
+  tooltipPosition = 'above' as TooltipPosition;
 
   constructor(private dialog: MatDialog, private omService: OfficeManagementService, private pmService: ProjectManagementService,
               private notificationService: NotificationService, private translate: TranslateService, private commentService: CommentService,
