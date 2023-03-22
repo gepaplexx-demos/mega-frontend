@@ -1,4 +1,17 @@
+.enterprise-card__content_container {
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  gap: 10px;
+}
+
 .controls-container {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center space-between;
+  align-items: center;
+
   min-height: 100px !important;
   flex-wrap: wrap;
 }

@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>{{'office-management.table.name' | translate}}</mat-card-title>
   </mat-card-header>
-  <mat-card-content fxFlexAlign="center" fxFlexFill fxLayout="column" fxLayoutGap="10px">
+  <mat-card-content class="employee-card__card_content">
     <ng-container *ngIf="!omEntries || !filteredOmEntries; else datatable">
       <ngx-skeleton-loader [theme]="{ height: '64px' }"
                            appearance="line"></ngx-skeleton-loader>
@@ -14,7 +14,7 @@
     <ng-template #datatable>
       <div>
         <mat-toolbar class="mat-elevation-z8" color="accent">
-          <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+          <mat-toolbar-row class="employee_actions_container">
             <mat-form-field floatLabel="never">
               <mat-label style="font-size: 18px">{{'office-management.filterPlaceholder' | translate}}</mat-label>
               <input
@@ -29,7 +29,6 @@
                 <mat-icon>close</mat-icon>
               </button>
             </mat-form-field>
-            <span fxFlex="1 1 auto"></span>
             <div>
               <small
                 *ngIf="omSelectionModel.selected.length > 0">

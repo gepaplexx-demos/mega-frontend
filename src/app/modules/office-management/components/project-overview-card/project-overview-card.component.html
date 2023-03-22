@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>{{'office-management.projects' | translate}}</mat-card-title>
   </mat-card-header>
-  <mat-card-content fxFlexAlign="center" fxFlexFill fxLayout="column" fxLayoutGap="10px">
+  <mat-card-content class="project-overview__content_container">
     <ng-container *ngIf="!pmEntries; else datatable">
       <ngx-skeleton-loader [theme]="{ height: '56px' }"
                            appearance="line"></ngx-skeleton-loader>

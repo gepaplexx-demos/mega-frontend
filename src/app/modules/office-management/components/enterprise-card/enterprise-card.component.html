@@ -2,17 +2,14 @@
   <mat-card-header>
     <mat-card-title>{{'office-management.enterprise' | translate}}</mat-card-title>
   </mat-card-header>
-  <mat-card-content fxFlexAlign="center" fxLayout="column" fxLayoutGap="10px">
+  <mat-card-content class="enterprise-card__content_container">
     <ngx-skeleton-loader *ngIf="!enterpriseEntry && fetchingData; else datatable"
                          [theme]="{ height: '100px' }"
                          appearance="line"></ngx-skeleton-loader>
 
     <ng-template #datatable>
       <div class="mat-elevation-z10">
-        <div *ngIf="enterpriseEntry; else noEnterpriseEntriesFound"
-             class="controls-container"
-             fxLayout="row"
-             fxLayoutAlign="space-between center">
+        <div *ngIf="enterpriseEntry; else noEnterpriseEntriesFound" class="controls-container">
           <div>
             <strong [matTooltipPosition]="tooltipPosition"
                     [matTooltipShowDelay]="tooltipShowDelay"

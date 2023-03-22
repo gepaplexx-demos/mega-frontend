@@ -1,4 +1,4 @@
-<div fxFlexAlign="center" fxFlexFill fxLayout="column" fxLayoutGap="10px">
+<div class="main_container">
   <div>
     <mat-toolbar class="mat-elevation-z6" color="accent">
       <mat-toolbar-row class="select-date-toolbar-row">
@@ -8,8 +8,7 @@
         </div>
       </mat-toolbar-row>
 
-      <div fxLayoutGap="10px"></div>
-      <mat-toolbar-row *ngIf="isAnySelected()" fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-toolbar-row class="actions_container" *ngIf="isAnySelected()">
         <h2>{{'project-management.actions' | translate}}</h2>
         <button (click)="closeProjectCheckForSelected()"
                 mat-raised-button>{{'project-management.doneBtn' | translate}}</button>
