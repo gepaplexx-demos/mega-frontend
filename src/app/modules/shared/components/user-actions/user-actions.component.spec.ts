@@ -4,13 +4,13 @@ import {UserActionsComponent} from './user-actions.component';
 import {User} from '../../models/User';
 import {OAuthService} from 'angular-oauth2-oidc';
 import {UserInfo} from 'angular-oauth2-oidc/types';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {AngularMaterialModule} from '../../../material/material-module';
 import {TranslateModule} from '@ngx-translate/core';
 import {By} from '@angular/platform-browser';
-import {MatButton} from '@angular/material/button';
+import {MatLegacyButton as MatButton} from '@angular/material/legacy-button';
 import {click} from '../../../../testing/click-simulator';
-import {MatMenuItem} from '@angular/material/menu';
+import {MatLegacyMenuItem as MatMenuItem} from '@angular/material/legacy-menu';
 
 describe('UserActionsComponent', () => {
 

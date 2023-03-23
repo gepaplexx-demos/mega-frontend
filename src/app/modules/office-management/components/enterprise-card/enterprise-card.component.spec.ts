@@ -9,13 +9,13 @@ import {of} from 'rxjs';
 import {Config} from '../../../shared/models/Config';
 import {OfficeManagementService} from '../../services/office-management.service';
 import {EnterpriseEntriesService} from '../../services/enterprise-entries/enterprise-entries.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
 import {ConfigService} from '../../../shared/services/config/config.service';
 import {TranslateService} from '@ngx-translate/core';
 import {EnterpriseEntry} from '../../models/EnterpriseEntry';
 import {ProjectState} from '../../../shared/models/ProjectState';
 import {configuration} from '../../../shared/constants/configuration';
-import {MatSelectChange} from '@angular/material/select';
+import {MatLegacySelectChange as MatSelectChange} from '@angular/material/legacy-select';
 import {EnterpriseStep} from '../../models/EnterpriseStep';
 import {
   ProjectStateSelectComponent

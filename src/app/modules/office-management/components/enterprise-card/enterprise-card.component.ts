@@ -4,19 +4,19 @@ import {Moment} from 'moment';
 import {Subscription, switchMap, zip} from 'rxjs';
 import {OfficeManagementService} from '../../services/office-management.service';
 import {tap} from 'rxjs/operators';
-import {MatSelectChange} from '@angular/material/select';
+import {MatLegacySelectChange as MatSelectChange} from '@angular/material/legacy-select';
 import {Config} from '../../../shared/models/Config';
 import {configuration} from '../../../shared/constants/configuration';
 import {ConfigService} from '../../../shared/services/config/config.service';
 import {EnterpriseEntriesService} from '../../services/enterprise-entries/enterprise-entries.service';
 import {EnterpriseEntry} from '../../models/EnterpriseEntry';
 import {EnterpriseStep} from '../../models/EnterpriseStep';
-import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
+import {MatLegacySnackBar as MatSnackBar, MatLegacySnackBarHorizontalPosition as MatSnackBarHorizontalPosition, MatLegacySnackBarVerticalPosition as MatSnackBarVerticalPosition} from '@angular/material/legacy-snack-bar';
 import {TranslateService} from '@ngx-translate/core';
 import {
   ProjectStateSelectComponent
 } from '../../../shared/components/project-state-select/project-state-select.component';
-import {TooltipPosition} from '@angular/material/tooltip';
+import {LegacyTooltipPosition as TooltipPosition} from '@angular/material/legacy-tooltip';
 
 const moment = _moment;
 

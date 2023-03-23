@@ -6,7 +6,7 @@ import {CommentService} from '../../services/comment/comment.service';
 import {User} from '../../models/User';
 import {UserService} from '../../services/user/user.service';
 import {Step} from '../../models/Step';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef} from '@angular/material/legacy-dialog';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 
 @Component({

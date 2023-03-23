@@ -2,7 +2,7 @@ import {Component, EventEmitter, Inject, Input, LOCALE_ID, OnChanges, OnDestroy,
 import {MonthlyReport} from '../../models/MonthlyReport';
 import {CommentService} from '../../../shared/services/comment/comment.service';
 import {State} from '../../../shared/models/State';
-import {MatSelectionListChange} from '@angular/material/list';
+import {MatLegacySelectionListChange as MatSelectionListChange} from '@angular/material/legacy-list';
 import {StepentriesService} from '../../../shared/services/stepentries/stepentries.service';
 import {Step} from '../../../shared/models/Step';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
@@ -12,7 +12,7 @@ import * as moment from 'moment';
 import {convertMomentToString, toMonthYearString} from '../../../shared/utils/dateUtils';
 import {Subscription, zip} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {
   EmployeeCheckConfirmCommentDialogComponent
 } from '../employee-check-confirm-comment-dialog/employee-check-confirm-comment-dialog.component';

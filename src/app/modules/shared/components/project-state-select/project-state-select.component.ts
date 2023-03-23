@@ -1,5 +1,5 @@
 import {AfterViewChecked, ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
-import {MatSelect, MatSelectChange} from '@angular/material/select';
+import {MatLegacySelect as MatSelect, MatLegacySelectChange as MatSelectChange} from '@angular/material/legacy-select';
 import {ProjectState} from '../../models/ProjectState';
 
 @Component({

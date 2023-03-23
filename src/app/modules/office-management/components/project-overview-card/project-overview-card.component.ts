@@ -3,7 +3,7 @@ import * as _moment from 'moment';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {configuration} from '../../../shared/constants/configuration';
 import {environment} from '../../../../../environments/environment';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {OfficeManagementService} from '../../services/office-management.service';
 import {NotificationService} from '../../../shared/services/notification/notification.service';
 import {TranslateService} from '@ngx-translate/core';
@@ -18,7 +18,7 @@ import {ProjectState} from '../../../shared/models/ProjectState';
 import {ProjectCommentService} from '../../../shared/services/project-comment/project-comment.service';
 import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
 import {convertMomentToString} from '../../../shared/utils/dateUtils';
-import {TooltipPosition} from '@angular/material/tooltip';
+import {LegacyTooltipPosition as TooltipPosition} from '@angular/material/legacy-tooltip';
 
 const moment = _moment;
 

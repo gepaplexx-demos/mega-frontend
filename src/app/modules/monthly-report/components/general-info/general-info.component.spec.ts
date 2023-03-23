@@ -5,7 +5,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {MonthlyReport} from '../../models/MonthlyReport';
 import {By} from '@angular/platform-browser';
 import {TranslateTestingModule} from 'ngx-translate-testing';
-import {MatCardModule} from '@angular/material/card';
+import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import {AngularMaterialModule} from "../../../material/material-module";
 
