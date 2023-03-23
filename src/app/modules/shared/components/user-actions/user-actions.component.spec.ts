@@ -8,7 +8,7 @@ import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {AngularMaterialModule} from '../../../material/material-module';
 import {TranslateModule} from '@ngx-translate/core';
 import {By} from '@angular/platform-browser';
-import {MatLegacyButton as MatButton} from '@angular/material/legacy-button';
+import {MatButton} from '@angular/material/button';
 import {click} from '../../../../testing/click-simulator';
 import {MatLegacyMenuItem as MatMenuItem} from '@angular/material/legacy-menu';
 

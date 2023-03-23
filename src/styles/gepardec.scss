@@ -9,9 +9,13 @@
 //  If you specify typography styles for the components you use elsewhere, you should delete this line.
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
+//    `@include mat.legacy-typography-hierarchy(mat.define-typography-config());`
+/* TODO(mdc-migration): Remove all-legacy-component-typographies once all legacy components are migrated*/
 @include mat.all-legacy-component-typographies();
+@include mat.all-component-typographies();
+/* TODO(mdc-migration): Remove legacy-core once all legacy components are migrated*/
 @include mat.legacy-core();
+@include mat.core();
 
 $gepardec-pal: (
   50 : #fdfae0,
@@ -50,4 +54,7 @@ $mega-primary: mat.define-palette($gepardec-pal);
 $mega-accent: mat.define-palette($gepardec-pal, A100);
 $mega-theme: mat.define-light-theme($mega-primary, $mega-accent);
 
+/* TODO(mdc-migration): Remove all-legacy-component-themes once all legacy components are migrated*/
 @include mat.all-legacy-component-themes($mega-theme);
+
+@include mat.all-component-themes($mega-theme);
