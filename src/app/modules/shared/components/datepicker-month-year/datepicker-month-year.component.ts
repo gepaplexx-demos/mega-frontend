@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatDatepicker} from '@angular/material/datepicker';
@@ -46,7 +46,7 @@ export class DatepickerMonthYearComponent implements OnChanges, OnInit {
   @ViewChild('dp') datePicker: MatDatepicker<any>;
 
   pickerDate: MatDatepicker<any>;
-  dateControl = new FormControl(moment().subtract(1, 'month'));
+  dateControl = new UntypedFormControl(moment().subtract(1, 'month'));
   maxDate = moment().format(configuration.dateFormat);
 
   ngOnInit() {
