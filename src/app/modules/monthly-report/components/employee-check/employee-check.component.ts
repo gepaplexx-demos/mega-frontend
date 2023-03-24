@@ -195,7 +195,7 @@ export class EmployeeCheckComponent implements OnInit, OnChanges, OnDestroy {
     );
 
     dialogRef.afterClosed().subscribe((result: EmployeeCheckConfirmDialogAction) => {
-      if(result.type === EmployeeCheckConfirmDialogActionType.SAVE) {
+      if(result?.type === EmployeeCheckConfirmDialogActionType.SAVE) {
         const input = result.payload as string;
 
         const date = this.getSelectedDate();
