@@ -1,9 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import * as _moment from 'moment';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {configuration} from '../../../shared/constants/configuration';
 import {environment} from '../../../../../environments/environment';
-import {MatDialog} from '@angular/material/dialog';
 import {OfficeManagementService} from '../../services/office-management.service';
 import {NotificationService} from '../../../shared/services/notification/notification.service';
 import {TranslateService} from '@ngx-translate/core';
@@ -17,7 +16,6 @@ import {tap} from 'rxjs/operators';
 import {ProjectState} from '../../../shared/models/ProjectState';
 import {ProjectCommentService} from '../../../shared/services/project-comment/project-comment.service';
 import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
-import {convertMomentToString} from '../../../shared/utils/dateUtils';
 import {LegacyTooltipPosition as TooltipPosition} from '@angular/material/legacy-tooltip';
 
 const moment = _moment;
@@ -44,7 +42,7 @@ export class ProjectOverviewCardComponent implements OnInit, OnDestroy {
   tooltipShowDelay = 500;
   tooltipPosition = 'above' as TooltipPosition;
 
-  constructor(private dialog: MatDialog, private omService: OfficeManagementService, private pmService: ProjectManagementService,
+  constructor(private omService: OfficeManagementService, private pmService: ProjectManagementService,
               private notificationService: NotificationService, private translate: TranslateService, private commentService: CommentService,
               private stepEntryService: StepentriesService, private _bottomSheet: MatBottomSheet, private projectCommentService: ProjectCommentService,
               private snackbarService: SnackbarService) {
