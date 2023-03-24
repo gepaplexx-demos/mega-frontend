@@ -3,7 +3,7 @@ import * as _moment from 'moment';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {configuration} from '../../../shared/constants/configuration';
 import {environment} from '../../../../../environments/environment';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {OfficeManagementService} from '../../services/office-management.service';
 import {NotificationService} from '../../../shared/services/notification/notification.service';
 import {TranslateService} from '@ngx-translate/core';

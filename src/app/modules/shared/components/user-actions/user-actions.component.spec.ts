@@ -4,7 +4,7 @@ import {UserActionsComponent} from './user-actions.component';
 import {User} from '../../models/User';
 import {OAuthService} from 'angular-oauth2-oidc';
 import {UserInfo} from 'angular-oauth2-oidc/types';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {AngularMaterialModule} from '../../../material/material-module';
 import {TranslateModule} from '@ngx-translate/core';
 import {By} from '@angular/platform-browser';

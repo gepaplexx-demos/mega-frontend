@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {User} from '../../models/User';
 import {InfoDialogComponent} from '../info-dialog/info-dialog.component';
 import {OAuthService} from 'angular-oauth2-oidc';

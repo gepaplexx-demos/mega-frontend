@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ManagementEntry} from '../../../shared/models/ManagementEntry';
 import {State} from '../../../shared/models/State';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {SelectionModel} from '@angular/cdk/collections';
 import {configuration} from '../../../shared/constants/configuration';
 import {environment} from '../../../../../environments/environment';

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProjectManagementEntry} from '../models/ProjectManagementEntry';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {CommentsForEmployeeComponent} from '../../shared/components/comments-for-employee/comments-for-employee.component';
 import {SelectionModel} from '@angular/cdk/collections';
 import {State} from '../../shared/models/State';

@@ -12,7 +12,7 @@ import * as moment from 'moment';
 import {convertMomentToString, toMonthYearString} from '../../../shared/utils/dateUtils';
 import {Subscription, zip} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {
   EmployeeCheckConfirmCommentDialogComponent
 } from '../employee-check-confirm-comment-dialog/employee-check-confirm-comment-dialog.component';

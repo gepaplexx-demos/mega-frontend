@@ -18,7 +18,7 @@ import {ProjectState} from '../../shared/models/ProjectState';
 import {SelectionModel} from '@angular/cdk/collections';
 import {CommentService} from '../../shared/services/comment/comment.service';
 import {Comment} from '../../shared/models/Comment';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {RouterTestingModule} from '@angular/router/testing';
 import {OAuthModule} from 'angular-oauth2-oidc';
 import {StepentriesService} from '../../shared/services/stepentries/stepentries.service';

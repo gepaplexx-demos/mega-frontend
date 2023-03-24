@@ -6,7 +6,7 @@ import {AngularMaterialModule} from '../../../material/material-module';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {OAuthModule} from 'angular-oauth2-oidc';
-import {MatLegacyDialogRef as MatDialogRef} from '@angular/material/legacy-dialog';
+import {MatDialogRef} from '@angular/material/dialog';
 import {Comment} from '../../models/Comment';
 import {State} from '../../models/State';
 

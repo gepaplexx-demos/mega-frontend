@@ -7,7 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from '../../shared.module';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {MatLegacyDialogRef as MatDialogRef} from '@angular/material/legacy-dialog';
+import {MatDialogRef} from '@angular/material/dialog';
 import {MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
 import {PmProgress} from '../../../monthly-report/models/PmProgress';
 import {State} from '../../models/State';

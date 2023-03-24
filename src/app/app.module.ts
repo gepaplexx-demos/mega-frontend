@@ -16,7 +16,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {OfficeManagementModule} from './modules/office-management/office-management.module';
 import {ProjectManagementModule} from './modules/project-management/project-management.module';
-import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
+import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 

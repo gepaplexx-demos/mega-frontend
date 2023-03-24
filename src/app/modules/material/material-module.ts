@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
 import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/legacy-checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
+import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
