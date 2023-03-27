@@ -3,11 +3,11 @@ import {TestBed} from '@angular/core/testing';
 import {SnackbarConfig, SnackbarService} from './snackbar.service';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {
-  MatLegacySnackBar as MatSnackBar,
-  MatLegacySnackBarHorizontalPosition as MatSnackBarHorizontalPosition,
-  MatLegacySnackBarModule as MatSnackBarModule,
-  MatLegacySnackBarVerticalPosition as MatSnackBarVerticalPosition
-} from '@angular/material/legacy-snack-bar';
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarModule,
+  MatSnackBarVerticalPosition
+} from '@angular/material/snack-bar';
 import {configuration} from '../../constants/configuration';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 

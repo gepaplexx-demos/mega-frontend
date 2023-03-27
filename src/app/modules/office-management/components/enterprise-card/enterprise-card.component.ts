@@ -11,7 +11,7 @@ import {ConfigService} from '../../../shared/services/config/config.service';
 import {EnterpriseEntriesService} from '../../services/enterprise-entries/enterprise-entries.service';
 import {EnterpriseEntry} from '../../models/EnterpriseEntry';
 import {EnterpriseStep} from '../../models/EnterpriseStep';
-import {MatLegacySnackBar as MatSnackBar, MatLegacySnackBarHorizontalPosition as MatSnackBarHorizontalPosition, MatLegacySnackBarVerticalPosition as MatSnackBarVerticalPosition} from '@angular/material/legacy-snack-bar';
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 import {TranslateService} from '@ngx-translate/core';
 import {
   ProjectStateSelectComponent

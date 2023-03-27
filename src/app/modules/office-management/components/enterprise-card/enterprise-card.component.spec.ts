@@ -9,7 +9,7 @@ import {of} from 'rxjs';
 import {Config} from '../../../shared/models/Config';
 import {OfficeManagementService} from '../../services/office-management.service';
 import {EnterpriseEntriesService} from '../../services/enterprise-entries/enterprise-entries.service';
-import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {ConfigService} from '../../../shared/services/config/config.service';
 import {TranslateService} from '@ngx-translate/core';
 import {EnterpriseEntry} from '../../models/EnterpriseEntry';

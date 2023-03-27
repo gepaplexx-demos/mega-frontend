@@ -10,7 +10,7 @@ import {MatLegacyMenuModule as MatMenuModule} from '@angular/material/legacy-men
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatLegacyPaginatorModule as MatPaginatorModule} from '@angular/material/legacy-paginator';
 import {MatLegacyProgressSpinnerModule as MatProgressSpinnerModule} from '@angular/material/legacy-progress-spinner';
-import {MatLegacySnackBarModule as MatSnackBarModule} from '@angular/material/legacy-snack-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatLegacyTableModule as MatTableModule} from '@angular/material/legacy-table';
 import {MatLegacyTabsModule as MatTabsModule} from '@angular/material/legacy-tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
