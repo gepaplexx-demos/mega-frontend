@@ -84,7 +84,7 @@ describe('Office Management (Unternehmen)', () => {
     visitAndWaitForRequests('/officeManagement');
 
     assertSelect('zep-times-released', 'Fertig')
-      .get('.mat-select')
+      .get('.mat-mdc-select')
       .should('not.have.class', 'mat-select-disabled');
   });
 
