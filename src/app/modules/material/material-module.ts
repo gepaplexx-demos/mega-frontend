@@ -12,7 +12,7 @@ import {MatLegacyPaginatorModule as MatPaginatorModule} from '@angular/material/
 import {MatLegacyProgressSpinnerModule as MatProgressSpinnerModule} from '@angular/material/legacy-progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatLegacyTableModule as MatTableModule} from '@angular/material/legacy-table';
-import {MatLegacyTabsModule as MatTabsModule} from '@angular/material/legacy-tabs';
+import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {MatButtonModule} from '@angular/material/button';
