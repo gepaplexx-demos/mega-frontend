@@ -22,7 +22,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {RouterTestingModule} from '@angular/router/testing';
 import {OAuthModule} from 'angular-oauth2-oidc';
 import {StepentriesService} from '../../shared/services/stepentries/stepentries.service';
-import {MatLegacySelectChange as MatSelectChange} from '@angular/material/legacy-select';
+import {MatSelectChange} from '@angular/material/select';
 import {ProjectEntriesService} from '../../shared/services/projectentries/project-entries.service';
 import {SnackbarService} from '../../shared/services/snackbar/snackbar.service';
 import {ProjectStateSelectComponent} from '../../shared/components/project-state-select/project-state-select.component';

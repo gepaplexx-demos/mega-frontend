@@ -1,6 +1,6 @@
 import {AfterViewChecked, ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';
 import {State} from '../../models/State';
-import {MatLegacySelectChange as MatSelectChange} from '@angular/material/legacy-select';
+import {MatSelectChange} from '@angular/material/select';
 
 @Component({
   selector: 'app-state-select',

@@ -4,7 +4,7 @@ import {StateSelectComponent} from './state-select.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {AngularMaterialModule} from '../../../material/material-module';
 import {By} from '@angular/platform-browser';
-import {MatLegacySelect as MatSelect} from '@angular/material/legacy-select';
+import {MatSelect} from '@angular/material/select';
 import {State} from '../../models/State';
 
 describe('StateSelectComponent', () => {

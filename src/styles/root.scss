@@ -166,10 +166,8 @@ app-project-overview-card, app-project-management {
 }
 
 .select-date-toolbar-row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: flex-end;
+  min-height: 100px;
   /* Override Material's default height */
   height: auto !important;
 }

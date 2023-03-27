@@ -15,9 +15,9 @@
       <div>
         <mat-toolbar class="mat-elevation-z8" color="accent">
           <mat-toolbar-row class="employee_actions_container">
-            <mat-form-field floatLabel="never">
-              <mat-label style="font-size: 18px">{{'office-management.filterPlaceholder' | translate}}</mat-label>
+            <mat-form-field subscriptSizing="dynamic">
               <input
+                [placeholder]="'office-management.filterPlaceholder' | translate"
                 #employeeNameInput
                 (keyup)="filterOmEntriesByEmployeeName(employeeNameInput.value)"
                 matInput>
@@ -29,7 +29,7 @@
                 <mat-icon>close</mat-icon>
               </button>
             </mat-form-field>
-            <div>
+            <div class="employee_actions_container">
               <small
                 *ngIf="omSelectionModel.selected.length > 0">
                 {{omSelectionModel.selected.length}} {{'office-management.selectedCount' | translate}}

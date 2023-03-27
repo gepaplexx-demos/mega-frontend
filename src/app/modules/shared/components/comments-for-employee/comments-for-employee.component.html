@@ -4,7 +4,7 @@
   </h2>
 
 
-  <mat-dialog-content>
+  <mat-dialog-content class="dialog_content">
     <div>
       <mat-form-field appearance="outline">
         <mat-label>{{'comments-for-employee.writeCommentLabel'|translate}}</mat-label>
@@ -59,7 +59,7 @@
           <pre [hidden]="comment.isEditing" [innerHTML]="parseAnchorTags(comment.message)"
                style="white-space: pre-wrap">{{comment.message}}</pre>
           <div [hidden]="!comment.isEditing">
-            <mat-form-field floatLabel="never">
+            <mat-form-field>
               <mat-label>{{'comments-for-employee.editCommentLabel' | translate}}</mat-label>
               <textarea
                 #editMessageInput

@@ -15,7 +15,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {EnterpriseEntry} from '../../models/EnterpriseEntry';
 import {ProjectState} from '../../../shared/models/ProjectState';
 import {configuration} from '../../../shared/constants/configuration';
-import {MatLegacySelectChange as MatSelectChange} from '@angular/material/legacy-select';
+import {MatSelectChange} from '@angular/material/select';
 import {EnterpriseStep} from '../../models/EnterpriseStep';
 import {
   ProjectStateSelectComponent

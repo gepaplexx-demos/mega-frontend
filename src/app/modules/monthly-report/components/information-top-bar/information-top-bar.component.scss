@@ -27,11 +27,6 @@
 .datepicker_container {
   display: flex;
   align-items: baseline;
-  flex-wrap: wrap;
-}
-
-::ng-deep .datepicker_container .mat-form-field-infix {
-  border-top: 0;
 }
 
 .employeeName_container {
@@ -56,5 +51,10 @@
 
   .employeeName_container {
     display: none;
+  }
+
+  .datepicker_container {
+    flex-direction: column;
+    gap: 20px;
   }
 }

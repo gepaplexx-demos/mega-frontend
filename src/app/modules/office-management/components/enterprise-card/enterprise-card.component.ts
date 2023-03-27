@@ -4,7 +4,7 @@ import {Moment} from 'moment';
 import {Subscription, switchMap, zip} from 'rxjs';
 import {OfficeManagementService} from '../../services/office-management.service';
 import {tap} from 'rxjs/operators';
-import {MatLegacySelectChange as MatSelectChange} from '@angular/material/legacy-select';
+import {MatSelectChange} from '@angular/material/select';
 import {Config} from '../../../shared/models/Config';
 import {configuration} from '../../../shared/constants/configuration';
 import {ConfigService} from '../../../shared/services/config/config.service';
