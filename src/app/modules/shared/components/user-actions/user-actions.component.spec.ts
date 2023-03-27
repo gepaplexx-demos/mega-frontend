@@ -47,7 +47,8 @@ describe('UserActionsComponent', () => {
     component.user = UserMock.setupUser();
     fixture.detectChanges();
 
-    expect(fixture.debugElement.nativeElement.querySelector('#userBtn').textContent).toContain(`${UserMock.lastname} keyboard_arrow_down`);
+    expect(fixture.debugElement.nativeElement.querySelector('#userBtn').textContent)
+      .toContain(`keyboard_arrow_down ${UserMock.firstname} ${UserMock.lastname}`);
   });
 
   it('#menuTrigger - should open menu', () => {
