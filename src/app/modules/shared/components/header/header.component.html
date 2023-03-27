@@ -1,5 +1,5 @@
 <mat-sidenav-container class="header__sidenav_container">
-  <mat-sidenav #sidenav class="show_on_lg" mode="over" opened="false">
+  <mat-sidenav #sidenav mode="over" opened="false">
     <mat-nav-list *ngIf="user">
       <a mat-list-item>
         <app-user-actions (logout)="onLogout(); sidenav.close()" [user]="user"></app-user-actions>
