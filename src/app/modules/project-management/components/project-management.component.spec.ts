@@ -26,7 +26,7 @@ import {MatSelectChange} from '@angular/material/select';
 import {ProjectEntriesService} from '../../shared/services/projectentries/project-entries.service';
 import {SnackbarService} from '../../shared/services/snackbar/snackbar.service';
 import {ProjectStateSelectComponent} from '../../shared/components/project-state-select/project-state-select.component';
-import {MatLegacyCheckboxChange as MatCheckboxChange} from '@angular/material/legacy-checkbox';
+import {MatCheckboxChange} from '@angular/material/checkbox';
 import {ProjectCommentService} from '../../shared/services/project-comment/project-comment.service';
 import {ProjectComment} from '../../shared/models/ProjectComment';
 import {configuration} from '../../shared/constants/configuration';

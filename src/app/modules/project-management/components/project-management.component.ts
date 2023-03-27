@@ -21,7 +21,7 @@ import {configuration} from '../../shared/constants/configuration';
 import {ProjectState} from '../../shared/models/ProjectState';
 import {MatSelectChange} from '@angular/material/select';
 import {ProjectEntriesService} from '../../shared/services/projectentries/project-entries.service';
-import {MatLegacyCheckboxChange as MatCheckboxChange} from '@angular/material/legacy-checkbox';
+import {MatCheckboxChange} from '@angular/material/checkbox';
 import {TranslateService} from '@ngx-translate/core';
 import {ProjectStateSelectComponent} from '../../shared/components/project-state-select/project-state-select.component';
 import {ProjectCommentService} from '../../shared/services/project-comment/project-comment.service';
