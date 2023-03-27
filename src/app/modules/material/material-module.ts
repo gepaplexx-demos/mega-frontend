@@ -17,7 +17,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {MatButtonModule} from '@angular/material/button';
 import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
 import {MatExpansionModule} from '@angular/material/expansion';

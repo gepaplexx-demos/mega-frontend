@@ -16,7 +16,7 @@ import {tap} from 'rxjs/operators';
 import {ProjectState} from '../../../shared/models/ProjectState';
 import {ProjectCommentService} from '../../../shared/services/project-comment/project-comment.service';
 import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
-import {LegacyTooltipPosition as TooltipPosition} from '@angular/material/legacy-tooltip';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 const moment = _moment;
 

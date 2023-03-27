@@ -114,11 +114,11 @@ app-employee-card, app-project-management {
   }
 }
 
-.mat-tooltip.om-tooltip, .mat-tooltip.pm-tooltip {
-  font-size: 15px !important;
+
+.mega-custom-tooltip .mdc-tooltip__surface {
+  font-size: 15px;
   white-space: pre-line;
 }
-
 
 app-project-overview-card, app-project-management {
   .btn-addComment {

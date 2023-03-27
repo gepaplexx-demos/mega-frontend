@@ -29,7 +29,7 @@ import {SnackbarService} from '../../shared/services/snackbar/snackbar.service';
 import {finalize, forkJoin, mergeMap, Subscription, switchMap, tap, zip} from 'rxjs';
 import {ProjectManagementEntryViewModel} from '../models/ProjectManagementEntryViewModel';
 import * as ProjectManagementComparator from '../ts/project-management-comparator';
-import {LegacyTooltipPosition as TooltipPosition} from '@angular/material/legacy-tooltip';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 const moment = _moment;
 

@@ -16,7 +16,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {
   ProjectStateSelectComponent
 } from '../../../shared/components/project-state-select/project-state-select.component';
-import {LegacyTooltipPosition as TooltipPosition} from '@angular/material/legacy-tooltip';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 const moment = _moment;
 

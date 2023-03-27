@@ -14,7 +14,7 @@
             <strong [matTooltipPosition]="tooltipPosition"
                     [matTooltipShowDelay]="tooltipShowDelay"
                     matTooltip="{{'office-management.global-check.tooltips.zepTimesReleased' | translate}}"
-                    matTooltipClass="om-tooltip">{{ 'office-management.global-check.labels.zepTimesReleased' | translate }}</strong>
+                    matTooltipClass="mega-custom-tooltip">{{ 'office-management.global-check.labels.zepTimesReleased' | translate }}</strong>
             <app-project-state-select #zepTimesReleasedSelect
                                       (selectionChange)="onChangeEnterpriseState($event, EnterpriseStep.ZEP_TIMES_RELEASED, zepTimesReleasedSelect)"
                                       [value]="enterpriseEntry?.zepTimesReleased"
@@ -25,7 +25,7 @@
               [matTooltipPosition]="tooltipPosition"
               [matTooltipShowDelay]="tooltipShowDelay"
               matTooltip="{{'office-management.global-check.tooltips.chargeabilityExternalEmployeesRecorded' | translate}}"
-              matTooltipClass="om-tooltip">{{ 'office-management.global-check.labels.chargeabilityExternalEmployeesRecorded' | translate }}</strong>
+              matTooltipClass="mega-custom-tooltip">{{ 'office-management.global-check.labels.chargeabilityExternalEmployeesRecorded' | translate }}</strong>
             <app-project-state-select #chargeabilityExternalEmployeesRecordedSelect
                                       (selectionChange)="onChangeEnterpriseState($event, EnterpriseStep.CHARGEABILITY_EXTERNAL_EMPLOYEES_RECORDED, chargeabilityExternalEmployeesRecordedSelect)"
                                       [value]="enterpriseEntry?.chargeabilityExternalEmployeesRecorded"
@@ -35,7 +35,7 @@
             <strong [matTooltipPosition]="tooltipPosition"
                     [matTooltipShowDelay]="tooltipShowDelay"
                     matTooltip="{{'office-management.global-check.tooltips.payrollAccountingSent' | translate}}"
-                    matTooltipClass="om-tooltip">{{ 'office-management.global-check.labels.payrollAccountingSent' | translate }}</strong>
+                    matTooltipClass="mega-custom-tooltip">{{ 'office-management.global-check.labels.payrollAccountingSent' | translate }}</strong>
             <app-project-state-select #payrollAccountingSentSelect
                                       (selectionChange)="onChangeEnterpriseState($event, EnterpriseStep.PAYROLL_ACCOUNTING_SENT, payrollAccountingSentSelect)"
                                       [value]="enterpriseEntry?.payrollAccountingSent"
