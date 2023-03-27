@@ -2,7 +2,7 @@ import {Component, EventEmitter, Inject, Input, LOCALE_ID, OnChanges, OnDestroy,
 import {MonthlyReport} from '../../models/MonthlyReport';
 import {CommentService} from '../../../shared/services/comment/comment.service';
 import {State} from '../../../shared/models/State';
-import {MatLegacySelectionListChange as MatSelectionListChange} from '@angular/material/legacy-list';
+import {MatSelectionListChange} from '@angular/material/list';
 import {StepentriesService} from '../../../shared/services/stepentries/stepentries.service';
 import {Step} from '../../../shared/models/Step';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';

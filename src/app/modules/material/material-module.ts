@@ -16,7 +16,7 @@ import {MatLegacyTabsModule as MatTabsModule} from '@angular/material/legacy-tab
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {MatButtonModule} from '@angular/material/button';
-import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
+import {MatListModule} from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';

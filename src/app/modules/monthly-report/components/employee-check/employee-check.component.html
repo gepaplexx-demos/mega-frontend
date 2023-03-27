@@ -87,11 +87,13 @@
             #option
             *ngFor="let comment of monthlyReport.comments"
             [disabled]="option.selected"
-            [ngClass]="option.selected ? 'done green' : 'red'"
+            [ngClass]="{'done': option.selected}"
             [selected]="comment.state === State.DONE"
             [value]="comment">
-            {{comment.updateDate | date: 'dd.MM.yyyy'}}
-            {{comment?.authorName}}:
+            <div>
+              {{comment.updateDate | date: 'dd.MM.yyyy'}}
+              {{comment?.authorName}}:
+            </div>
             <div (click)="$event.stopPropagation()" [innerHTML]="parseBody(comment.message)"
                  style="white-space: pre-line"></div>
           </mat-list-option>

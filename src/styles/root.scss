@@ -39,13 +39,14 @@ button:focus {
 }
 
 app-display-monthly-report {
-  .mat-checkbox-checked.mat-accent .mat-checkbox-background,
-  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
-  .mat-accent .mat-pseudo-checkbox-checked,
-  .mat-accent .mat-pseudo-checkbox-indeterminate,
-  .mat-pseudo-checkbox-checked,
-  .mat-pseudo-checkbox-indeterminate {
-    background-color: $mega-success-green;
+
+  .mdc-checkbox__background {
+    background-color: $mega-success-green !important;
+  }
+
+  // remove disabled-opacity
+  .mdc-checkbox {
+    opacity: 1 !important;
   }
 
   .mat-card-content {
