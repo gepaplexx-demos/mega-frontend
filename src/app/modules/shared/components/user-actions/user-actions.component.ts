@@ -4,7 +4,7 @@ import {User} from '../../models/User';
 import {InfoDialogComponent} from '../info-dialog/info-dialog.component';
 import {OAuthService} from 'angular-oauth2-oidc';
 import {UserInfo} from '../../../monthly-report/models/UserInfo';
-import {MatLegacyMenuTrigger as MatMenuTrigger} from '@angular/material/legacy-menu';
+import {MatMenuTrigger} from '@angular/material/menu';
 
 @Component({
   selector: 'app-user-actions',

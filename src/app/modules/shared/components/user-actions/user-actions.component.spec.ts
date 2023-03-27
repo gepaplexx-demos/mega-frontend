@@ -10,7 +10,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {By} from '@angular/platform-browser';
 import {MatButton} from '@angular/material/button';
 import {click} from '../../../../testing/click-simulator';
-import {MatLegacyMenuItem as MatMenuItem} from '@angular/material/legacy-menu';
+import {MatMenuItem} from '@angular/material/menu';
 
 describe('UserActionsComponent', () => {
 
