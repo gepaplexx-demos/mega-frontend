@@ -1,6 +1,6 @@
 <button [matMenuTriggerFor]="menu" id="userBtn" mat-button>
   {{user?.firstname + " " + user?.lastname}}
-  <mat-icon matListIcon>keyboard_arrow_down</mat-icon>
+  <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
 </button>
 
 <img *ngIf="pictureUrl" [src]="pictureUrl" alt="avatar" class="avatar" />
