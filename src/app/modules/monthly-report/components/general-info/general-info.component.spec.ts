@@ -101,7 +101,7 @@ describe('GeneralInfoComponent', () => {
   });
 
   function assertMonthlyReportRow(rowNumber: number, expectedHeader: string, expectedDays: string, expectedIdentifier: string) {
-    const tr = fixture.debugElement.query(By.css(`.mat-row:nth-child(${rowNumber})`));
+    const tr = fixture.debugElement.query(By.css(`.mat-mdc-row:nth-child(${rowNumber})`));
 
     const header = tr.query(By.css('.mat-column-description')).nativeElement.innerText.trim();
     expect(header).toEqual(expectedHeader.trim());

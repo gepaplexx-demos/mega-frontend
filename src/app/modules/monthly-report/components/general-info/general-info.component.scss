@@ -1,9 +1,9 @@
 .mat-column-unit {
-  flex: 0 0 15%;
+  flex: 0 0 35%;
 }
 
 .mat-column-description {
-  flex: 0 0 60%;
+  flex: 0 0 50%;
 }
 
 .mat-column-value {
@@ -12,17 +12,17 @@
   padding-right: 8px;
 }
 
-.mat-table {
+.mat-mdc-table {
   width: 100%;
   overflow: hidden;
   padding-top: 8px;
 }
 
-.mat-header-cell {
+.mat-mdc-header-cell {
   height: 0;
 }
 
-.mat-row:nth-child(3) {
+.mat-mdc-row:nth-child(3) {
   border-bottom: solid 1px grey;
 }
 
