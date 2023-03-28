@@ -36,7 +36,7 @@ describe('Mein Mega', () => {
 
     cy.get('app-employee-check .mat-card')
       .should('not.be.null');
-    cy.get('app-employee-check .mat-card .mat-card-title')
+    cy.get('app-employee-check .mat-mdc-card .mat-mdc-card-title')
       .should('have.text', 'Status zum Monatsabschluss');
 
 

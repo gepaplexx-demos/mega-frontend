@@ -24,9 +24,11 @@
 
 <ng-template #invalidReleaseDate>
   <mat-card [ngClass]="['mat-elevation-z10', 'invalid-date-card']">
-    <mat-card-title>
-      <p>{{'monthly-report.timeCheckNotPossible' | translate}}</p>
-    </mat-card-title>
+    <mat-card-header>
+      <mat-card-title>
+        <p>{{'monthly-report.timeCheckNotPossible' | translate}}</p>
+      </mat-card-title>
+    </mat-card-header>
     <mat-card-content>
       <p>{{'monthly-report.timeCheckNotPossiblePrompt' | translate }}</p>
     </mat-card-content>

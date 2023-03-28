@@ -2,9 +2,12 @@
   *ngIf="!loggedIn()"
   class="login-container">
   <mat-card class="mat-elevation-z8">
-    <mat-card-title>
-      {{'login.cardTitle' | translate}}
-    </mat-card-title>
+
+    <mat-card-header>
+      <mat-card-title>
+        {{'login.cardTitle' | translate}}
+      </mat-card-title>
+    </mat-card-header>
 
     <mat-card-content class="login__content_container">
       <span class="text">

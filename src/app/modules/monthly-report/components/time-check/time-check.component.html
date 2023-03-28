@@ -1,5 +1,8 @@
-<mat-card class="mat-elevation-z1 fill-parent">
-  <mat-card-title>{{'monthly-report.title.time' | translate}}</mat-card-title>
+<mat-card appearance="raised" class="fill-parent">
+
+  <mat-card-header>
+    <mat-card-title>{{'monthly-report.title.time' | translate}}</mat-card-title>
+  </mat-card-header>
 
   <mat-card-content [class.no-warnings]="!monthlyReport || monthlyReport?.timeWarnings?.length === 0">
     <ng-container *ngIf="!monthlyReport">

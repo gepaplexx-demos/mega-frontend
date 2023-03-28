@@ -1,13 +1,15 @@
-<mat-card class="mat-elevation-z1 fill-parent">
-  <mat-card-title>
-    <ngx-skeleton-loader *ngIf="!monthlyReport else title"
-                         [theme]="{ height: '30px', width: '250px' }"
-                         appearance="line"></ngx-skeleton-loader>
+<mat-card class="mat-elevation-z6 fill-parent">
+  <mat-card-header>
+    <mat-card-title>
+      <ngx-skeleton-loader *ngIf="!monthlyReport else title"
+                           [theme]="{ height: '30px', width: '250px' }"
+                           appearance="line"></ngx-skeleton-loader>
 
-    <ng-template #title>
-      {{'monthly-report.title.general-info' | translate}} {{selectedDateStr}}
-    </ng-template>
-  </mat-card-title>
+      <ng-template #title>
+        {{'monthly-report.title.general-info' | translate}} {{selectedDateStr}}
+      </ng-template>
+    </mat-card-title>
+  </mat-card-header>
 
   <ngx-skeleton-loader *ngIf="!monthlyReport"
                        appearance="line"

@@ -1,17 +1,20 @@
-<mat-card class="mat-elevation-z1 fill-parent">
-  <mat-card-subtitle id="idname">
-    <ngx-skeleton-loader *ngIf="!monthlyReport else workDescription"
-                         [theme]="{ width: '200px' }"
-                         appearance="line"></ngx-skeleton-loader>
-    <ng-template #workDescription>
+<mat-card appearance="raised" class="fill-parent">
+
+  <mat-card-header>
+    <mat-card-subtitle id="idname">
+      <ngx-skeleton-loader *ngIf="!monthlyReport else workDescription"
+                           [theme]="{ width: '200px' }"
+                           appearance="line"></ngx-skeleton-loader>
+      <ng-template #workDescription>
       <span class="subtitle">
         {{employeeFunctions[monthlyReport?.employee?.workDescription]}}
       </span>
-      <span class="mobile__subtitle">
+        <span class="mobile__subtitle">
         {{monthlyReport?.employee?.firstname}} {{monthlyReport?.employee?.lastname}} - {{employeeFunctions[monthlyReport?.employee?.workDescription]}}
       </span>
-    </ng-template>
-  </mat-card-subtitle>
+      </ng-template>
+    </mat-card-subtitle>
+  </mat-card-header>
   <mat-card-content>
 
     <div class="information-top-bar__content_container">
