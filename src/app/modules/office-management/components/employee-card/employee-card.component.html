@@ -103,8 +103,7 @@
                 matTooltipPosition="above"
                 [matTooltipShowDelay]="100"
                 [matTooltip]="omEntry.employeeCheckStateReason"
-                matTooltipClass="om-tooltip"
-                [matBadge]="(omEntry.employeeCheckState === State.IN_PROGRESS) ? 1 : null" matBadgeSize="small">
+                matTooltipClass="om-tooltip">
                 <app-state-indicator [state]="omEntry.employeeCheckState"
                                      data-cy="employee-check"></app-state-indicator>
               </div>
