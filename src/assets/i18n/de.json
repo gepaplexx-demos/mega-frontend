@@ -60,7 +60,7 @@
     "pleaseCheckPrompt": "Bitte überprüfe deine Eingaben (Zeiten, Reisen, Belege, ...) in ZEP und beim Kunden und bestätige diese anschließend.",
     "inProgressDescription": "Du hast angegeben, die Zeiten noch nicht bestätigen zu können.",
     "reason": "Grund:",
-    "setStateInProgressButtonText": "Bestätigen noch nicht möglich...",
+    "setStateInProgressButtonText": "Bestätigen noch nicht möglich, weil...",
     "confirmBtnText": "Buchungen bestätigen",
     "title": {
       "emc": "Status zum Monatsabschluss",

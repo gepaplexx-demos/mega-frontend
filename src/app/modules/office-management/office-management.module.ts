@@ -17,7 +17,6 @@ import {
 import {
   ProjektNameWithZepLinkComponent
 } from './components/projekt-name-with-zep-link/projekt-name-with-zep-link.component';
-import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [EmployeeCardComponent, OfficeManagementComponent, ProjectOverviewCardComponent, EnterpriseCardComponent, ProjectsWithoutLeadsCardComponent, ProjektNameWithZepLinkComponent],
@@ -32,8 +31,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     SharedModule,
     FlexLayoutModule,
     FormsModule,
-    NgxSkeletonLoaderModule,
-    MatBadgeModule
+    NgxSkeletonLoaderModule
   ]
 })
 export class OfficeManagementModule {

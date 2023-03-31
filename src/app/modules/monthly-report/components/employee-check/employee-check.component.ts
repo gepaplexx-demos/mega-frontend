@@ -39,6 +39,7 @@ export class EmployeeCheckComponent implements OnInit, OnChanges, OnDestroy {
   private dateSelectionSub: Subscription;
   employeeCheckIcon: string;
   employeeCheckText: string;
+  noTimesCurrentMonth: boolean;
 
   constructor(
     public commentService: CommentService,
@@ -79,6 +80,7 @@ export class EmployeeCheckComponent implements OnInit, OnChanges, OnDestroy {
 
     let stateIndicatorState = this.monthlyReport.employeeCheckState;
     let stateIndicatorText = '';
+    let noTimesCurrentMonth = false;
 
     // In besonderen Fällen will man ein anderes Icon als das, was der employeeCheckState eigentlich ist, anzeigen:
     if(this.monthlyReport.employeeCheckState === State.OPEN || this.monthlyReport.employeeCheckState === State.IN_PROGRESS) {
@@ -96,6 +98,7 @@ export class EmployeeCheckComponent implements OnInit, OnChanges, OnDestroy {
         // Show default State Indicator
         stateIndicatorText = 'monthly-report.noTimesCurrentMonth';
         stateIndicatorState = undefined;
+        noTimesCurrentMonth = true;
       }
     }
     else if(this.monthlyReport.employeeCheckState === State.DONE) {
@@ -111,6 +114,7 @@ export class EmployeeCheckComponent implements OnInit, OnChanges, OnDestroy {
 
     this.employeeCheckIcon = stateIndicatorState;
     this.employeeCheckText = stateIndicatorText;
+    this.noTimesCurrentMonth = noTimesCurrentMonth;
   }
 
   selectionChange(change: MatSelectionListChange): void {

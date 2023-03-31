@@ -18,31 +18,30 @@
       {{'monthly-report.employeeCheckConfirmCommentDialogComponent.subDescription' | translate}}
     </strong>
   </div>
-  <div class="input-container">
-    <textarea
-              #textareaCtrl="ngModel"
-              class="text-area"
-              matInput
-              [maxLength]="MAX_LENGTH"
-              required
-              [(ngModel)]="textAreaInp"
-              cdkTextareaAutosize
-              cdkAutosizeMaxRows="10"
-              cdkAutosizeMinRows="8"
-              placeholder="{{'monthly-report.employeeCheckConfirmCommentDialogComponent.textareaPlaceholder' | translate}}"
-              >
-    </textarea>
-    <small><i>{{(MAX_LENGTH - textAreaInp.length)}} {{'global.remainingChars' | translate}}</i></small>
 
-    <!-- MaxLength Error kann nicht auftreten, weil: Datenbank-Limit ist 500 Zeichen und falls da was schiefgegangen ist,
-     die Textarea schneidet den Rest ab -->
-    <mat-error *ngIf="textareaCtrl.errors?.required && (textareaCtrl.touched || textareaCtrl.dirty)">
-      {{'monthly-report.employeeCheckConfirmCommentDialogComponent.textareaRequiredError' | translate}}
-    </mat-error>
+  <div class="mt-20">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>{{'monthly-report.employeeCheckConfirmCommentDialogComponent.textareaPlaceholder' | translate}}</mat-label>
+      <textarea
+        #textareaCtrl="ngModel"
+        required
+        [(ngModel)]="textAreaInp"
+        [maxLength]="MAX_LENGTH"
+        cdkAutosizeMaxRows="10"
+        cdkAutosizeMinRows="8"
+        cdkTextareaAutosize
+        matInput></textarea>
+      <mat-hint align="end">{{textareaCtrl?.value?.length}} / {{MAX_LENGTH}}</mat-hint>
+      <!-- MaxLength Error kann nicht auftreten, weil: Datenbank-Limit ist 500 Zeichen und falls da was schiefgegangen ist,
+       die Textarea schneidet den Rest ab -->
+      <mat-error *ngIf="textareaCtrl?.errors?.required && (textareaCtrl?.touched || textareaCtrl?.dirty)">
+        {{'monthly-report.employeeCheckConfirmCommentDialogComponent.textareaRequiredError' | translate}}
+      </mat-error>
+    </mat-form-field>
   </div>
 </div>
 
-<mat-dialog-actions>
+<mat-dialog-actions align="end">
   <button (click)="cancel()" mat-button>Abbrechen</button>
   <button [disabled]="textareaCtrl.invalid" (click)="save()" mat-raised-button color="primary">Speichern</button>
 </mat-dialog-actions>
