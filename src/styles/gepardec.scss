@@ -40,7 +40,14 @@ $gepardec-pal: (
 
 $mega-primary: mat.define-palette($gepardec-pal);
 $mega-accent: mat.define-palette($gepardec-pal, A100);
-$mega-theme: mat.define-light-theme($mega-primary, $mega-accent);
 
+$mega-theme: mat.define-light-theme((
+  color: (
+    primary: $mega-primary,
+    accent: $mega-accent,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
 
 @include mat.all-component-themes($mega-theme);
