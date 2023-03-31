@@ -36,7 +36,7 @@
     "coverage-istanbul": "^1.1.2",
     "dotenv": "^16.0.0",
     "moment": "^2.29.2",
-    "ngx-skeleton-loader": "^5.0.0",
+    "ngx-skeleton-loader": "^7.0.0",
     "rxjs": "^7.5.2",
     "serialize-javascript": "^6.0.0",
     "tslib": "^2.3.1",
