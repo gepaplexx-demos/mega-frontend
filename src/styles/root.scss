@@ -55,6 +55,10 @@ app-display-monthly-report {
     padding-top: 20px;
   }
 
+  app-information-top-bar .mat-mdc-card-content {
+    padding-top: 0;
+  }
+
   .fill-parent {
     height: 100%;
     width: 100%;
