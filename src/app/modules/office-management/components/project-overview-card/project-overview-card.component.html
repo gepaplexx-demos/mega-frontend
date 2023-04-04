@@ -82,7 +82,7 @@
               <button (click)="onStartEditing(pmEntry.projectName)"
                       *ngIf="!pmEntry.projectComment?.comment && forProjectName !== pmEntry.projectName"
                       [attr.aria-label]="'global.addComment' | translate"
-                      class="btn-addComment"
+                      class="btn-addComment gepardec-icon-button"
                       mat-icon-button
                       matTooltip="{{'global.addComment' | translate}}"
                       matTooltipShowDelay="1000">

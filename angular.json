@@ -30,7 +30,8 @@
             "styles": [
               "src/styles/colors.scss",
               "src/styles/root.scss",
-              "src/styles/gepardec.scss"
+              "src/styles/gepardec.scss",
+              "src/styles/material-customizing.scss"
             ],
             "scripts": [],
             "vendorChunk": true,
