@@ -148,6 +148,12 @@ $menu-typography: mat.define-typography-config(
   )
 );
 
+$list-typography: mat.define-typography-config(
+  $body-1: mat.define-typography-level(
+    $font-size: 16px
+  )
+);
+
 @include mat.toolbar-typography($toolbar-typography);
 
 @include mat.select-typography($select-typography);
@@ -157,3 +163,5 @@ $menu-typography: mat.define-typography-config(
 @include mat.dialog-typography($dialog-typography);
 
 @include mat.menu-typography($menu-typography);
+
+@include mat.list-typography($list-typography);

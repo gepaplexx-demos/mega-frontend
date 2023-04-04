@@ -45,6 +45,11 @@ img {
   height: inherit;
 }
 
+.mat-list-item-with-icon {
+  display: flex;
+  align-items: center;
+}
+
 /**
     lg = 1280px
  */
