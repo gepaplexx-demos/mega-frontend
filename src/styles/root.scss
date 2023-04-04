@@ -173,15 +173,9 @@ app-project-overview-card, app-project-management {
 // workaround für https://github.com/angular/components/issues/26094
 // "bug(mat-card): mat-elevation-zx no longer working for mat-card after upgrade to version 15 "
 // durch dieses include wird der standard elevation style überschrieben
-.mat-mdc-card.mat-elevation-z6 {
-  @include mat.elevation(6);
-}
-
-.mat-mdc-card.mat-elevation-z8 {
-  @include mat.elevation(8);
-}
-
-.mat-mdc-card.mat-elevation-z10 {
-  @include mat.elevation(10);
+@for $i from 0 through 24 {
+  .mat-mdc-card.mat-elevation-z#{$i} {
+    @include mat.elevation($i);
+  }
 }
 
