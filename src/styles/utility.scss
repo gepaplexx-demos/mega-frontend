@@ -1,0 +1,53 @@
+/**
+   SIMPLE UTILITY CSS CLASSES
+ */
+
+@import "colors";
+
+.green {
+  color: $mega-success-green;
+}
+
+.red {
+  color: $mega-danger-red;
+}
+
+.yellow {
+  color: $mega-warning-yellow;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.min-height-0 {
+  min-height: 0;
+}

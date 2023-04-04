@@ -1,3 +1,10 @@
+/**
+   GLOBAL MATERIAL OVERRIDES
+ */
+
+@use '@angular/material' as mat;
+@import "colors";
+
 mat-card-title.mat-mdc-card-title {
   margin-bottom: 8px;
 }
@@ -44,28 +51,36 @@ mat-form-field mat-label {
   font-size: 16px !important;
 }
 
-// seit angular/material v15 sind icon buttons 48x48 groß. mit dieser klasse wird er zu 40x40, wie davor
-.gepardec-icon-button {
-  width: 40px !important;
-  height: 40px !important;
-  padding: 0 !important;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
+.mat-mdc-table {
+  overflow: auto;
+}
 
-  & > *[role=img] {
-    width: 24px;
-    height: 24px;
-    font-size: 24px;
+.mat-mdc-snack-bar-action > button {
+  color: $mega-warning-yellow
+}
 
-    svg {
-      width: 24px;
-      height: 24px;
-    }
+// workaround für https://github.com/angular/components/issues/26094
+// "bug(mat-card): mat-elevation-zx no longer working for mat-card after upgrade to version 15 "
+// durch dieses include wird der standard elevation style überschrieben
+@for $i from 0 through 24 {
+  .mat-mdc-card.mat-elevation-z#{$i} {
+    @include mat.elevation($i);
+  }
+}
+
+@media (max-width: 800px) {
+
+  .mat-mdc-header-row {
+    display: none;
   }
 
-  .mat-mdc-button-touch-target {
-    width: 40px !important;
-    height: 40px !important;
+  .mat-mdc-row:not(.fixed-columns) {
+    flex-direction: column;
+    align-items: start;
+    padding: 18px 24px;
+  }
+
+  .mat-mdc-row:not(.fixed-columns) .mat-mdc-cell:first-of-type {
+    padding-left: 0 !important;
   }
 }

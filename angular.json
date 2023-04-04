@@ -30,6 +30,7 @@
             "styles": [
               "src/styles/colors.scss",
               "src/styles/root.scss",
+              "src/styles/utility.scss",
               "src/styles/gepardec.scss",
               "src/styles/material-customizing.scss"
             ],

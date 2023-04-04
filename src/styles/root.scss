@@ -1,4 +1,3 @@
-@use '@angular/material' as mat;
 @import 'src/styles/colors';
 
 html, body {
@@ -17,26 +16,6 @@ body {
 
 button:focus {
   outline: none;
-}
-
-.mat-mdc-snack-bar-action > button {
-  color: $mega-warning-yellow
-}
-
-.green {
-  color: $mega-success-green;
-}
-
-.red {
-  color: $mega-danger-red;
-}
-
-.yellow {
-  color: $mega-warning-yellow;
-}
-
-.text-center {
-  text-align: center !important;
 }
 
 app-display-monthly-report {
@@ -79,10 +58,6 @@ app-time-check, app-journey-check, app-employee-check, app-general-info {
   flex-direction: column;
 }
 
-.mat-mdc-table {
-  overflow: auto;
-}
-
 .mobile-label {
   display: none;
 }
@@ -93,22 +68,7 @@ app-time-check, app-journey-check, app-employee-check, app-general-info {
     display: inline-block;
     text-align: left !important;
   }
-
-  .mat-mdc-header-row {
-    display: none;
-  }
-
-  .mat-mdc-row:not(.fixed-columns) {
-    flex-direction: column;
-    align-items: start;
-    padding: 18px 24px;
-  }
-
-  .mat-mdc-row:not(.fixed-columns) .mat-mdc-cell:first-of-type {
-    padding-left: 0 !important;
-  }
 }
-
 
 .mega-custom-tooltip .mdc-tooltip__surface {
   font-size: 15px;
@@ -121,38 +81,6 @@ app-project-overview-card, app-project-management {
     color: $gepardec-black;
     background-color: transparentize($gepardec-yellow, 0.5);
   }
-}
-
-.mt-10 {
-  margin-top: 10px;
-}
-
-.mt-20 {
-  margin-top: 20px;
-}
-
-.mb-10 {
-  margin-bottom: 10px;
-}
-
-.mr-10 {
-  margin-right: 10px;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.visibility-hidden {
-  visibility: hidden;
-}
-
-.margin-auto {
-  margin: auto;
-}
-
-.min-height-0 {
-  min-height: 0;
 }
 
 .office_management__table-row {
@@ -174,12 +102,28 @@ app-project-overview-card, app-project-management {
   gap: 30px;
 }
 
-// workaround für https://github.com/angular/components/issues/26094
-// "bug(mat-card): mat-elevation-zx no longer working for mat-card after upgrade to version 15 "
-// durch dieses include wird der standard elevation style überschrieben
-@for $i from 0 through 24 {
-  .mat-mdc-card.mat-elevation-z#{$i} {
-    @include mat.elevation($i);
+// seit angular/material v15 sind icon buttons 48x48 groß. mit dieser klasse wird er zu 40x40, wie davor
+.gepardec-icon-button {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  & > *[role=img] {
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .mat-mdc-button-touch-target {
+    width: 40px !important;
+    height: 40px !important;
   }
 }
-
