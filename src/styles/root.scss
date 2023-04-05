@@ -20,7 +20,7 @@ button:focus {
 
 app-display-monthly-report {
 
-  .mdc-checkbox__background {
+  .mdc-checkbox--disabled .mdc-checkbox__background {
     background-color: $mega-success-green !important;
   }
 
