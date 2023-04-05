@@ -158,6 +158,8 @@ $list-typography: mat.define-typography-config(
 
 @include mat.select-typography($select-typography);
 
+@include mat.option-typography($select-typography);
+
 @include mat.input-typography($input-typography);
 
 @include mat.dialog-typography($dialog-typography);
