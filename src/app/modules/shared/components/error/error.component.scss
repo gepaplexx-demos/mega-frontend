@@ -1,6 +1,7 @@
 mat-icon {
   font-size: 80px;
   width: auto;
+  height: auto;
 }
 
 .error_container {
@@ -10,9 +11,4 @@ mat-icon {
   box-sizing: border-box;
   place-content: center;
   align-items: center;
-  gap: 10px;
-}
-
-.spacer {
-  height: 40px;
 }
