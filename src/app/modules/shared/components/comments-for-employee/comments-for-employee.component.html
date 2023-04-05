@@ -30,7 +30,7 @@
         </button>
       </span>
     </div>
-    <table *ngIf="comments.length > 0; else noCommentsFound" class="mat-table" data-cy="employee-comments">
+    <table *ngIf="comments.length > 0; else noCommentsFound" class="mat-table mt-10" data-cy="employee-comments">
 
       <tr class="mat-header-row">
         <th class="mat-header-cell text-center"
@@ -55,13 +55,13 @@
           <app-state-indicator [state]="comment.state"></app-state-indicator>
         </td>
 
-        <td class="mat-cell">
+        <td class="mat-cell text-center">
           <pre [hidden]="comment.isEditing" [innerHTML]="parseAnchorTags(comment.message)"
                style="white-space: pre-wrap">{{comment.message}}</pre>
           <div [hidden]="!comment.isEditing">
             <mat-form-field>
-              <mat-label>{{'comments-for-employee.editCommentLabel' | translate}}</mat-label>
               <textarea
+                [placeholder]="'comments-for-employee.editCommentLabel' | translate"
                 #editMessageInput
                 [maxLength]="MAXIMUM_LETTERS"
                 [value]="comment.message"
@@ -75,7 +75,7 @@
           </div>
         </td>
 
-        <td class="mat-cell">
+        <td class="mat-cell text-center">
           <ng-container *ngIf="comment.isEditing">
             <button
               (click)="comment.message = editMessageInput.value; toggleIsEditing(comment); updateCommentForEmployee(comment);"
@@ -95,7 +95,7 @@
           </button>
         </td>
 
-        <td class="mat-cell">
+        <td class="mat-cell text-center">
           <button (click)="deleteCommentOfEmployee(comment)" *ngIf="editCommentBtnVisible(comment)" aria-label="delete"
                   mat-icon-button>
             <mat-icon>delete</mat-icon>
@@ -105,7 +105,7 @@
     </table>
 
     <ng-template #noCommentsFound>
-      <p>{{'comments-for-employee.noCommentsYet' | translate}}</p>
+      <p class="mt-10">{{'comments-for-employee.noCommentsYet' | translate}}</p>
     </ng-template>
   </mat-dialog-content>
 
