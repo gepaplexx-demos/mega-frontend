@@ -59,6 +59,33 @@ mat-form-field mat-label {
   color: $mega-warning-yellow
 }
 
+// Label Farbe von den einzelnen Links (Mein Mega, Office Management etc...)
+// Seit Material v15 hat ACTIVE LABEL auch die gleiche Farbe, die Linie darunter (unterstrichen)
+// Diese ist aber durch die Gepardec Farbpalette (Primary Color: yellow) gelb und nicht lesbar
+// deswegen wird es wieder mit dem gleichen CSS, wie vor Material v15 versehen
+.mdc-tab__text-label {
+  color: #000000de !important;
+  opacity: .6;
+}
+
+// Label Farbe von den einzelnen Links WÄHREND man drauf drückt oder gedrückt hält (dunkler)
+.mdc-tab.cdk-focused .mdc-tab__text-label {
+  opacity: 1 !important;
+}
+
+// Farbe vom Ripple, wenn man auf einen Tab drauf drückt. Opacity vom Ripple ist seeeehr gering und lässt nicht nicht ändern,
+// daher opacity durch SCHWARZ quasi auf 1 setzen
+.mdc-tab__ripple::before, .mat-mdc-tab .mat-ripple-element, .mat-mdc-tab-header-pagination .mat-ripple-element,
+.mat-mdc-tab-link .mat-ripple-element {
+  background-color: #000000 !important;
+}
+
+// Seit Material v15 ist nur noch der active Tab unterstrichen. In der alten Version waren die inaktiven Tabs mit einem
+// leichten, dünnen grau unterstrichen. Das wird hier nachgestellt
+.mdc-tab:not(.mdc-tab--active) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+
 // workaround für https://github.com/angular/components/issues/26094
 // "bug(mat-card): mat-elevation-zx no longer working for mat-card after upgrade to version 15 "
 // durch dieses include wird der standard elevation style überschrieben
