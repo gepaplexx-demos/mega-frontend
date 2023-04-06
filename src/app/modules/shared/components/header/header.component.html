@@ -32,7 +32,7 @@
 
       <img [src]="assetsPath + logoMega" alt="Logo MEGA" class="logo-mega mr-3">
 
-      <div *ngIf="user" class="show_on_lg nav_container">
+      <div *ngIf="user" class="show_on_lg nav_container ml-20">
         <nav mat-tab-nav-bar [tabPanel]="tabPanel">
           <ng-container *ngFor="let link of links">
             <div #rla="routerLinkActive" *ngIf="showLink(link)" [active]="rla.isActive" [routerLink]="link.path"
