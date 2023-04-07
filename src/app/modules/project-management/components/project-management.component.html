@@ -17,16 +17,18 @@
   </div>
   <div class="mat-elevation-z6">
     <mat-card *ngIf="!pmEntries; else datatable">
-      <ngx-skeleton-loader [theme]="{ height: '125px' }"
-                           appearance="line"></ngx-skeleton-loader>
-      <ngx-skeleton-loader [theme]="{ height: '48px' }"
-                           count="3"
-                           appearance="line"></ngx-skeleton-loader>
-      <ngx-skeleton-loader [theme]="{ height: '125px', 'margin-top': '25px' }"
-                           appearance="line"></ngx-skeleton-loader>
-      <ngx-skeleton-loader [theme]="{ height: '48px' }"
-                           count="3"
-                           appearance="line"></ngx-skeleton-loader>
+      <mat-card-content>
+        <ngx-skeleton-loader [theme]="{ height: '125px' }"
+                             appearance="line"></ngx-skeleton-loader>
+        <ngx-skeleton-loader [theme]="{ height: '48px' }"
+                             count="3"
+                             appearance="line"></ngx-skeleton-loader>
+        <ngx-skeleton-loader [theme]="{ height: '125px', 'margin-top': '25px' }"
+                             appearance="line"></ngx-skeleton-loader>
+        <ngx-skeleton-loader [theme]="{ height: '48px' }"
+                             count="3"
+                             appearance="line"></ngx-skeleton-loader>
+      </mat-card-content>
     </mat-card>
 
     <ng-template #datatable>

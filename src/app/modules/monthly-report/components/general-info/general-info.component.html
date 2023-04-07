@@ -11,37 +11,38 @@
     </mat-card-title>
   </mat-card-header>
 
-  <ngx-skeleton-loader *ngIf="!monthlyReport"
-                       appearance="line"
-                       count="6"></ngx-skeleton-loader>
+  <mat-card-content>
 
+    <ngx-skeleton-loader *ngIf="!monthlyReport else table"
+                         appearance="line"
+                         count="6"></ngx-skeleton-loader>
+    <ng-template #table>
+      <mat-table [dataSource]="toGeneralInfoData()" class="mat-elevation-z1 table-container">
 
-  <mat-card-content *ngIf="monthlyReport">
-    <mat-table [dataSource]="toGeneralInfoData()" class="mat-elevation-z1 table-container">
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.description | translate}} </mat-cell>
+        </ng-container>
 
-      <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.description | translate}} </mat-cell>
-      </ng-container>
+        <ng-container matColumnDef="value">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <p *ngIf="element.unit === 'monthly-report.generalInfo.day'; else elseBlock">{{element.value}}</p>
+            <ng-template #elseBlock>{{element.value | number: '1.2-2' : 'de-AT'}}</ng-template>
+          </mat-cell>
+        </ng-container>
 
-      <ng-container matColumnDef="value">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <p *ngIf="element.unit === 'monthly-report.generalInfo.day'; else elseBlock">{{element.value}}</p>
-          <ng-template #elseBlock>{{element.value | number: '1.2-2' : 'de-AT'}}</ng-template>
-        </mat-cell>
-      </ng-container>
+        <ng-container matColumnDef="unit">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <p *ngIf="element.value === 1; else elseBlock"> {{(element.unit) | translate}}</p>
+            <ng-template #elseBlock> {{element.unit + 's' | translate}}</ng-template>
+          </mat-cell>
+        </ng-container>
 
-      <ng-container matColumnDef="unit">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <p *ngIf="element.value === 1; else elseBlock"> {{(element.unit) | translate}}</p>
-          <ng-template #elseBlock> {{element.unit + 's' | translate}}</ng-template>
-        </mat-cell>
-      </ng-container>
-
-      <mat-row class="fixed-columns" *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+        <mat-row class="fixed-columns" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </ng-template>
   </mat-card-content>
 </mat-card>
 
