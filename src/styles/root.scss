@@ -127,3 +127,10 @@ app-project-overview-card, app-project-management {
     height: 40px !important;
   }
 }
+
+// default größe von icons, die sich innerhalb eines buttons befinden, ist bei done-comments-indicator zu klein
+.mat-mdc-button > .mat-icon.done-comments-indicator-icon {
+  font-size: 24px;
+  width: auto;
+  height: auto;
+}
