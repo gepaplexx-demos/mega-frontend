@@ -86,6 +86,12 @@ mat-form-field mat-label {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
 }
 
+// die options vom select haben seit upgrade zu material v15 eine checkbox, die es davor (in v13) nicht gab.
+// wir wollen sie aber nicht, daher entfernen
+.mat-mdc-option .mat-pseudo-checkbox {
+  display: none;
+}
+
 // workaround für https://github.com/angular/components/issues/26094
 // "bug(mat-card): mat-elevation-zx no longer working for mat-card after upgrade to version 15 "
 // durch dieses include wird der standard elevation style überschrieben
