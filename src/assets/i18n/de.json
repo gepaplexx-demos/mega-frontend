@@ -45,7 +45,9 @@
     "remainingChars": "Zeichen verbleibend",
     "actions": {
       "delete": "Löschen",
-      "edit": "Bearbeiten"
+      "edit": "Bearbeiten",
+      "save": "Speichern",
+      "cancel": "Abbrechen"
     }
   },
   "monthly-report": {

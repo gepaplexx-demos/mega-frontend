@@ -1,10 +1,12 @@
 <h2 mat-dialog-title>
+  <span class="title-text-wrapper">
   <ng-container *ngIf="isEdit else newReason">
     {{'monthly-report.employeeCheckConfirmCommentDialogComponent.titleEdit' | translate}}
   </ng-container>
   <ng-template #newReason>
     {{'monthly-report.employeeCheckConfirmCommentDialogComponent.titleAdd' | translate}}
   </ng-template>
+  </span>
 </h2>
 
 <div mat-dialog-content class="dialog-content">
@@ -42,6 +44,10 @@
 </div>
 
 <mat-dialog-actions align="end">
-  <button (click)="cancel()" mat-button>Abbrechen</button>
-  <button [disabled]="textareaCtrl.invalid" (click)="save()" mat-raised-button color="primary">Speichern</button>
+  <button (click)="cancel()" mat-button>
+    {{ 'global.actions.cancel' | translate }}
+  </button>
+  <button [disabled]="textareaCtrl.invalid" (click)="save()" mat-raised-button color="primary">
+    {{ 'global.actions.save' | translate }}
+  </button>
 </mat-dialog-actions>

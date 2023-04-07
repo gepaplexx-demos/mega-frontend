@@ -86,6 +86,20 @@ mat-form-field mat-label {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
 }
 
+
+// dialog content & footer gleich alignen
+// 24px sind standard beim content. beim footer sind es seit dem material v15 upgrade viel weniger
+$dialog-padding-inline: 24px;
+
+.mdc-dialog .mdc-dialog__content {
+  padding-inline: $dialog-padding-inline !important;
+}
+
+.mdc-dialog__actions {
+  padding-inline: $dialog-padding-inline !important;
+  padding-bottom: 14px !important;
+}
+
 // die options vom select haben seit upgrade zu material v15 eine checkbox, die es davor (in v13) nicht gab.
 // wir wollen sie aber nicht, daher entfernen
 .mat-mdc-option .mat-pseudo-checkbox {
