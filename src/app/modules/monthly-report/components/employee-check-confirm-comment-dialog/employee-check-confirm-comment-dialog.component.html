@@ -1,12 +1,6 @@
 <h2 mat-dialog-title>
-  <span class="title-text-wrapper">
-  <ng-container *ngIf="isEdit else newReason">
-    {{'monthly-report.employeeCheckConfirmCommentDialogComponent.titleEdit' | translate}}
-  </ng-container>
-  <ng-template #newReason>
-    {{'monthly-report.employeeCheckConfirmCommentDialogComponent.titleAdd' | translate}}
-  </ng-template>
-  </span>
+  <ng-container *ngIf="isEdit else newReason">{{'monthly-report.employeeCheckConfirmCommentDialogComponent.titleEdit' | translate}}</ng-container>
+  <ng-template #newReason>{{'monthly-report.employeeCheckConfirmCommentDialogComponent.titleAdd' | translate}}</ng-template>
 </h2>
 
 <div mat-dialog-content class="dialog-content">

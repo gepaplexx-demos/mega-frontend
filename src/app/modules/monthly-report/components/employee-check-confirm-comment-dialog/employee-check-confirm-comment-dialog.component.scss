@@ -2,10 +2,3 @@
   font-size: 14px;
   text-align: justify;
 }
-
-// padding von h2 entfernen. der text im title (<h2>) hatte ein für mich unerklärlichen
-// abstand von links weg. es war aber kein padding etc. zu finden.
-// durch diesen wrapper ist es behoben - title & content sind gleich aligned
-.title-text-wrapper {
-  display: inline-block;
-}
