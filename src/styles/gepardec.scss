@@ -2,6 +2,7 @@
 @import '../../node_modules/@angular/material/theming';
 @import 'src/styles/colors';
 
+@include mat.all-component-typographies();
 @include mat.core();
 
 $gepardec-pal: (
@@ -39,6 +40,138 @@ $gepardec-pal: (
 
 $mega-primary: mat.define-palette($gepardec-pal);
 $mega-accent: mat.define-palette($gepardec-pal, A100);
-$mega-theme: mat.define-light-theme($mega-primary, $mega-accent);
+
+
+$gepardec-headline-6: mat.define-typography-level(
+  $font-family: inherit,
+  $font-weight: 500,
+  $font-size: 24px,
+  $line-height: normal,
+  $letter-spacing: normal,
+);
+
+$gepardec-button: mat.define-typography-level(
+  $font-family: inherit,
+  $font-weight: 500,
+  $font-size: 14px,
+  $letter-spacing: normal
+);
+
+$gepardec-body-1: mat.define-typography-level(
+  $font-family: inherit,
+  $font-size: 20px,
+);
+
+$gepardec-subtitle-2: mat.define-typography-level(
+  $font-size: 14px,
+  $font-weight: 500,
+);
+
+$gepardec-typography-config: mat.define-typography-config(
+  $headline-6: $gepardec-headline-6,
+  $subtitle-2: $gepardec-subtitle-2,
+  $body-1: $gepardec-body-1,
+  $button: $gepardec-button
+);
+
+$mega-theme: mat.define-light-theme((
+  color: (
+    primary: $mega-primary,
+    accent: $mega-accent,
+  ),
+  typography: $gepardec-typography-config,
+  density: 0,
+));
+
+
 
 @include mat.all-component-themes($mega-theme);
+
+
+app-office-management {
+
+  $office-management-typography: mat.define-typography-config(
+    $headline-6: mat.define-typography-level(
+      $font-family: inherit,
+      $font-weight: 500,
+      $font-size: 20px,
+      $line-height: normal,
+      $letter-spacing: normal,
+    ),
+
+    $subtitle-2: mat.define-typography-level(
+      $font-size: 12px,
+      $font-weight: 500,
+    )
+  );
+
+  @include mat.card-typography($office-management-typography);
+}
+
+$toolbar-typography: mat.define-typography-config(
+  $headline-6: mat.define-typography-level(
+    $font-weight: 500,
+    $font-size: 20px
+  ),
+  $body-1: mat.define-typography-level(
+    $font-size: 30px
+  )
+);
+
+$select-typography: mat.define-typography-config(
+  $body-1: mat.define-typography-level(
+    $font-size: 14px
+  )
+);
+
+$datepicker-typograhpy: mat.define-typography-config(
+  $body-1: mat.define-typography-level(
+    $font-size: 14px
+  )
+);
+
+$input-typography: mat.define-typography-config(
+  $body-1: mat.define-typography-level(
+    $font-size: 14px
+  )
+);
+
+$dialog-typography: mat.define-typography-config(
+  $body-1: mat.define-typography-level(
+    $font-size: 16px
+  )
+);
+
+$menu-typography: mat.define-typography-config(
+  $body-1: mat.define-typography-level(
+    $font-size: 14px
+  )
+);
+
+$list-typography: mat.define-typography-config(
+  $body-1: mat.define-typography-level(
+    $font-size: 16px
+  )
+);
+
+$expansion-typography: mat.define-typography-config(
+  $subtitle-2: mat.define-typography-level(
+    $font-size: 15px
+  )
+);
+
+@include mat.toolbar-typography($toolbar-typography);
+
+@include mat.select-typography($select-typography);
+
+@include mat.option-typography($select-typography);
+
+@include mat.input-typography($input-typography);
+
+@include mat.dialog-typography($dialog-typography);
+
+@include mat.menu-typography($menu-typography);
+
+@include mat.list-typography($list-typography);
+
+@include mat.expansion-typography($expansion-typography);

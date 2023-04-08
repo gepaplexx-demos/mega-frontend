@@ -1,10 +1,8 @@
 <ng-container *ngIf="comments && employee">
-  <h2 mat-dialog-title>
-    {{'comments-for-employee.commentsFor' | translate:{'firstAndSureName': employee.firstname + " " + employee.lastname} }}
-  </h2>
+  <h2 mat-dialog-title>{{'comments-for-employee.commentsFor' | translate:{'firstAndSureName': employee.firstname + " " + employee.lastname} }}</h2>
 
 
-  <mat-dialog-content>
+  <mat-dialog-content class="dialog_content">
     <div>
       <mat-form-field appearance="outline">
         <mat-label>{{'comments-for-employee.writeCommentLabel'|translate}}</mat-label>
@@ -22,48 +20,53 @@
             [matTooltipPosition]="'right'"
             matTooltip="{{'comments-for-employee.characterRangeTooltip' | translate}}">
         <button
-          data-cy="add-comment"
           (click)="createCommentForEmployee(newMessage.value);newMessage.value = ''"
           [disabled]="newMessage?.value?.length === 0 || newMessage?.value?.length > MAXIMUM_LETTERS"
+          data-cy="add-comment"
           mat-raised-button>
           {{'comments-for-employee.addCommentBtn' | translate}}
         </button>
       </span>
     </div>
-    <table *ngIf="comments.length > 0; else noCommentsFound" class="mat-table" data-cy="employee-comments">
+    <table *ngIf="comments.length > 0; else noCommentsFound" class="mat-table mt-10" data-cy="employee-comments">
 
-      <tr class="mat-header-row">
-        <th class="mat-header-cell text-center"
+      <tr class="mat-mdc-header-row">
+        <th class="mat-mdc-header-cell mdc-data-table__header-cell text-center"
             scope="col">{{'comments-for-employee.table.lastChanged' | translate}}</th>
-        <th class="mat-header-cell text-center" scope="col">{{'comments-for-employee.table.author' | translate}}</th>
-        <th class="mat-header-cell text-center" scope="col">{{'comments-for-employee.table.done' | translate}}</th>
-        <th class="mat-header-cell" scope="col">{{'comments-for-employee.table.comment' | translate}}</th>
-        <th class="mat-header-cell" scope="col">{{'comments-for-employee.table.edit' | translate}}</th>
-        <th class="mat-header-cell" scope="col">{{'comments-for-employee.table.delete' | translate}}</th>
+        <th class="mat-mdc-header-cell mdc-data-table__header-cell text-center"
+            scope="col">{{'comments-for-employee.table.author' | translate}}</th>
+        <th class="mat-mdc-header-cell mdc-data-table__header-cell text-center"
+            scope="col">{{'comments-for-employee.table.done' | translate}}</th>
+        <th class="mat-mdc-header-cell mdc-data-table__header-cell text-center"
+            scope="col">{{'comments-for-employee.table.comment' | translate}}</th>
+        <th class="mat-mdc-header-cell mdc-data-table__header-cell text-center"
+            scope="col">{{'comments-for-employee.table.edit' | translate}}</th>
+        <th class="mat-mdc-header-cell mdc-data-table__header-cell text-center"
+            scope="col">{{'comments-for-employee.table.delete' | translate}}</th>
       </tr>
 
       <tr *ngFor="let comment of comments" class="mat-row">
-        <td class="mat-cell text-center">
+        <td class="mdc-data-table__cell text-center">
           <p>{{comment.updateDate | date:'dd.LL.yyyy, HH:mm'}}</p>
         </td>
 
-        <td class="mat-cell text-center">
+        <td class="mdc-data-table__cell text-center">
           <p>{{comment.authorName}}</p>
         </td>
 
-        <td class="mat-cell text-center">
+        <td class="mdc-data-table__cell text-center">
           <app-state-indicator [state]="comment.state"></app-state-indicator>
         </td>
 
-        <td class="mat-cell">
+        <td class="mdc-data-table__cell text-center">
           <pre [hidden]="comment.isEditing" [innerHTML]="parseAnchorTags(comment.message)"
                style="white-space: pre-wrap">{{comment.message}}</pre>
           <div [hidden]="!comment.isEditing">
-            <mat-form-field floatLabel="never">
-              <mat-label>{{'comments-for-employee.editCommentLabel' | translate}}</mat-label>
+            <mat-form-field>
               <textarea
                 #editMessageInput
                 [maxLength]="MAXIMUM_LETTERS"
+                [placeholder]="'comments-for-employee.editCommentLabel' | translate"
                 [value]="comment.message"
                 cdkAutosizeMaxRows="15"
                 cdkAutosizeMinRows="5"
@@ -75,7 +78,7 @@
           </div>
         </td>
 
-        <td class="mat-cell">
+        <td class="mdc-data-table__cell text-center">
           <ng-container *ngIf="comment.isEditing">
             <button
               (click)="comment.message = editMessageInput.value; toggleIsEditing(comment); updateCommentForEmployee(comment);"
@@ -95,7 +98,7 @@
           </button>
         </td>
 
-        <td class="mat-cell">
+        <td class="mdc-data-table__cell text-center">
           <button (click)="deleteCommentOfEmployee(comment)" *ngIf="editCommentBtnVisible(comment)" aria-label="delete"
                   mat-icon-button>
             <mat-icon>delete</mat-icon>
@@ -105,11 +108,11 @@
     </table>
 
     <ng-template #noCommentsFound>
-      <p>{{'comments-for-employee.noCommentsYet' | translate}}</p>
+      <p class="mt-10">{{'comments-for-employee.noCommentsYet' | translate}}</p>
     </ng-template>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
-    <button data-cy="close" (click)="close()" mat-raised-button>{{'comments-for-employee.close' | translate}}</button>
+    <button (click)="close()" data-cy="close" mat-raised-button>{{'comments-for-employee.close' | translate}}</button>
   </mat-dialog-actions>
 </ng-container>

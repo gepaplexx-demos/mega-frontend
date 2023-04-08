@@ -5,8 +5,6 @@ import {State} from '../../../shared/models/State';
 import {TranslateModule} from '@ngx-translate/core';
 import {AngularMaterialModule} from '../../../material/material-module';
 import {SharedModule} from '../../../shared/shared.module';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
-
 import * as _moment from 'moment';
 import {MonthlyReportService} from '../../services/monthly-report.service';
 import {MonthlyReportModule} from '../../monthly-report.module';

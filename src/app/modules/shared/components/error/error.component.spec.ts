@@ -5,7 +5,6 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateModule} from '@ngx-translate/core';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ErrorService} from '../../services/error/error.service';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {Router} from '@angular/router';
 import {AngularMaterialModule} from '../../../material/material-module';
 

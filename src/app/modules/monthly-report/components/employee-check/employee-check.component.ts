@@ -66,7 +66,7 @@ export class EmployeeCheckComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.dateSelectionSub.unsubscribe();
+    this.dateSelectionSub?.unsubscribe();
     this.employeeProgressRef?.dismiss();
   }
 

@@ -4,7 +4,6 @@ import {InlineTextEditorComponent} from './inline-text-editor.component';
 import {SharedModule} from '../../shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgZone} from '@angular/core';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 
 describe('InlineTextEditorComponent', () => {
 

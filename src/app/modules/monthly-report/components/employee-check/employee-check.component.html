@@ -1,8 +1,10 @@
-<mat-card class="mat-elevation-z1 fill-parent">
-  <mat-card-subtitle>
-    {{selectedDateStr}}
-  </mat-card-subtitle>
-  <mat-card-title>{{'monthly-report.title.emc' | translate}}</mat-card-title>
+<mat-card appearance="raised" class="fill-parent">
+  <mat-card-header>
+    <mat-card-subtitle>
+      {{selectedDateStr}}
+    </mat-card-subtitle>
+    <mat-card-title>{{'monthly-report.title.emc' | translate}}</mat-card-title>
+  </mat-card-header>
   <mat-card-content class="card_content">
     <ng-container *ngIf="!monthlyReport else employeeCheck">
       <ngx-skeleton-loader [theme]="{ height: '80px', width: '80px' }"
@@ -58,9 +60,11 @@
           <div class="employee-check__actionsContainer mb-10"
                *ngIf="monthlyReport.employeeCheckState === State.OPEN || monthlyReport.employeeCheckState === State.IN_PROGRESS">
 
-            <button (click)="setOpenAndUnassignedStepEntriesDone()" class="employee-check__primary_button mt-10"
-                    mat-raised-button
-                    color="primary">{{'monthly-report.confirmBtnText' | translate}}</button>
+            <button
+              data-cy="buchungen_bestaetigen_btn"
+              (click)="setOpenAndUnassignedStepEntriesDone()" class="employee-check__primary_button mt-10"
+              mat-raised-button
+              color="primary">{{'monthly-report.confirmBtnText' | translate}}</button>
             <button *ngIf="monthlyReport.employeeCheckState !== State.IN_PROGRESS"
                     (click)="openStateInProgressReasonDialog()" class="setInProgressBtn"
                     mat-button color="secondary">
@@ -85,11 +89,13 @@
             #option
             *ngFor="let comment of monthlyReport.comments"
             [disabled]="option.selected"
-            [ngClass]="option.selected ? 'done green' : 'red'"
+            [ngClass]="{'done': option.selected}"
             [selected]="comment.state === State.DONE"
             [value]="comment">
-            {{comment.updateDate | date: 'dd.MM.yyyy'}}
-            {{comment?.authorName}}:
+            <div>
+              {{comment.updateDate | date: 'dd.MM.yyyy'}}
+              {{comment?.authorName}}:
+            </div>
             <div (click)="$event.stopPropagation()" [innerHTML]="parseBody(comment.message)"
                  style="white-space: pre-line"></div>
           </mat-list-option>

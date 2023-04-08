@@ -5,7 +5,6 @@ import {TranslateModule} from '@ngx-translate/core';
 import {AngularMaterialModule} from '../../material/material-module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import * as _moment from 'moment';
 import {ConfigService} from '../../shared/services/config/config.service';
 import {of} from 'rxjs';

@@ -3,8 +3,6 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {DatepickerComponent} from './datepicker.component';
 import {AngularMaterialModule} from '../../../material/material-module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
-
 import * as _moment from 'moment';
 import {configuration} from '../../constants/configuration';
 

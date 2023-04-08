@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>{{'office-management.table.name' | translate}}</mat-card-title>
   </mat-card-header>
-  <mat-card-content fxFlexAlign="center" fxFlexFill fxLayout="column" fxLayoutGap="10px">
+  <mat-card-content class="employee-card__card_content">
     <ng-container *ngIf="!omEntries || !filteredOmEntries; else datatable">
       <ngx-skeleton-loader [theme]="{ height: '64px' }"
                            appearance="line"></ngx-skeleton-loader>
@@ -14,23 +14,22 @@
     <ng-template #datatable>
       <div>
         <mat-toolbar class="mat-elevation-z8" color="accent">
-          <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-form-field floatLabel="never">
-              <mat-label style="font-size: 18px">{{'office-management.filterPlaceholder' | translate}}</mat-label>
+          <mat-toolbar-row class="employee_actions_container">
+            <mat-form-field subscriptSizing="dynamic">
               <input
+                [placeholder]="'office-management.filterPlaceholder' | translate"
                 #employeeNameInput
                 (keyup)="filterOmEntriesByEmployeeName(employeeNameInput.value)"
                 matInput>
               <button (click)="employeeNameInput.value=''; filterOmEntriesByEmployeeName(employeeNameInput.value)"
                       *ngIf="employeeNameInput.value"
                       aria-label="Close Employee Card"
-                      mat-button mat-icon-button
+                      mat-button
                       matSuffix>
                 <mat-icon>close</mat-icon>
               </button>
             </mat-form-field>
-            <span fxFlex="1 1 auto"></span>
-            <div>
+            <div class="employee_actions_container">
               <small
                 *ngIf="omSelectionModel.selected.length > 0">
                 {{omSelectionModel.selected.length}} {{'office-management.selectedCount' | translate}}
@@ -103,7 +102,7 @@
                 matTooltipPosition="above"
                 [matTooltipShowDelay]="100"
                 [matTooltip]="omEntry.employeeCheckStateReason"
-                matTooltipClass="om-tooltip">
+                matTooltipClass="mega-custom-tooltip">
                 <app-state-indicator [state]="omEntry.employeeCheckState"
                                      data-cy="employee-check"></app-state-indicator>
               </div>
@@ -130,7 +129,7 @@
                       data-cy="open-comments"
                       aria-label="comment"
                       mat-button>
-                <mat-icon>comment</mat-icon>
+                <mat-icon class="done-comments-indicator-icon">comment</mat-icon>
                 <app-done-comments-indicator [finishedComments]="omEntry.finishedComments"
                                              [totalComments]="omEntry.totalComments"
                                              data-cy="comment-indicator"></app-done-comments-indicator>

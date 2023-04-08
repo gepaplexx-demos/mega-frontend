@@ -1,4 +1,4 @@
-<mat-form-field appearance="standard" style="font-size: 18px">
+<mat-form-field subscriptSizing="dynamic">
   <input (dateChange)="getDateAndEmitEvent($event)" [matDatepicker]="picker" [max]="today" [value]="selectedDate"
          disabled
          matInput>

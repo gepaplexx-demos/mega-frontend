@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>{{'office-management.projects' | translate}}</mat-card-title>
   </mat-card-header>
-  <mat-card-content fxFlexAlign="center" fxFlexFill fxLayout="column" fxLayoutGap="10px">
+  <mat-card-content class="project-overview__content_container">
     <ng-container *ngIf="!pmEntries; else datatable">
       <ngx-skeleton-loader [theme]="{ height: '56px' }"
                            appearance="line"></ngx-skeleton-loader>
@@ -39,7 +39,7 @@
             <span [matTooltipPosition]="tooltipPosition"
                   [matTooltipShowDelay]="tooltipShowDelay"
                   matTooltip="{{'project-management.tooltips.projectTimeState' | translate}}"
-                  matTooltipClass="pm-tooltip">
+                  matTooltipClass="mega-custom-tooltip">
               {{'project-management.projectTimeState' | translate}}
             </span>
             </mat-header-cell>
@@ -57,7 +57,7 @@
             <span [matTooltipPosition]="tooltipPosition"
                   [matTooltipShowDelay]="tooltipShowDelay"
                   matTooltip="{{'project-management.tooltips.billingState' | translate}}"
-                  matTooltipClass="pm-tooltip">
+                  matTooltipClass="mega-custom-tooltip">
               {{'project-management.billingState' | translate}}
             </span>
             </mat-header-cell>
@@ -82,7 +82,7 @@
               <button (click)="onStartEditing(pmEntry.projectName)"
                       *ngIf="!pmEntry.projectComment?.comment && forProjectName !== pmEntry.projectName"
                       [attr.aria-label]="'global.addComment' | translate"
-                      class="btn-addComment"
+                      class="btn-addComment gepardec-icon-button"
                       mat-icon-button
                       matTooltip="{{'global.addComment' | translate}}"
                       matTooltipShowDelay="1000">

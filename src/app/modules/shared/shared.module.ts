@@ -13,7 +13,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InfoComponent} from './components/info/info.component';
 import {HttpClientModule} from '@angular/common/http';
 import {InfoDialogComponent} from './components/info-dialog/info-dialog.component';
-import {FlexLayoutModule} from '@angular/flex-layout';
 import {StateSelectComponent} from './components/state-select/state-select.component';
 import {DoneCommentsIndicatorComponent} from './components/done-comments-indicator/done-comments-indicator.component';
 import {StateIndicatorComponent} from './components/state-indicator/state-indicator.component';
@@ -46,7 +45,6 @@ import {InlineTextEditorComponent} from './components/inline-text-editor/inline-
     RouterModule,
     AngularMaterialModule,
     TranslateModule.forRoot(),
-    FlexLayoutModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule

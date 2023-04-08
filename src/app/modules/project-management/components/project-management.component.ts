@@ -61,7 +61,7 @@ export class ProjectManagementComponent implements OnInit, OnDestroy {
   showCommentEditor = false;
   forProjectName: string;
   tooltipShowDelay = 500;
-  tooltipPosition: TooltipPosition = 'above';
+  tooltipPosition = 'above' as TooltipPosition;
   maxMonthDate = 1;
   dateSelectionSub: Subscription;
 

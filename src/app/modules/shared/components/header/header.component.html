@@ -1,5 +1,5 @@
-<mat-sidenav-container fxFlexFill>
-  <mat-sidenav #sidenav fxHide.gt-md="true" mode="over" opened="false">
+<mat-sidenav-container class="header__sidenav_container">
+  <mat-sidenav #sidenav mode="over" opened="false">
     <mat-nav-list *ngIf="user">
       <a mat-list-item>
         <app-user-actions (logout)="onLogout(); sidenav.close()" [user]="user"></app-user-actions>
@@ -14,15 +14,17 @@
         </a>
       </ng-container>
       <a [href]="zepUrl" mat-list-item target="_blank">
-        <mat-icon>open_in_new</mat-icon>
-        ZEP
+        <div class="mat-list-item-with-icon">
+          <mat-icon>open_in_new</mat-icon>
+          <span>ZEP</span>
+        </div>
       </a>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <mat-toolbar class="toolbar mat-elevation-z10">
-      <div *ngIf="user" fxHide.gt-md="true" fxShow="true">
+      <div *ngIf="user" class="remove_on_lg">
         <button (click)="sidenav.toggle()" aria-label="menu" mat-icon-button>
           <mat-icon>menu</mat-icon>
         </button>
@@ -30,8 +32,8 @@
 
       <img [src]="assetsPath + logoMega" alt="Logo MEGA" class="logo-mega mr-3">
 
-      <div *ngIf="user" fxHide.lt-lg="true" fxLayout="row" fxShow="true" style="width: 100%">
-        <nav mat-tab-nav-bar>
+      <div *ngIf="user" class="show_on_lg nav_container ml-20">
+        <nav mat-tab-nav-bar [tabPanel]="tabPanel">
           <ng-container *ngFor="let link of links">
             <div #rla="routerLinkActive" *ngIf="showLink(link)" [active]="rla.isActive" [routerLink]="link.path"
                  mat-tab-link
@@ -40,10 +42,9 @@
             </div>
           </ng-container>
         </nav>
+        <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 
-        <span fxFlex="1 1 auto"></span>
-
-        <div fxLayout="row" fxLayoutGap="15px">
+        <div class="zep_and_user_container">
           <a
             [href]="zepUrl"
             mat-mini-fab

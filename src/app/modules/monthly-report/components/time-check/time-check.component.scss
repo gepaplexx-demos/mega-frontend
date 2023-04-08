@@ -1,14 +1,17 @@
+
+// Damit das Icon nicht abgeschnitten wird
+mat-cell, mat-header-cell {
+  //box-sizing: content-box !important;
+}
+
 .mat-column-date {
-  flex: 0 0 20%;
+  flex: 0 0 35%;
 }
 
 .mat-column-warningIcon {
-  flex: 0 0 10%;
-}
-
-.fill-parent {
-  height: calc(100% - 32px);
-  width: calc(100% - 32px);
+  display: flex;
+  justify-content: center;
+  flex: 0;
 }
 
 .no-warnings {

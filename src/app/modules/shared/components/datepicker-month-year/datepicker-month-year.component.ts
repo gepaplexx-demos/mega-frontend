@@ -45,7 +45,6 @@ export class DatepickerMonthYearComponent implements OnChanges, OnInit {
   @Output() dateChanged: EventEmitter<Moment> = new EventEmitter<Moment>();
   @ViewChild('dp') datePicker: MatDatepicker<any>;
 
-  pickerDate: MatDatepicker<any>;
   dateControl = new FormControl(moment().subtract(1, 'month'));
   maxDate = moment().format(configuration.dateFormat);
 

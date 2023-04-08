@@ -4,7 +4,6 @@ import {StateIndicatorComponent} from './state-indicator.component';
 import {AngularMaterialModule} from '../../../material/material-module';
 import {State} from '../../models/State';
 import {By} from '@angular/platform-browser';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 
 describe('StateIndicatorComponent', () => {
 

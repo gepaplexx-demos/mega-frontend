@@ -4,7 +4,6 @@ import {GeneralInfoComponent} from './general-info.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {MonthlyReport} from '../../models/MonthlyReport';
 import {By} from '@angular/platform-browser';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {TranslateTestingModule} from 'ngx-translate-testing';
 import {MatCardModule} from '@angular/material/card';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
@@ -102,7 +101,7 @@ describe('GeneralInfoComponent', () => {
   });
 
   function assertMonthlyReportRow(rowNumber: number, expectedHeader: string, expectedDays: string, expectedIdentifier: string) {
-    const tr = fixture.debugElement.query(By.css(`.mat-row:nth-child(${rowNumber})`));
+    const tr = fixture.debugElement.query(By.css(`.mat-mdc-row:nth-child(${rowNumber})`));
 
     const header = tr.query(By.css('.mat-column-description')).nativeElement.innerText.trim();
     expect(header).toEqual(expectedHeader.trim());

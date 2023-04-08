@@ -1,9 +1,11 @@
-<mat-card class="mat-elevation-z1 fill-parent">
-  <mat-card-title>
-    {{'monthly-report.title.journey' | translate}}
-  </mat-card-title>
+<mat-card appearance="raised" class="fill-parent">
+  <mat-card-header>
+    <mat-card-title>
+      {{'monthly-report.title.journey' | translate}}
+    </mat-card-title>
+  </mat-card-header>
 
-  <mat-card-content [class.no-warnings]="!monthlyReport || monthlyReport?.journeyWarnings?.length === 0">
+  <mat-card-content [class.no-warnings]="!monthlyReport || monthlyReport?.journeyWarnings?.length === 0" style="padding-top: 20px;">
     <ng-container *ngIf="!monthlyReport">
       <ngx-skeleton-loader [theme]="{ height: '80px', width: '80px' }" appearance="circle"></ngx-skeleton-loader>
       <ngx-skeleton-loader [theme]="{ width: '250px', 'margin-top': '20px' }" appearance="line"></ngx-skeleton-loader>

@@ -16,7 +16,6 @@ import {Employee} from '../../../shared/models/Employee';
 import {ProjectManagementEntry} from '../../../project-management/models/ProjectManagementEntry';
 import {ProjectState} from '../../../shared/models/ProjectState';
 import {ProjectComment} from '../../../shared/models/ProjectComment';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {SnackbarService} from '../../../shared/services/snackbar/snackbar.service';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
@@ -62,14 +61,12 @@ describe('ProjectOverviewCardComponent', () => {
   it('#afterInit - should call projectManagementService.getEntries and projectCommentService.get', fakeAsync(() => {
     fixture.detectChanges();
 
-    spyOn(configService, 'getConfig').and.returnValue(of(ConfigMock.config));
     spyOn(projectManagementService, 'getEntries').and.returnValue(of(ProjectManagementEntryMock.projectManagementEntries));
     spyOn(projectCommentService, 'get').and.returnValue(of(ProjectCommentMock.projectComment));
 
     component.ngOnInit();
     flush();
 
-    expect(configService.getConfig).toHaveBeenCalled();
     expect(projectManagementService.getEntries).toHaveBeenCalled();
     expect(projectCommentService.get).toHaveBeenCalled();
   }));

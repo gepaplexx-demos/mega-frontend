@@ -9,6 +9,7 @@ describe('Office Management (Unternehmen)', () => {
     '@getEnterpriseEntries',
     '@getProjectManagementEntries',
     '@getOfficeManagementEntries',
+    '@getProjectsWithoutLeadsEntries',
     '@getProjectComments'
   ];
 
@@ -27,6 +28,10 @@ describe('Office Management (Unternehmen)', () => {
 
     cy.fixture('officemanagement/officemanagemententries.json').then(jsonData => {
       cy.intercept('http://localhost:*/management/officemanagemententries/*/*', jsonData).as('getOfficeManagementEntries');
+    });
+
+    cy.fixture('officemanagement/projectswithoutleads.json').then(jsonData => {
+      cy.intercept('http://localhost:*/management/projectsWithoutLeads', jsonData).as('getProjectsWithoutLeadsEntries');
     });
 
     cy.fixture('officemanagement/projectcomments.json').then(jsonData => {
@@ -56,13 +61,17 @@ describe('Office Management (Unternehmen)', () => {
     visitAndWaitForRequests('/officeManagement');
     assertSelect('zep-times-released', 'Offen');
 
+    cy.get('[data-cy="zep-times-released"]').click().get('[data-cy="option-done"]').click();
+
     cy.intercept('PUT', 'http://localhost:*/enterprise/entry/*/*', {
       body: true
     }).as('updateEnterpriseEntry');
 
-    cy.get('[data-cy="zep-times-released"]').click().get('[data-cy="option-done"]').click();
+    cy.wait('@updateEnterpriseEntry').then((interception) => {
+      cy.wrap(interception.request.body).as('requestData');
+    });
 
-    cy.get('@updateEnterpriseEntry').its('request.body').should('deep.equal', {
+    cy.get('@requestData').should('deep.equal', {
       ...enterprise,
       zepTimesReleased: 'DONE'
     });
@@ -75,7 +84,7 @@ describe('Office Management (Unternehmen)', () => {
     visitAndWaitForRequests('/officeManagement');
 
     assertSelect('zep-times-released', 'Fertig')
-      .get('.mat-select')
+      .get('.mat-mdc-select')
       .should('not.have.class', 'mat-select-disabled');
   });
 

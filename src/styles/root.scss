@@ -18,74 +18,44 @@ button:focus {
   outline: none;
 }
 
-.mat-simple-snackbar-action > button {
-  color: $mega-warning-yellow
-}
-
-.green {
-  color: $mega-success-green;
-}
-
-.red {
-  color: $mega-danger-red;
-}
-
-.yellow {
-  color: $mega-warning-yellow;
-}
-
-.text-center {
-  text-align: center !important;
-}
-
 app-display-monthly-report {
-  .mat-checkbox-checked.mat-accent .mat-checkbox-background,
-  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
-  .mat-accent .mat-pseudo-checkbox-checked,
-  .mat-accent .mat-pseudo-checkbox-indeterminate,
-  .mat-pseudo-checkbox-checked,
-  .mat-pseudo-checkbox-indeterminate {
-    background-color: $mega-success-green;
+
+  .mdc-checkbox--disabled .mdc-checkbox__background {
+    background-color: $mega-success-green !important;
   }
 
-  .mat-card-content {
+  // remove disabled-opacity
+  .mdc-checkbox {
+    opacity: 1 !important;
+  }
+
+  .mat-mdc-card-content {
     font-size: 20px;
+    padding-top: 20px;
+  }
+
+  app-information-top-bar .mat-mdc-card-content {
+    padding-top: 0;
+  }
+
+  .fill-parent {
+    height: 100%;
+    width: 100%;
   }
 
 }
 
 app-time-check, app-journey-check, app-employee-check, app-general-info {
-  .mat-card-content {
+  .mat-mdc-card-content {
     font-size: 20px;
     overflow: auto;
     height: 100%;
-  }
-
-  .mat-card {
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-app-employee-card, app-project-management {
-  .mat-checkbox-checked.mat-accent .mat-checkbox-background,
-  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
-  .mat-accent .mat-pseudo-checkbox-checked,
-  .mat-accent .mat-pseudo-checkbox-indeterminate,
-  .mat-pseudo-checkbox-checked,
-  .mat-pseudo-checkbox-indeterminate {
-    background-color: $gepardec-black;
   }
 }
 
 .table-container {
   display: flex;
   flex-direction: column;
-}
-
-.mat-table {
-  overflow: auto;
 }
 
 .mobile-label {
@@ -98,27 +68,12 @@ app-employee-card, app-project-management {
     display: inline-block;
     text-align: left !important;
   }
-
-  .mat-header-row {
-    display: none;
-  }
-
-  .mat-row:not(.fixed-columns) {
-    flex-direction: column;
-    align-items: start;
-    padding: 18px 24px;
-  }
-
-  .mat-cell:first-of-type {
-    padding-left: 0 !important;
-  }
 }
 
-.mat-tooltip.om-tooltip, .mat-tooltip.pm-tooltip {
-  font-size: 15px !important;
+.mega-custom-tooltip .mdc-tooltip__surface {
+  font-size: 15px;
   white-space: pre-line;
 }
-
 
 app-project-overview-card, app-project-management {
   .btn-addComment {
@@ -128,40 +83,14 @@ app-project-overview-card, app-project-management {
   }
 }
 
-.mt-10 {
-  margin-top: 10px;
-}
-
-.mt-20 {
-  margin-top: 20px;
-}
-
-.mb-10 {
-  margin-bottom: 10px;
-}
-
-.mr-10 {
-  margin-right: 10px;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.min-height-0 {
-  min-height: 0;
-}
-
 .office_management__table-row {
   min-height: 75px;
   height: fit-content;
 }
 
 .select-date-toolbar-row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: flex-end;
+  min-height: 100px;
   /* Override Material's default height */
   height: auto !important;
 }
@@ -171,4 +100,37 @@ app-project-overview-card, app-project-management {
   flex-wrap: wrap;
   align-items: baseline;
   gap: 30px;
+}
+
+// seit angular/material v15 sind icon buttons 48x48 groß. mit dieser klasse wird er zu 40x40, wie davor
+.gepardec-icon-button {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  & > *[role=img] {
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .mat-mdc-button-touch-target {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+// default größe von icons, die sich innerhalb eines buttons befinden, ist bei done-comments-indicator zu klein
+.mat-mdc-button > .mat-icon.done-comments-indicator-icon {
+  font-size: 24px;
+  width: auto;
+  height: auto;
 }

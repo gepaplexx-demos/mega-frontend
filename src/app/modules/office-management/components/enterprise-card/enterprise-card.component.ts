@@ -16,6 +16,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {
   ProjectStateSelectComponent
 } from '../../../shared/components/project-state-select/project-state-select.component';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 const moment = _moment;
 
@@ -37,7 +38,7 @@ export class EnterpriseCardComponent implements OnInit, OnDestroy {
   fetchingData: boolean;
 
   tooltipShowDelay = 500;
-  tooltipPosition = 'above';
+  tooltipPosition = 'above' as TooltipPosition;
 
   constructor(private configService: ConfigService,
               private omService: OfficeManagementService,

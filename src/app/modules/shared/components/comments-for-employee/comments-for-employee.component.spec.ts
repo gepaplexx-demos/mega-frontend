@@ -13,7 +13,6 @@ import {State} from '../../models/State';
 import * as _moment from 'moment';
 import {UserService} from '../../services/user/user.service';
 import {User} from '../../models/User';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {CommentService} from '../../services/comment/comment.service';
 import {of} from 'rxjs';
 import {Employee} from '../../models/Employee';

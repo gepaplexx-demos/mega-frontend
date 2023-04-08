@@ -2,7 +2,6 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {StateSelectComponent} from './state-select.component';
 import {TranslateModule} from '@ngx-translate/core';
-import {expect} from '@angular/flex-layout/_private-utils/testing';
 import {AngularMaterialModule} from '../../../material/material-module';
 import {By} from '@angular/platform-browser';
 import {MatSelect} from '@angular/material/select';

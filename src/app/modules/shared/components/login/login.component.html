@@ -1,14 +1,15 @@
 <div
   *ngIf="!loggedIn()"
-  class="login-container"
-  fxLayout="column"
-  fxLayoutAlign="center center">
+  class="login-container">
   <mat-card class="mat-elevation-z8">
-    <mat-card-title>
-      {{'login.cardTitle' | translate}}
-    </mat-card-title>
 
-    <mat-card-content fxLayout="column" fxLayoutAlign="center" fxLayoutGap="5px">
+    <mat-card-header class="login-header">
+      <mat-card-title>
+        {{'login.cardTitle' | translate}}
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="login__content_container">
       <span class="text">
         {{'login.promptText' | translate }}
       </span>

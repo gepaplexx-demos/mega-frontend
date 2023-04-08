@@ -30,7 +30,9 @@
             "styles": [
               "src/styles/colors.scss",
               "src/styles/root.scss",
-              "src/styles/gepardec.scss"
+              "src/styles/utility.scss",
+              "src/styles/gepardec.scss",
+              "src/styles/material-customizing.scss"
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -162,9 +164,18 @@
       }
     }
   },
-  "defaultProject": "frontend",
   "cli": {
     "analytics": false,
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
+    }
   }
 }

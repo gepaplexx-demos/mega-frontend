@@ -28,7 +28,7 @@ describe('Menu bar', () => {
     mockUserJson('common/user.json');
     visitAndWaitForRequests();
 
-    const tabs = cy.get('.mat-tab-links div');
+    const tabs = getTabs();
 
     tabs.should('have.length', 3)
       .first().should('have.text', ' Mein MEGA ')
@@ -61,7 +61,7 @@ describe('Menu bar', () => {
     mockUserJson('menu-bar/user-no-role.json');
     visitAndWaitForRequests();
 
-    const tabs = cy.get('.mat-tab-links div');
+    const tabs = getTabs();
 
     tabs.should('have.length', 0);
   });
@@ -78,8 +78,12 @@ describe('Menu bar', () => {
   }
 
   function assertSingleTabShown(text: string) {
-    const tabs = cy.get('.mat-tab-links div');
+    const tabs = getTabs();
     tabs.should('have.length', 1)
       .first().should('have.text', text);
+  }
+
+  function getTabs() {
+    return cy.get('.mat-mdc-tab-links .mat-mdc-tab-link');
   }
 });

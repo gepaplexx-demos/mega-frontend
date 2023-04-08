@@ -41,7 +41,7 @@ export class GeneralInfoComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.dateSelectionSub.unsubscribe();
+    this.dateSelectionSub?.unsubscribe();
   }
 
   calculateBillingPercentage(totalWorkingTime: string, billableTime: string): number {
