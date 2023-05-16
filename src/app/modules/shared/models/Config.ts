@@ -3,7 +3,6 @@ export interface Config {
   issuer: string;
   scope: string;
   version: string;
-  excelUrl: string;
   budgetCalculationExcelUrl: string;
   zepOrigin: string;
 }

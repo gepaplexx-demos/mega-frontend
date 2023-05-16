@@ -45,7 +45,6 @@ describe('LocalStorageService', () => {
     static config: Config = {
       budgetCalculationExcelUrl: 'budgetCalculationExcelUrl',
       clientId: 'clientId',
-      excelUrl: 'excelUrl',
       issuer: 'issuer',
       scope: 'scope',
       version: 'version',

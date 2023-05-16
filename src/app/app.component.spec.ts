@@ -87,7 +87,6 @@ describe('AppComponent', () => {
         scope: 'email',
         issuer: 'https://accounts.google.com',
         version: '1',
-        excelUrl: 'DUMMY',
         zepOrigin: 'DUMMY',
         budgetCalculationExcelUrl: 'DUMMY'
       });
